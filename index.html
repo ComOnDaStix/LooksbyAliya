@@ -229,6 +229,15 @@ figure{overflow:hidden}
 .agree a{text-decoration:underline;text-underline-offset:3px}
 .form-msg{grid-column:1/-1;color:var(--sage);font-family:"Albert Sans",sans-serif;font-weight:600;font-size:15px;min-height:1px}
 
+/* ---------- booking CTA panel ---------- */
+.book-cta-title{font-size:clamp(1.45rem,2.6vw,2.1rem);font-weight:700;margin-bottom:16px}
+.book-points{list-style:none;margin:26px 0 32px;display:flex;flex-direction:column;gap:14px}
+.book-points li{position:relative;padding-left:30px;color:#cfcfca;font-size:1rem}
+.book-points li::before{content:"✓";position:absolute;left:0;top:0;color:var(--sage);font-weight:700}
+.btn--book{font-size:16px;padding:18px 36px}
+.btn .arrow-ico{position:relative;z-index:1}
+.book-powered{margin-top:20px;font-size:13px;color:#85857f;letter-spacing:.02em}
+
 /* ---------- CTA ---------- */
 .cta{background:var(--night-2);color:#fff;padding:clamp(56px,7vw,96px) 0}
 .cta-grid{display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}
@@ -303,10 +312,10 @@ figure{overflow:hidden}
         <a href="#portfolio" class="nav-link">Portfolio</a>
         <a href="#reviews" class="nav-link">Reviews</a>
         <a href="#book" class="nav-link">Contact</a>
-        <a href="#book" class="btn btn--mobileonly"><span>Book an Appointment</span></a>
+        <a href="https://looksbyaliya.glossgenius.com/" target="_blank" rel="noopener" class="btn btn--mobileonly"><span>Book an Appointment</span></a>
       </div>
       <div class="nav-right">
-        <a href="#book" class="btn btn--desktop"><span>Book an Appointment</span></a>
+        <a href="https://looksbyaliya.glossgenius.com/" target="_blank" rel="noopener" class="btn btn--desktop"><span>Book an Appointment</span></a>
         <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
       </div>
     </nav>
@@ -445,7 +454,7 @@ figure{overflow:hidden}
       <div class="reveal">
         <h2>There's an art to your color, and a science to keeping it gorgeous</h2>
         <p>Every service starts with a real conversation and a custom formula built for your hair, your lifestyle, and your goals. No guesswork, just results you'll love between visits.</p>
-        <a href="#book" class="btn btn--solid"><span>Book an Appointment</span></a>
+        <a href="https://looksbyaliya.glossgenius.com/" target="_blank" rel="noopener" class="btn btn--solid"><span>Book an Appointment</span></a>
       </div>
       <div class="facts-stats reveal">
         <div class="fact-block">
@@ -534,36 +543,16 @@ figure{overflow:hidden}
         <div class="book-addr"><b>Address:</b><span>Sevva Salon, 229 North Water Street, Milwaukee, WI 53202</span></div>
         <div class="book-addr"><b>Phone:</b><span>(414) 233-5431</span></div>
       </div>
-      <div class="reveal">
-        <p class="book-lead">Ready for your most gorgeous hair yet? Request your appointment below and I'll be in touch to confirm. Please allow 48 hours' notice for any changes, and ask about Buy Now, Pay Later.</p>
-        <form class="form-grid" id="bookForm" novalidate>
-          <div class="field"><label>First Name <span class="req">*</span></label><input type="text" name="first" placeholder="Enter your first name" required></div>
-          <div class="field"><label>Last Name</label><input type="text" name="last" placeholder="Enter your last name"></div>
-          <div class="field"><label>Phone Number <span class="req">*</span></label><input type="tel" name="phone" placeholder="Enter your phone number" required></div>
-          <div class="field"><label>Service <span class="req">*</span></label>
-            <select name="service" id="serviceSelect" required>
-              <option value="" disabled selected>Choose a Service</option>
-              <option>Consultation</option>
-              <option>Haircut &amp; Styling</option>
-              <option>Balayage &amp; Foils</option>
-              <option>All Over Color</option>
-              <option>Color Correction</option>
-              <option>Gloss / Toner</option>
-              <option>Bridal Hair</option>
-              <option>Bridal / Glam Makeup</option>
-              <option>Updo / Formal Style</option>
-              <option>Waxing &amp; Tint</option>
-            </select>
-          </div>
-          <div class="field"><label>Preferred Date <span class="req">*</span></label><input type="date" name="date" required></div>
-          <div class="field"><label>Preferred Time <span class="req">*</span></label><input type="time" name="time" required></div>
-          <div class="field full"><label>Message <span class="req">*</span></label><textarea name="message" placeholder="Tell me about your hair goals, inspo pics, length, history..." rows="2" required></textarea></div>
-          <div class="form-foot">
-            <label class="agree"><input type="checkbox" id="agree" required> I agree to the <a href="https://looksbyaliya.glossgenius.com/" target="_blank" rel="noopener">Terms &amp; Cancellation Policy</a>.</label>
-            <button type="submit" class="btn btn--light"><span>Submit Request</span></button>
-          </div>
-          <div class="form-msg" id="formMsg" role="status"></div>
-        </form>
+      <div class="reveal book-cta">
+        <h3 class="book-cta-title">Reserve your spot in seconds</h3>
+        <p class="book-lead">All appointments are booked through GlossGenius, Aliya's secure online scheduling. Tap below to see live availability, choose your service, and lock in your time. New clients are always welcome.</p>
+        <ul class="book-points">
+          <li>Real-time availability with instant confirmation</li>
+          <li>Buy Now, Pay Later available on bookings from $50–$4,000</li>
+          <li>Please allow 48 hours' notice for any changes</li>
+        </ul>
+        <a href="https://looksbyaliya.glossgenius.com/" target="_blank" rel="noopener" class="btn btn--light btn--book"><span>Book on GlossGenius</span><svg class="arrow-ico" viewBox="0 0 24 24" fill="none" stroke="#0e0e0e" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <p class="book-powered">Secure booking powered by GlossGenius</p>
       </div>
     </div>
   </div>
@@ -573,7 +562,7 @@ figure{overflow:hidden}
 <section class="cta">
   <div class="container cta-grid">
     <h2>Ready for your most gorgeous hair yet? Reserve your spot with Aliya.</h2>
-    <a href="#book" class="btn btn--light"><span>Book an Appointment</span></a>
+    <a href="https://looksbyaliya.glossgenius.com/" target="_blank" rel="noopener" class="btn btn--light"><span>Book an Appointment</span></a>
   </div>
 </section>
 
@@ -614,7 +603,7 @@ figure{overflow:hidden}
         <p>Sevva Salon, 229 North Water Street, Milwaukee, WI 53202</p>
         <p>Tue–Fri 10–8 · Sat 10–6 · Sun &amp; Mon closed</p>
         <a href="tel:+14142335431">(414) 233-5431</a>
-        <a href="#book">Book Online</a>
+        <a href="https://looksbyaliya.glossgenius.com/" target="_blank" rel="noopener">Book Online</a>
       </div>
     </div>
     <div class="foot-bot">
@@ -640,21 +629,6 @@ navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
   navLinks.classList.remove('open'); menuBtn.classList.remove('open');
   menuBtn.setAttribute('aria-expanded', 'false');
 }));
-
-// select color state
-const sel = document.getElementById('serviceSelect');
-sel.addEventListener('change', () => sel.classList.add('filled'));
-
-// fake form submit
-const form = document.getElementById('bookForm');
-const msg = document.getElementById('formMsg');
-form.addEventListener('submit', e => {
-  e.preventDefault();
-  if (!form.checkValidity()) { msg.textContent = 'Please fill in the required fields marked with *.'; return; }
-  const name = form.first.value.trim();
-  msg.textContent = `Thanks${name ? ', ' + name : ''}! Your request has been received. Aliya will reach out to confirm. (Demo form: connect to GlossGenius to go live.)`;
-  form.reset(); sel.classList.remove('filled');
-});
 
 // scroll reveal
 const io = new IntersectionObserver((entries) => {
