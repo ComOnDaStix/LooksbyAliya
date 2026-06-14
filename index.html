@@ -158,6 +158,12 @@ figure{overflow:hidden}
 .price-row .lead{flex:1;border-bottom:1px dotted #cfcfc8;transform:translateY(-4px)}
 .price-row .price{font-family:"Albert Sans",sans-serif;font-weight:700;color:var(--ink);white-space:nowrap}
 .menu-note{margin-top:30px;font-size:14px;color:var(--body-soft)}
+.price-row{cursor:pointer;transition:padding-left .3s var(--ease)}
+.price-row:hover{padding-left:8px}
+.price-row:hover .name{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
+.price-row:focus-visible{outline:2px solid var(--sage-deep);outline-offset:3px}
+.menu-cta{margin-top:clamp(40px,5vw,64px);padding-top:36px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap}
+.menu-cta p{max-width:54ch;color:var(--body)}
 
 /* ---------- facts (sage) ---------- */
 .facts{background:var(--sage);position:relative;overflow:hidden}
@@ -312,10 +318,10 @@ figure{overflow:hidden}
         <a href="#portfolio" class="nav-link">Portfolio</a>
         <a href="#reviews" class="nav-link">Reviews</a>
         <a href="#book" class="nav-link">Contact</a>
-        <a href="https://looksbyaliya.glossgenius.com/" target="_blank" rel="noopener" class="btn btn--mobileonly"><span>Book an Appointment</span></a>
+        <a href="https://looksbyaliya.glossgenius.com/services" target="_blank" rel="noopener" class="btn btn--mobileonly"><span>Book an Appointment</span></a>
       </div>
       <div class="nav-right">
-        <a href="https://looksbyaliya.glossgenius.com/" target="_blank" rel="noopener" class="btn btn--desktop"><span>Book an Appointment</span></a>
+        <a href="https://looksbyaliya.glossgenius.com/services" target="_blank" rel="noopener" class="btn btn--desktop"><span>Book an Appointment</span></a>
         <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
       </div>
     </nav>
@@ -444,6 +450,10 @@ figure{overflow:hidden}
         <p class="menu-note">Add a haircut to any color service for a complete refresh. Buy Now, Pay Later available on bookings from $50–$4,000.</p>
       </div>
     </div>
+    <div class="menu-cta reveal">
+      <p>Tap any service above, or hit the button to choose your service and time on GlossGenius — live availability, instant confirmation, and Buy Now, Pay Later.</p>
+      <a href="https://looksbyaliya.glossgenius.com/services" target="_blank" rel="noopener" class="btn btn--solid"><span>Book Your Service</span><svg class="arrow-ico" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
   </div>
 </section>
 
@@ -454,7 +464,7 @@ figure{overflow:hidden}
       <div class="reveal">
         <h2>There's an art to your color, and a science to keeping it gorgeous</h2>
         <p>Every service starts with a real conversation and a custom formula built for your hair, your lifestyle, and your goals. No guesswork, just results you'll love between visits.</p>
-        <a href="https://looksbyaliya.glossgenius.com/" target="_blank" rel="noopener" class="btn btn--solid"><span>Book an Appointment</span></a>
+        <a href="https://looksbyaliya.glossgenius.com/services" target="_blank" rel="noopener" class="btn btn--solid"><span>Book an Appointment</span></a>
       </div>
       <div class="facts-stats reveal">
         <div class="fact-block">
@@ -551,7 +561,7 @@ figure{overflow:hidden}
           <li>Buy Now, Pay Later available on bookings from $50–$4,000</li>
           <li>Please allow 48 hours' notice for any changes</li>
         </ul>
-        <a href="https://looksbyaliya.glossgenius.com/" target="_blank" rel="noopener" class="btn btn--light btn--book"><span>Book on GlossGenius</span><svg class="arrow-ico" viewBox="0 0 24 24" fill="none" stroke="#0e0e0e" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="https://looksbyaliya.glossgenius.com/services" target="_blank" rel="noopener" class="btn btn--light btn--book"><span>Book on GlossGenius</span><svg class="arrow-ico" viewBox="0 0 24 24" fill="none" stroke="#0e0e0e" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         <p class="book-powered">Secure booking powered by GlossGenius</p>
       </div>
     </div>
@@ -562,7 +572,7 @@ figure{overflow:hidden}
 <section class="cta">
   <div class="container cta-grid">
     <h2>Ready for your most gorgeous hair yet? Reserve your spot with Aliya.</h2>
-    <a href="https://looksbyaliya.glossgenius.com/" target="_blank" rel="noopener" class="btn btn--light"><span>Book an Appointment</span></a>
+    <a href="https://looksbyaliya.glossgenius.com/services" target="_blank" rel="noopener" class="btn btn--light"><span>Book an Appointment</span></a>
   </div>
 </section>
 
@@ -603,7 +613,7 @@ figure{overflow:hidden}
         <p>Sevva Salon, 229 North Water Street, Milwaukee, WI 53202</p>
         <p>Tue–Fri 10–8 · Sat 10–6 · Sun &amp; Mon closed</p>
         <a href="tel:+14142335431">(414) 233-5431</a>
-        <a href="https://looksbyaliya.glossgenius.com/" target="_blank" rel="noopener">Book Online</a>
+        <a href="https://looksbyaliya.glossgenius.com/services" target="_blank" rel="noopener">Book Online</a>
       </div>
     </div>
     <div class="foot-bot">
@@ -629,6 +639,18 @@ navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
   navLinks.classList.remove('open'); menuBtn.classList.remove('open');
   menuBtn.setAttribute('aria-expanded', 'false');
 }));
+
+// make each pricing row open the GlossGenius service picker
+const GG = 'https://looksbyaliya.glossgenius.com/services';
+document.querySelectorAll('.price-row').forEach(row => {
+  row.setAttribute('role', 'link');
+  row.tabIndex = 0;
+  const name = row.querySelector('.name');
+  row.setAttribute('aria-label', `Book ${name ? name.textContent : 'service'} on GlossGenius`);
+  const go = () => window.open(GG, '_blank', 'noopener');
+  row.addEventListener('click', go);
+  row.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
+});
 
 // scroll reveal
 const io = new IntersectionObserver((entries) => {
