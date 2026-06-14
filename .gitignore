@@ -1,0 +1,9 @@
+# dependencies
+node_modules/
+
+# local dev artifacts
+temporary screenshots/
+*.log
+
+# os
+.DS_Store
