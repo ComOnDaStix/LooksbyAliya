@@ -264,6 +264,12 @@ figure{overflow:hidden}
 .btn .arrow-ico{position:relative;z-index:1}
 .book-powered{margin-top:20px;font-size:13px;color:#85857f;letter-spacing:.02em}
 
+/* ---------- booking embed (Acuity calendar) ---------- */
+.book-embed-eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:"Albert Sans",sans-serif;font-weight:600;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--sage);margin-bottom:14px}
+.embed-shell{position:relative;background:#fff;border-radius:12px;overflow:hidden;border:1px solid rgba(199,209,194,.4);box-shadow:0 40px 90px -55px rgba(0,0,0,.85),0 0 0 1px rgba(199,209,194,.14)}
+.embed-shell::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--sage),var(--sage-deep) 60%,var(--sage));z-index:3}
+#ggEmbed{width:100%;min-height:760px;border:0;display:block;background:#fff}
+
 /* ---------- CTA ---------- */
 .cta{background:var(--night-2);color:#fff;padding:clamp(56px,7vw,96px) 0}
 .cta-grid{display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}
@@ -467,7 +473,7 @@ figure{overflow:hidden}
         <div class="price-row"><span class="name">Eyebrow Tint &amp; Wax</span><span class="dur">20 min</span><span class="lead"></span><span class="price">$20</span></div>
         <div class="price-row"><span class="name">Lip Wax</span><span class="dur">10 min</span><span class="lead"></span><span class="price">$10</span></div>
         <div class="price-row"><span class="name">Chin Wax</span><span class="dur">10 min</span><span class="lead"></span><span class="price">$10</span></div>
-        <p class="menu-note">Add a haircut to any color service for a complete refresh. Buy Now, Pay Later available on bookings from $50–$4,000.</p>
+        <p class="menu-note">Add a haircut to any color service for a complete refresh. Color prices start at the listed rate and may vary with length and density.</p>
       </div>
     </div>
     <div class="menu-cta reveal">
@@ -573,16 +579,12 @@ figure{overflow:hidden}
         <div class="book-addr"><b>Address:</b><span>Sevva Salon, 229 North Water Street, Milwaukee, WI 53202</span></div>
         <div class="book-addr"><b>Phone:</b><span>(414) 233-5431</span></div>
       </div>
-      <div class="reveal book-cta">
-        <h3 class="book-cta-title">Reserve your spot in seconds</h3>
-        <p class="book-lead">All appointments are booked through Aliya's secure online scheduling. Tap below to see live availability, choose your service, and lock in your time. New clients are always welcome.</p>
-        <ul class="book-points">
-          <li>Real-time availability with instant confirmation</li>
-          <li>Buy Now, Pay Later available on bookings from $50–$4,000</li>
-          <li>Please allow 48 hours' notice for any changes</li>
-        </ul>
-        <a href="https://looksbyaliya.glossgenius.com/services" target="_blank" rel="noopener" class="btn btn--light btn--book"><span>Book an Appointment</span><svg class="arrow-ico" viewBox="0 0 24 24" fill="none" stroke="#0e0e0e" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <p class="book-powered">Secure online booking · instant confirmation</p>
+      <div class="reveal book-embed">
+        <div class="book-embed-eyebrow"><span class="dot"></span>Choose your service &amp; time</div>
+        <div class="embed-shell" id="ggEmbedShell">
+          <noscript><p style="padding:24px;color:#0e0e0e">Please enable JavaScript to book online — or call <a href="tel:+14142335431" style="color:#0e0e0e;text-decoration:underline">(414) 233-5431</a>.</p></noscript>
+        </div>
+        <p class="book-powered">Secure online booking · live availability · instant confirmation</p>
       </div>
     </div>
   </div>
@@ -671,16 +673,25 @@ navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
   menuBtn.setAttribute('aria-expanded', 'false');
 }));
 
-// ---- single source of truth for the booking link ----
-// Aliya's booking runs on GlossGenius. To make the address bar match her brand,
-// turn on "Custom domain" inside GlossGenius (Settings → Online Booking / Website),
-// point book.looksbyaliya.com at it, then change BOOK_URL to:
-//   'https://book.looksbyaliya.com/services'
-// Every "Book" button on the page reads from this one value.
-const BOOK_URL = 'https://looksbyaliya.glossgenius.com/services';
+// ---- embed Aliya's live booking calendar (Acuity) right on the page ----
+// Test/trial account (owner 39599231). Swap ACUITY_OWNER for her real account when ready.
+const ACUITY_OWNER = '39599231';
+const ggShell = document.getElementById('ggEmbedShell');
+if (ggShell && ACUITY_OWNER) {
+  ggShell.insertAdjacentHTML('afterbegin',
+    '<iframe id="ggEmbed" title="Book an appointment with Looks by Aliya" ' +
+    'src="https://app.acuityscheduling.com/schedule.php?owner=' + ACUITY_OWNER + '&ref=embedded_csp" allow="payment"></iframe>');
+  const s = document.createElement('script');
+  s.src = 'https://embed.acuityscheduling.com/js/embed.js'; s.async = true;
+  document.body.appendChild(s);
+}
 
-// apply the booking link to every existing "Book" button/link on the page
-document.querySelectorAll('a[href*="glossgenius.com"]').forEach(a => { a.href = BOOK_URL; });
+// every "Book" button now scrolls to the on-page calendar (no more off-site handoff)
+document.querySelectorAll('a[href*="glossgenius.com"]').forEach(a => {
+  a.setAttribute('href', '#book');
+  a.removeAttribute('target');
+  a.removeAttribute('rel');
+});
 
 // ---- menu acts like a cart: tap services to stack them, then book ----
 const cart = new Map(); // name -> {price, plus}
@@ -744,7 +755,8 @@ document.getElementById('cartClear').addEventListener('click', () => {
 
 document.getElementById('cartBook').addEventListener('click', e => {
   e.preventDefault();
-  window.open(BOOK_URL, '_blank', 'noopener');
+  const book = document.getElementById('book');
+  if (book) book.scrollIntoView({ behavior: 'smooth' });
 });
 
 // scroll reveal
