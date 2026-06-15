@@ -451,7 +451,7 @@ figure{overflow:hidden}
       </div>
     </div>
     <div class="menu-cta reveal">
-      <p>Tap any service above, or hit the button to choose your service and time on GlossGenius — live availability, instant confirmation, and Buy Now, Pay Later.</p>
+      <p>Browse the menu, then choose your service and time on Aliya's booking page — live availability, instant confirmation, and Buy Now, Pay Later.</p>
       <a href="https://looksbyaliya.glossgenius.com/services" target="_blank" rel="noopener" class="btn btn--solid"><span>Book Your Service</span><svg class="arrow-ico" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
   </div>
@@ -555,14 +555,14 @@ figure{overflow:hidden}
       </div>
       <div class="reveal book-cta">
         <h3 class="book-cta-title">Reserve your spot in seconds</h3>
-        <p class="book-lead">All appointments are booked through GlossGenius, Aliya's secure online scheduling. Tap below to see live availability, choose your service, and lock in your time. New clients are always welcome.</p>
+        <p class="book-lead">All appointments are booked through Aliya's secure online scheduling. Tap below to see live availability, choose your service, and lock in your time. New clients are always welcome.</p>
         <ul class="book-points">
           <li>Real-time availability with instant confirmation</li>
           <li>Buy Now, Pay Later available on bookings from $50–$4,000</li>
           <li>Please allow 48 hours' notice for any changes</li>
         </ul>
-        <a href="https://looksbyaliya.glossgenius.com/services" target="_blank" rel="noopener" class="btn btn--light btn--book"><span>Book on GlossGenius</span><svg class="arrow-ico" viewBox="0 0 24 24" fill="none" stroke="#0e0e0e" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <p class="book-powered">Secure booking powered by GlossGenius</p>
+        <a href="https://looksbyaliya.glossgenius.com/services" target="_blank" rel="noopener" class="btn btn--light btn--book"><span>Book an Appointment</span><svg class="arrow-ico" viewBox="0 0 24 24" fill="none" stroke="#0e0e0e" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <p class="book-powered">Secure online booking · instant confirmation</p>
       </div>
     </div>
   </div>
@@ -640,14 +640,24 @@ navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
   menuBtn.setAttribute('aria-expanded', 'false');
 }));
 
-// make each pricing row open the GlossGenius service picker
-const GG = 'https://looksbyaliya.glossgenius.com/services';
+// ---- single source of truth for the booking link ----
+// Aliya's booking runs on GlossGenius. To make the address bar match her brand,
+// turn on "Custom domain" inside GlossGenius (Settings → Online Booking / Website),
+// point book.looksbyaliya.com at it, then change BOOK_URL to:
+//   'https://book.looksbyaliya.com/services'
+// Every "Book" button on the page reads from this one value.
+const BOOK_URL = 'https://looksbyaliya.glossgenius.com/services';
+
+// apply the booking link to every existing "Book" button/link on the page
+document.querySelectorAll('a[href*="glossgenius.com"]').forEach(a => { a.href = BOOK_URL; });
+
+// make each pricing row open the booking page too
 document.querySelectorAll('.price-row').forEach(row => {
   row.setAttribute('role', 'link');
   row.tabIndex = 0;
   const name = row.querySelector('.name');
-  row.setAttribute('aria-label', `Book ${name ? name.textContent : 'service'} on GlossGenius`);
-  const go = () => window.open(GG, '_blank', 'noopener');
+  row.setAttribute('aria-label', `Open booking to schedule ${name ? name.textContent.trim() : 'a service'}`);
+  const go = () => window.open(BOOK_URL, '_blank', 'noopener');
   row.addEventListener('click', go);
   row.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
 });
