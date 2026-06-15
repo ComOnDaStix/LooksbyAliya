@@ -344,10 +344,10 @@ figure{overflow:hidden}
         <a href="#portfolio" class="nav-link">Portfolio</a>
         <a href="#reviews" class="nav-link">Reviews</a>
         <a href="#book" class="nav-link">Contact</a>
-        <a href="https://looksbyaliya.glossgenius.com/services" target="_blank" rel="noopener" class="btn btn--mobileonly"><span>Book an Appointment</span></a>
+        <a href="#book" class="btn btn--mobileonly"><span>Book an Appointment</span></a>
       </div>
       <div class="nav-right">
-        <a href="https://looksbyaliya.glossgenius.com/services" target="_blank" rel="noopener" class="btn btn--desktop"><span>Book an Appointment</span></a>
+        <a href="#book" class="btn btn--desktop"><span>Book an Appointment</span></a>
         <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
       </div>
     </nav>
@@ -478,7 +478,7 @@ figure{overflow:hidden}
     </div>
     <div class="menu-cta reveal">
       <p>Tap the services you'd like — they'll stack in your booking below. When you're ready, hit Book to choose your time on Aliya's live calendar.</p>
-      <a href="https://looksbyaliya.glossgenius.com/services" target="_blank" rel="noopener" class="btn btn--solid"><span>Book Your Service</span><svg class="arrow-ico" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="#book" class="btn btn--solid"><span>Book Your Service</span><svg class="arrow-ico" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
   </div>
 </section>
@@ -490,7 +490,7 @@ figure{overflow:hidden}
       <div class="reveal">
         <h2>There's an art to your color, and a science to keeping it gorgeous</h2>
         <p>Every service starts with a real conversation and a custom formula built for your hair, your lifestyle, and your goals. No guesswork, just results you'll love between visits.</p>
-        <a href="https://looksbyaliya.glossgenius.com/services" target="_blank" rel="noopener" class="btn btn--solid"><span>Book an Appointment</span></a>
+        <a href="#book" class="btn btn--solid"><span>Book an Appointment</span></a>
       </div>
       <div class="facts-stats reveal">
         <div class="fact-block">
@@ -594,7 +594,7 @@ figure{overflow:hidden}
 <section class="cta">
   <div class="container cta-grid">
     <h2>Ready for your most gorgeous hair yet? Reserve your spot with Aliya.</h2>
-    <a href="https://looksbyaliya.glossgenius.com/services" target="_blank" rel="noopener" class="btn btn--light"><span>Book an Appointment</span></a>
+    <a href="#book" class="btn btn--light"><span>Book an Appointment</span></a>
   </div>
 </section>
 
@@ -635,7 +635,7 @@ figure{overflow:hidden}
         <p>Sevva Salon, 229 North Water Street, Milwaukee, WI 53202</p>
         <p>Tue–Fri 10–8 · Sat 10–6 · Sun &amp; Mon closed</p>
         <a href="tel:+14142335431">(414) 233-5431</a>
-        <a href="https://looksbyaliya.glossgenius.com/services" target="_blank" rel="noopener">Book Online</a>
+        <a href="#book">Book Online</a>
       </div>
     </div>
     <div class="foot-bot">
@@ -686,12 +686,7 @@ if (ggShell && ACUITY_OWNER) {
   document.body.appendChild(s);
 }
 
-// every "Book" button now scrolls to the on-page calendar (no more off-site handoff)
-document.querySelectorAll('a[href*="glossgenius.com"]').forEach(a => {
-  a.setAttribute('href', '#book');
-  a.removeAttribute('target');
-  a.removeAttribute('rel');
-});
+// (all "Book" buttons link to #book directly and smooth-scroll to the calendar)
 
 // ---- menu acts like a cart: tap services to stack them, then book ----
 const cart = new Map(); // name -> {price, plus}
