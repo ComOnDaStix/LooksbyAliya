@@ -165,6 +165,26 @@ figure{overflow:hidden}
 .menu-cta{margin-top:clamp(40px,5vw,64px);padding-top:36px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap}
 .menu-cta p{max-width:54ch;color:var(--body)}
 
+/* ---------- menu cart ---------- */
+.price-row{position:relative}
+.addbtn{align-self:center;flex:none;width:27px;height:27px;border-radius:50%;border:1px solid var(--line);background:#fff;display:flex;align-items:center;justify-content:center;color:var(--ink);pointer-events:none;transition:background .3s var(--ease),border-color .3s var(--ease),transform .3s var(--ease)}
+.addbtn svg{width:13px;height:13px;display:block}
+.price-row:hover .addbtn{border-color:var(--ink);transform:scale(1.06)}
+.price-row.selected{background:var(--sage-tint);box-shadow:inset 3px 0 0 var(--sage-deep)}
+.price-row.selected .addbtn{background:var(--ink);border-color:var(--ink);color:#fff}
+
+.cart-bar{position:fixed;left:0;right:0;bottom:0;z-index:80;background:rgba(11,11,11,.93);backdrop-filter:blur(12px);border-top:1px solid rgba(255,255,255,.14);padding:13px clamp(16px,4vw,40px);transform:translateY(125%);transition:transform .5s var(--ease);box-shadow:0 -22px 50px -30px rgba(0,0,0,.85)}
+.cart-bar.show{transform:translateY(0)}
+.cart-inner{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.cart-meta{display:flex;align-items:center;gap:20px;min-width:0}
+.cart-count{font-family:"Albert Sans",sans-serif;font-weight:600;font-size:15px;color:#fff;white-space:nowrap}
+.cart-count b{color:var(--sage);font-weight:700}
+.cart-clear{font-family:"Albert Sans",sans-serif;font-weight:500;font-size:14px;color:#bdbdb6;background:none;border:0;cursor:pointer;padding:4px 0;border-bottom:1px solid transparent;transition:color .3s,border-color .3s}
+.cart-clear:hover{color:#fff;border-color:rgba(255,255,255,.6)}
+.cart-clear:focus-visible{outline:2px solid var(--sage);outline-offset:3px}
+.cart-book{flex:none}
+@media(max-width:600px){.cart-count .lbl{display:none}.cart-book{padding:14px 22px;font-size:14px}}
+
 /* ---------- facts (sage) ---------- */
 .facts{background:var(--sage);position:relative;overflow:hidden}
 .facts-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(40px,6vw,90px);align-items:center;position:relative;z-index:1}
@@ -451,7 +471,7 @@ figure{overflow:hidden}
       </div>
     </div>
     <div class="menu-cta reveal">
-      <p>Browse the menu, then choose your service and time on Aliya's booking page — live availability, instant confirmation, and Buy Now, Pay Later.</p>
+      <p>Tap the services you'd like — they'll stack in your booking below. When you're ready, hit Book to choose your time on Aliya's live calendar.</p>
       <a href="https://looksbyaliya.glossgenius.com/services" target="_blank" rel="noopener" class="btn btn--solid"><span>Book Your Service</span><svg class="arrow-ico" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
   </div>
@@ -623,6 +643,17 @@ figure{overflow:hidden}
   </div>
 </footer>
 
+<!-- floating booking cart: menu selections stack here -->
+<div class="cart-bar" id="cartBar" role="region" aria-label="Your selected services">
+  <div class="cart-inner">
+    <div class="cart-meta">
+      <span class="cart-count"><b id="cartN">0</b> <span id="cartWord">services</span><span class="lbl"> · from $<span id="cartT">0</span></span></span>
+      <button class="cart-clear" id="cartClear" type="button">Clear all</button>
+    </div>
+    <a href="#book" class="btn btn--light cart-book" id="cartBook"><span id="cartBtnText">Book</span><svg class="arrow-ico" viewBox="0 0 24 24" fill="none" stroke="#0e0e0e" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+</div>
+
 <script>
 // year
 document.getElementById('year').textContent = new Date().getFullYear();
@@ -651,15 +682,69 @@ const BOOK_URL = 'https://looksbyaliya.glossgenius.com/services';
 // apply the booking link to every existing "Book" button/link on the page
 document.querySelectorAll('a[href*="glossgenius.com"]').forEach(a => { a.href = BOOK_URL; });
 
-// make each pricing row open the booking page too
+// ---- menu acts like a cart: tap services to stack them, then book ----
+const cart = new Map(); // name -> {price, plus}
+const cartBar = document.getElementById('cartBar');
+const cartN = document.getElementById('cartN');
+const cartT = document.getElementById('cartT');
+const cartWord = document.getElementById('cartWord');
+const cartBtnText = document.getElementById('cartBtnText');
+const ICON_PLUS = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>';
+const ICON_CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12.5l4.5 4.5L19 7"/></svg>';
+const priceNum = t => { const m = (t || '').replace(/,/g, '').match(/\d+/); return m ? +m[0] : 0; };
+
+function renderCart(){
+  const n = cart.size;
+  let total = 0, plus = false;
+  cart.forEach(v => { total += v.price; if (v.plus) plus = true; });
+  cartN.textContent = n;
+  cartWord.textContent = n === 1 ? 'service' : 'services';
+  cartT.textContent = total + (plus ? '+' : '');
+  cartBtnText.textContent = n ? ('Book ' + n + ' service' + (n > 1 ? 's' : '')) : 'Book';
+  cartBar.classList.toggle('show', n > 0);
+}
+
 document.querySelectorAll('.price-row').forEach(row => {
-  row.setAttribute('role', 'link');
+  const nameEl = row.querySelector('.name');
+  const priceTxt = (row.querySelector('.price') || {}).textContent || '';
+  const name = nameEl ? nameEl.textContent.trim() : 'Service';
+  const entry = { price: priceNum(priceTxt), plus: /\+/.test(priceTxt) };
+
+  const badge = document.createElement('span');
+  badge.className = 'addbtn';
+  badge.setAttribute('aria-hidden', 'true');
+  badge.innerHTML = ICON_PLUS;
+  row.appendChild(badge);
+
+  row.setAttribute('role', 'button');
   row.tabIndex = 0;
-  const name = row.querySelector('.name');
-  row.setAttribute('aria-label', `Open booking to schedule ${name ? name.textContent.trim() : 'a service'}`);
-  const go = () => window.open(BOOK_URL, '_blank', 'noopener');
-  row.addEventListener('click', go);
-  row.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
+  const setLabel = () => row.setAttribute('aria-label', cart.has(name) ? ('Remove ' + name + ' from your booking') : ('Add ' + name + ' to your booking'));
+  setLabel();
+
+  const toggle = () => {
+    if (cart.has(name)) { cart.delete(name); row.classList.remove('selected'); badge.innerHTML = ICON_PLUS; }
+    else { cart.set(name, entry); row.classList.add('selected'); badge.innerHTML = ICON_CHECK; }
+    setLabel();
+    renderCart();
+  };
+  row.addEventListener('click', toggle);
+  row.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
+});
+
+document.getElementById('cartClear').addEventListener('click', () => {
+  cart.clear();
+  document.querySelectorAll('.price-row.selected').forEach(r => {
+    r.classList.remove('selected');
+    const b = r.querySelector('.addbtn'); if (b) b.innerHTML = ICON_PLUS;
+    const nm = r.querySelector('.name');
+    r.setAttribute('aria-label', 'Add ' + (nm ? nm.textContent.trim() : 'service') + ' to your booking');
+  });
+  renderCart();
+});
+
+document.getElementById('cartBook').addEventListener('click', e => {
+  e.preventDefault();
+  window.open(BOOK_URL, '_blank', 'noopener');
 });
 
 // scroll reveal
