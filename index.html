@@ -74,6 +74,7 @@ section[id]{scroll-margin-top:90px}
 .btn--light::after{background:var(--sage)}
 .btn--light:hover{color:var(--ink)}
 .btn--block{width:100%;justify-content:center}
+.btn--xl{font-size:clamp(1.02rem,1.7vw,1.32rem);padding:clamp(19px,2.3vw,27px) clamp(38px,5vw,60px);font-weight:700;gap:14px}
 .btn--mobileonly{display:none}
 
 .arrow-ico{width:18px;height:18px;flex:none}
@@ -147,43 +148,7 @@ figure{overflow:hidden}
 .service-thumb{aspect-ratio:1/1;overflow:hidden;margin-top:auto}
 .service-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease)}
 .service-card:hover .service-thumb img{transform:scale(1.06)}
-
-/* ---------- menu / pricing ---------- */
-.menu-section{background:var(--cloud)}
-.menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,5vw,80px)}
-.menu-col h4{font-family:"Albert Sans",sans-serif;font-weight:700;font-size:1.05rem;text-transform:uppercase;letter-spacing:.12em;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--line)}
-.price-row{display:flex;align-items:baseline;gap:10px;padding:13px 0;border-bottom:1px solid var(--line-2)}
-.price-row .name{font-family:"Albert Sans",sans-serif;font-weight:600;font-size:1rem;color:var(--ink);white-space:nowrap}
-.price-row .dur{font-size:13px;color:var(--body-soft);white-space:nowrap}
-.price-row .lead{flex:1;border-bottom:1px dotted #cfcfc8;transform:translateY(-4px)}
-.price-row .price{font-family:"Albert Sans",sans-serif;font-weight:700;color:var(--ink);white-space:nowrap}
-.menu-note{margin-top:30px;font-size:14px;color:var(--body-soft)}
-.price-row{cursor:pointer;transition:padding-left .3s var(--ease)}
-.price-row:hover{padding-left:8px}
-.price-row:hover .name{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
-.price-row:focus-visible{outline:2px solid var(--sage-deep);outline-offset:3px}
-.menu-cta{margin-top:clamp(40px,5vw,64px);padding-top:36px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap}
-.menu-cta p{max-width:54ch;color:var(--body)}
-
-/* ---------- menu cart ---------- */
-.price-row{position:relative}
-.addbtn{align-self:center;flex:none;width:27px;height:27px;border-radius:50%;border:1px solid var(--line);background:#fff;display:flex;align-items:center;justify-content:center;color:var(--ink);pointer-events:none;transition:background .3s var(--ease),border-color .3s var(--ease),transform .3s var(--ease)}
-.addbtn svg{width:13px;height:13px;display:block}
-.price-row:hover .addbtn{border-color:var(--ink);transform:scale(1.06)}
-.price-row.selected{background:var(--sage-tint);box-shadow:inset 3px 0 0 var(--sage-deep)}
-.price-row.selected .addbtn{background:var(--ink);border-color:var(--ink);color:#fff}
-
-.cart-bar{position:fixed;left:0;right:0;bottom:0;z-index:80;background:rgba(11,11,11,.93);backdrop-filter:blur(12px);border-top:1px solid rgba(255,255,255,.14);padding:13px clamp(16px,4vw,40px);transform:translateY(125%);transition:transform .5s var(--ease);box-shadow:0 -22px 50px -30px rgba(0,0,0,.85)}
-.cart-bar.show{transform:translateY(0)}
-.cart-inner{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:18px}
-.cart-meta{display:flex;align-items:center;gap:20px;min-width:0}
-.cart-count{font-family:"Albert Sans",sans-serif;font-weight:600;font-size:15px;color:#fff;white-space:nowrap}
-.cart-count b{color:var(--sage);font-weight:700}
-.cart-clear{font-family:"Albert Sans",sans-serif;font-weight:500;font-size:14px;color:#bdbdb6;background:none;border:0;cursor:pointer;padding:4px 0;border-bottom:1px solid transparent;transition:color .3s,border-color .3s}
-.cart-clear:hover{color:#fff;border-color:rgba(255,255,255,.6)}
-.cart-clear:focus-visible{outline:2px solid var(--sage);outline-offset:3px}
-.cart-book{flex:none}
-@media(max-width:600px){.cart-count .lbl{display:none}.cart-book{padding:14px 22px;font-size:14px}}
+.services-cta{display:flex;justify-content:center;margin-top:clamp(44px,5vw,68px)}
 
 /* ---------- facts (sage) ---------- */
 .facts{background:var(--sage);position:relative;overflow:hidden}
@@ -226,49 +191,21 @@ figure{overflow:hidden}
 .book .sec-sub{color:#cfcfca}
 .book .dot{background:var(--sage)}
 .book .sec-rule{background:rgba(255,255,255,.16)}
-.book-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(36px,5vw,72px);align-items:start;position:relative;z-index:1}
+.book-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(36px,5vw,72px);align-items:center;position:relative;z-index:1}
 .book-info img{width:100%;aspect-ratio:4/3.4;object-fit:cover;margin-bottom:28px}
 .hours-row{display:flex;justify-content:space-between;gap:18px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.12);font-family:"Albert Sans",sans-serif;font-weight:500}
 .hours-row span:last-child{color:#bdbdb6}
 .book-addr{display:flex;gap:14px;margin-top:22px;font-size:15px;color:#cfcfca}
 .book-addr b{font-family:"Albert Sans",sans-serif;font-weight:600;color:#fff;white-space:nowrap}
 .book-lead{margin:0 0 30px;color:#cfcfca;max-width:46ch}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px 28px}
-.field{display:flex;flex-direction:column}
-.field.full{grid-column:1/-1}
-.field label{font-family:"Albert Sans",sans-serif;font-weight:600;font-size:14px;margin-bottom:10px;color:#fff}
-.field label .req{color:var(--sage)}
-.field input,.field select,.field textarea{
-  background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,.28);
-  padding:10px 0;color:#fff;font-family:"Onest",sans-serif;font-size:15px;border-radius:0;
-  transition:border-color .4s var(--ease);
-}
-.field textarea{resize:vertical;min-height:38px}
-.field input::placeholder,.field textarea::placeholder{color:#7e7e78}
-.field select{color:#7e7e78}
-.field select.filled{color:#fff}
-.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-bottom-color:var(--sage)}
-.field option{color:#111}
-.form-foot{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-top:4px}
-.agree{display:flex;align-items:center;gap:12px;font-size:14px;color:#cfcfca;cursor:pointer}
-.agree input{width:18px;height:18px;accent-color:var(--sage);flex:none}
-.agree a{text-decoration:underline;text-underline-offset:3px}
-.form-msg{grid-column:1/-1;color:var(--sage);font-family:"Albert Sans",sans-serif;font-weight:600;font-size:15px;min-height:1px}
 
 /* ---------- booking CTA panel ---------- */
-.book-cta-title{font-size:clamp(1.45rem,2.6vw,2.1rem);font-weight:700;margin-bottom:16px}
+.book-cta-title{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;margin-bottom:16px}
 .book-points{list-style:none;margin:26px 0 32px;display:flex;flex-direction:column;gap:14px}
 .book-points li{position:relative;padding-left:30px;color:#cfcfca;font-size:1rem}
 .book-points li::before{content:"✓";position:absolute;left:0;top:0;color:var(--sage);font-weight:700}
-.btn--book{font-size:16px;padding:18px 36px}
 .btn .arrow-ico{position:relative;z-index:1}
 .book-powered{margin-top:20px;font-size:13px;color:#85857f;letter-spacing:.02em}
-
-/* ---------- booking embed (Acuity calendar) ---------- */
-.book-embed-eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:"Albert Sans",sans-serif;font-weight:600;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--sage);margin-bottom:14px}
-.embed-shell{position:relative;background:#fff;border-radius:12px;overflow:hidden;border:1px solid rgba(199,209,194,.4);box-shadow:0 40px 90px -55px rgba(0,0,0,.85),0 0 0 1px rgba(199,209,194,.14)}
-.embed-shell::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--sage),var(--sage-deep) 60%,var(--sage));z-index:3}
-#ggEmbed{width:100%;min-height:760px;border:0;display:block;background:#fff}
 
 /* ---------- CTA ---------- */
 .cta{background:var(--night-2);color:#fff;padding:clamp(56px,7vw,96px) 0}
@@ -297,7 +234,6 @@ figure{overflow:hidden}
   .story-grid{grid-template-columns:1fr;gap:48px}
   .story-imgs .b{margin-left:0}
   .service-grid{grid-template-columns:repeat(2,1fr)}
-  .menu-grid{grid-template-columns:1fr}
   .facts-grid,.tst-grid,.book-grid,.foot-top{grid-template-columns:1fr}
   .foot-top{gap:44px}
   .masonry{columns:3}
@@ -315,7 +251,6 @@ figure{overflow:hidden}
   .hero-img{aspect-ratio:4/3.6}
   .service-grid{grid-template-columns:1fr}
   .service-card{padding:22px;gap:18px}
-  .form-grid{grid-template-columns:1fr}
   .masonry{columns:2;column-gap:14px}
   .masonry figure{margin-bottom:14px}
   .tst-img{min-height:340px}
@@ -340,14 +275,13 @@ figure{overflow:hidden}
       <div class="nav-links" id="navLinks">
         <a href="#about" class="nav-link">About</a>
         <a href="#services" class="nav-link">Services</a>
-        <a href="#menu" class="nav-link">Pricing</a>
         <a href="#portfolio" class="nav-link">Portfolio</a>
         <a href="#reviews" class="nav-link">Reviews</a>
         <a href="#book" class="nav-link">Contact</a>
-        <a href="#book" class="btn btn--mobileonly"><span>Book an Appointment</span></a>
+        <a href="https://looksbyaliya.glossgenius.com/services" target="_blank" rel="noopener" class="btn btn--mobileonly"><span>Book Now</span></a>
       </div>
       <div class="nav-right">
-        <a href="#book" class="btn btn--desktop"><span>Book an Appointment</span></a>
+        <a href="https://looksbyaliya.glossgenius.com/services" target="_blank" rel="noopener" class="btn btn--desktop"><span>Book Now</span></a>
         <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
       </div>
     </nav>
@@ -403,83 +337,32 @@ figure{overflow:hidden}
   <div class="sec-head reveal">
     <h2 class="sec-title">Services</h2>
     <div class="sec-rule"></div>
-    <div class="sec-sub"><span class="dot"></span><span>What I Do</span></div>
+    <div class="sec-sub"><span class="dot"></span><span>A Few Things I Do</span></div>
   </div>
   <div class="service-grid">
-    <a href="#menu" class="service-card reveal">
+    <a href="https://looksbyaliya.glossgenius.com/services" target="_blank" rel="noopener" class="service-card reveal">
       <div><h4>Balayage &amp; Foils</h4><div class="cat">Dimensional</div></div>
       <div class="service-thumb"><img src="https://cdn.prod.website-files.com/66cea82adcf773d3dc652627/66d042713b39d23a72af1f8d_service-thumb-06.jpg" alt="Foil highlighting service"></div>
-      <span class="link-arrow">Learn More <svg class="arrow-ico" viewBox="0 0 24 24" fill="none" stroke="#0e0e0e" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      <span class="link-arrow">Book Now <svg class="arrow-ico" viewBox="0 0 24 24" fill="none" stroke="#0e0e0e" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
     </a>
-    <a href="#menu" class="service-card reveal">
+    <a href="https://looksbyaliya.glossgenius.com/services" target="_blank" rel="noopener" class="service-card reveal">
       <div><h4>Color Corrections</h4><div class="cat">Transformative</div></div>
       <div class="service-thumb"><img src="https://cdn.prod.website-files.com/66cea82adcf773d3dc652627/66d04a8d016483dc25f50d7c_service-thumb-08.jpg" alt="Color correction service"></div>
-      <span class="link-arrow">Learn More <svg class="arrow-ico" viewBox="0 0 24 24" fill="none" stroke="#0e0e0e" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      <span class="link-arrow">Book Now <svg class="arrow-ico" viewBox="0 0 24 24" fill="none" stroke="#0e0e0e" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
     </a>
-    <a href="#menu" class="service-card reveal">
+    <a href="https://looksbyaliya.glossgenius.com/services" target="_blank" rel="noopener" class="service-card reveal">
       <div><h4>Cuts &amp; Styling</h4><div class="cat">Signature</div></div>
       <div class="service-thumb"><img src="https://cdn.prod.website-files.com/66cea82adcf773d3dc652627/66d042aa34f3923722d19ead_service-thumb-07.jpg" alt="Precision haircut"></div>
-      <span class="link-arrow">Learn More <svg class="arrow-ico" viewBox="0 0 24 24" fill="none" stroke="#0e0e0e" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      <span class="link-arrow">Book Now <svg class="arrow-ico" viewBox="0 0 24 24" fill="none" stroke="#0e0e0e" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
     </a>
-    <a href="#menu" class="service-card reveal">
+    <a href="https://looksbyaliya.glossgenius.com/services" target="_blank" rel="noopener" class="service-card reveal">
       <div><h4>Bridal &amp; Glam</h4><div class="cat">Special Occasion</div></div>
       <div class="service-thumb"><img src="https://cdn.prod.website-files.com/66cea82adcf773d3dc652627/66d041277b137a6be8ef2f43_service-thumb-05.jpg" alt="Sleek styled hair"></div>
-      <span class="link-arrow">Learn More <svg class="arrow-ico" viewBox="0 0 24 24" fill="none" stroke="#0e0e0e" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      <span class="link-arrow">Book Now <svg class="arrow-ico" viewBox="0 0 24 24" fill="none" stroke="#0e0e0e" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
     </a>
   </div>
-</section>
-
-<!-- ============ MENU / PRICING ============ -->
-<section class="sec menu-section" id="menu">
-  <div class="container">
-    <div class="sec-head reveal">
-      <h2 class="sec-title">The Menu</h2>
-      <div class="sec-rule"></div>
-      <div class="sec-sub"><span class="dot"></span><span>Services &amp; Pricing</span></div>
-    </div>
-    <div class="menu-grid">
-      <div class="menu-col reveal">
-        <h4>Hair</h4>
-        <div class="price-row"><span class="name">Consultation</span><span class="dur">20 min</span><span class="lead"></span><span class="price">Free</span></div>
-        <div class="price-row"><span class="name">Women's Haircut</span><span class="dur">60 min</span><span class="lead"></span><span class="price">$80</span></div>
-        <div class="price-row"><span class="name">Men's Haircut</span><span class="dur">60 min</span><span class="lead"></span><span class="price">$50</span></div>
-        <div class="price-row"><span class="name">Child's Haircut</span><span class="dur">30 min</span><span class="lead"></span><span class="price">$30</span></div>
-        <div class="price-row"><span class="name">Blowout &amp; Style</span><span class="dur">60 min</span><span class="lead"></span><span class="price">$70</span></div>
-        <div class="price-row"><span class="name">Bang Trim</span><span class="dur">10 min</span><span class="lead"></span><span class="price">$25</span></div>
-      </div>
-      <div class="menu-col reveal">
-        <h4>Color</h4>
-        <div class="price-row"><span class="name">Gloss</span><span class="dur">60 min</span><span class="lead"></span><span class="price">$70+</span></div>
-        <div class="price-row"><span class="name">All Over Color</span><span class="dur">120 min</span><span class="lead"></span><span class="price">$160+</span></div>
-        <div class="price-row"><span class="name">Root Retouch</span><span class="dur">90 min</span><span class="lead"></span><span class="price">$120+</span></div>
-        <div class="price-row"><span class="name">Bleach Retouch &amp; Tone</span><span class="dur">120 min</span><span class="lead"></span><span class="price">$165+</span></div>
-        <div class="price-row"><span class="name">Mini Foil</span><span class="dur">120 min</span><span class="lead"></span><span class="price">$140+</span></div>
-        <div class="price-row"><span class="name">Partial Foil</span><span class="dur">150 min</span><span class="lead"></span><span class="price">$180+</span></div>
-        <div class="price-row"><span class="name">Full Foil</span><span class="dur">240 min</span><span class="lead"></span><span class="price">$260+</span></div>
-        <div class="price-row"><span class="name">Corrective Color</span><span class="dur">300 min</span><span class="lead"></span><span class="price">$295+</span></div>
-        <div class="price-row"><span class="name">Perm</span><span class="dur">180 min</span><span class="lead"></span><span class="price">$195+</span></div>
-      </div>
-      <div class="menu-col reveal">
-        <h4>Special Occasion</h4>
-        <div class="price-row"><span class="name">Formal Style</span><span class="dur">60 min</span><span class="lead"></span><span class="price">$90</span></div>
-        <div class="price-row"><span class="name">Updo Style</span><span class="dur">60 min</span><span class="lead"></span><span class="price">$120</span></div>
-        <div class="price-row"><span class="name">Makeup</span><span class="dur">60 min</span><span class="lead"></span><span class="price">$120</span></div>
-        <div class="price-row"><span class="name">Bridal Hair &amp; Trial</span><span class="dur">90 min</span><span class="lead"></span><span class="price">$150</span></div>
-        <div class="price-row"><span class="name">Bridal Makeup &amp; Trial</span><span class="dur">90 min</span><span class="lead"></span><span class="price">$150</span></div>
-      </div>
-      <div class="menu-col reveal">
-        <h4>Waxing &amp; Tint</h4>
-        <div class="price-row"><span class="name">Eyebrow Wax</span><span class="dur">10 min</span><span class="lead"></span><span class="price">$20</span></div>
-        <div class="price-row"><span class="name">Eyebrow Tint &amp; Wax</span><span class="dur">20 min</span><span class="lead"></span><span class="price">$20</span></div>
-        <div class="price-row"><span class="name">Lip Wax</span><span class="dur">10 min</span><span class="lead"></span><span class="price">$10</span></div>
-        <div class="price-row"><span class="name">Chin Wax</span><span class="dur">10 min</span><span class="lead"></span><span class="price">$10</span></div>
-        <p class="menu-note">Add a haircut to any color service for a complete refresh. Color prices start at the listed rate and may vary with length and density.</p>
-      </div>
-    </div>
-    <div class="menu-cta reveal">
-      <p>Tap the services you'd like — they'll stack in your booking below. When you're ready, hit Book to choose your time on Aliya's live calendar.</p>
-      <a href="#book" class="btn btn--solid"><span>Book Your Service</span><svg class="arrow-ico" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-    </div>
+  <div class="services-cta reveal">
+    <a href="https://looksbyaliya.glossgenius.com/services" target="_blank" rel="noopener" class="btn btn--solid btn--xl"><span>Book Now</span><svg class="arrow-ico" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
   </div>
 </section>
 
@@ -490,7 +373,7 @@ figure{overflow:hidden}
       <div class="reveal">
         <h2>There's an art to your color, and a science to keeping it gorgeous</h2>
         <p>Every service starts with a real conversation and a custom formula built for your hair, your lifestyle, and your goals. No guesswork, just results you'll love between visits.</p>
-        <a href="#book" class="btn btn--solid"><span>Book an Appointment</span></a>
+        <a href="https://looksbyaliya.glossgenius.com/services" target="_blank" rel="noopener" class="btn btn--solid"><span>Book Now</span></a>
       </div>
       <div class="facts-stats reveal">
         <div class="fact-block">
@@ -499,7 +382,7 @@ figure{overflow:hidden}
         </div>
         <div class="fact-block">
           <div class="num">35+</div>
-          <div class="lbl">Signature hair, color, bridal, and glam services on the menu.</div>
+          <div class="lbl">Signature hair, color, bridal, and glam services offered.</div>
         </div>
       </div>
     </div>
@@ -579,12 +462,16 @@ figure{overflow:hidden}
         <div class="book-addr"><b>Address:</b><span>Sevva Salon, 229 North Water Street, Milwaukee, WI 53202</span></div>
         <div class="book-addr"><b>Phone:</b><span>(414) 233-5431</span></div>
       </div>
-      <div class="reveal book-embed">
-        <div class="book-embed-eyebrow"><span class="dot"></span>Choose your service &amp; time</div>
-        <div class="embed-shell" id="ggEmbedShell">
-          <noscript><p style="padding:24px;color:#0e0e0e">Please enable JavaScript to book online — or call <a href="tel:+14142335431" style="color:#0e0e0e;text-decoration:underline">(414) 233-5431</a>.</p></noscript>
-        </div>
-        <p class="book-powered">Secure online booking · live availability · instant confirmation</p>
+      <div class="reveal book-cta">
+        <h3 class="book-cta-title">Ready when you are</h3>
+        <p class="book-lead">See live availability and lock in your appointment in seconds on Aliya's secure booking. New clients are always welcome.</p>
+        <ul class="book-points">
+          <li>Real-time availability with instant confirmation</li>
+          <li>Easy reschedule and automatic reminders</li>
+          <li>Please allow 48 hours' notice for any changes</li>
+        </ul>
+        <a href="https://looksbyaliya.glossgenius.com/services" target="_blank" rel="noopener" class="btn btn--light btn--xl btn--block"><span>Book Now</span><svg class="arrow-ico" viewBox="0 0 24 24" fill="none" stroke="#0e0e0e" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <p class="book-powered">Secure online booking · instant confirmation</p>
       </div>
     </div>
   </div>
@@ -594,7 +481,7 @@ figure{overflow:hidden}
 <section class="cta">
   <div class="container cta-grid">
     <h2>Ready for your most gorgeous hair yet? Reserve your spot with Aliya.</h2>
-    <a href="#book" class="btn btn--light"><span>Book an Appointment</span></a>
+    <a href="https://looksbyaliya.glossgenius.com/services" target="_blank" rel="noopener" class="btn btn--light"><span>Book Now</span></a>
   </div>
 </section>
 
@@ -617,25 +504,24 @@ figure{overflow:hidden}
         <h5>Explore</h5>
         <a href="#about">About</a>
         <a href="#services">Services</a>
-        <a href="#menu">Pricing</a>
         <a href="#portfolio">Portfolio</a>
         <a href="#reviews">Reviews</a>
       </div>
       <div class="foot-col">
         <h5>Services</h5>
-        <a href="#menu">Balayage &amp; Foils</a>
-        <a href="#menu">Color Corrections</a>
-        <a href="#menu">Blonding</a>
-        <a href="#menu">Bridal Hair</a>
-        <a href="#menu">Glam Makeup</a>
-        <a href="#menu">Waxing &amp; Tint</a>
+        <a href="#services">Balayage &amp; Foils</a>
+        <a href="#services">Color Corrections</a>
+        <a href="#services">Blonding</a>
+        <a href="#services">Bridal Hair</a>
+        <a href="#services">Glam Makeup</a>
+        <a href="#services">Waxing &amp; Tint</a>
       </div>
       <div class="foot-col">
         <h5>Visit</h5>
         <p>Sevva Salon, 229 North Water Street, Milwaukee, WI 53202</p>
         <p>Tue–Fri 10–8 · Sat 10–6 · Sun &amp; Mon closed</p>
         <a href="tel:+14142335431">(414) 233-5431</a>
-        <a href="#book">Book Online</a>
+        <a href="https://looksbyaliya.glossgenius.com/services" target="_blank" rel="noopener">Book Now</a>
       </div>
     </div>
     <div class="foot-bot">
@@ -644,17 +530,6 @@ figure{overflow:hidden}
     </div>
   </div>
 </footer>
-
-<!-- floating booking cart: menu selections stack here -->
-<div class="cart-bar" id="cartBar" role="region" aria-label="Your selected services">
-  <div class="cart-inner">
-    <div class="cart-meta">
-      <span class="cart-count"><b id="cartN">0</b> <span id="cartWord">services</span><span class="lbl"> · from $<span id="cartT">0</span></span></span>
-      <button class="cart-clear" id="cartClear" type="button">Clear all</button>
-    </div>
-    <a href="#book" class="btn btn--light cart-book" id="cartBook"><span id="cartBtnText">Book</span><svg class="arrow-ico" viewBox="0 0 24 24" fill="none" stroke="#0e0e0e" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-  </div>
-</div>
 
 <script>
 // year
@@ -672,87 +547,6 @@ navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
   navLinks.classList.remove('open'); menuBtn.classList.remove('open');
   menuBtn.setAttribute('aria-expanded', 'false');
 }));
-
-// ---- embed Aliya's live booking calendar (Acuity) right on the page ----
-// Test/trial account (owner 39599231). Swap ACUITY_OWNER for her real account when ready.
-const ACUITY_OWNER = '39599231';
-const ggShell = document.getElementById('ggEmbedShell');
-if (ggShell && ACUITY_OWNER) {
-  ggShell.insertAdjacentHTML('afterbegin',
-    '<iframe id="ggEmbed" title="Book an appointment with Looks by Aliya" ' +
-    'src="https://app.acuityscheduling.com/schedule.php?owner=' + ACUITY_OWNER + '&ref=embedded_csp" allow="payment"></iframe>');
-  const s = document.createElement('script');
-  s.src = 'https://embed.acuityscheduling.com/js/embed.js'; s.async = true;
-  document.body.appendChild(s);
-}
-
-// (all "Book" buttons link to #book directly and smooth-scroll to the calendar)
-
-// ---- menu acts like a cart: tap services to stack them, then book ----
-const cart = new Map(); // name -> {price, plus}
-const cartBar = document.getElementById('cartBar');
-const cartN = document.getElementById('cartN');
-const cartT = document.getElementById('cartT');
-const cartWord = document.getElementById('cartWord');
-const cartBtnText = document.getElementById('cartBtnText');
-const ICON_PLUS = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>';
-const ICON_CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12.5l4.5 4.5L19 7"/></svg>';
-const priceNum = t => { const m = (t || '').replace(/,/g, '').match(/\d+/); return m ? +m[0] : 0; };
-
-function renderCart(){
-  const n = cart.size;
-  let total = 0, plus = false;
-  cart.forEach(v => { total += v.price; if (v.plus) plus = true; });
-  cartN.textContent = n;
-  cartWord.textContent = n === 1 ? 'service' : 'services';
-  cartT.textContent = total + (plus ? '+' : '');
-  cartBtnText.textContent = n ? ('Book ' + n + ' service' + (n > 1 ? 's' : '')) : 'Book';
-  cartBar.classList.toggle('show', n > 0);
-}
-
-document.querySelectorAll('.price-row').forEach(row => {
-  const nameEl = row.querySelector('.name');
-  const priceTxt = (row.querySelector('.price') || {}).textContent || '';
-  const name = nameEl ? nameEl.textContent.trim() : 'Service';
-  const entry = { price: priceNum(priceTxt), plus: /\+/.test(priceTxt) };
-
-  const badge = document.createElement('span');
-  badge.className = 'addbtn';
-  badge.setAttribute('aria-hidden', 'true');
-  badge.innerHTML = ICON_PLUS;
-  row.appendChild(badge);
-
-  row.setAttribute('role', 'button');
-  row.tabIndex = 0;
-  const setLabel = () => row.setAttribute('aria-label', cart.has(name) ? ('Remove ' + name + ' from your booking') : ('Add ' + name + ' to your booking'));
-  setLabel();
-
-  const toggle = () => {
-    if (cart.has(name)) { cart.delete(name); row.classList.remove('selected'); badge.innerHTML = ICON_PLUS; }
-    else { cart.set(name, entry); row.classList.add('selected'); badge.innerHTML = ICON_CHECK; }
-    setLabel();
-    renderCart();
-  };
-  row.addEventListener('click', toggle);
-  row.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
-});
-
-document.getElementById('cartClear').addEventListener('click', () => {
-  cart.clear();
-  document.querySelectorAll('.price-row.selected').forEach(r => {
-    r.classList.remove('selected');
-    const b = r.querySelector('.addbtn'); if (b) b.innerHTML = ICON_PLUS;
-    const nm = r.querySelector('.name');
-    r.setAttribute('aria-label', 'Add ' + (nm ? nm.textContent.trim() : 'service') + ' to your booking');
-  });
-  renderCart();
-});
-
-document.getElementById('cartBook').addEventListener('click', e => {
-  e.preventDefault();
-  const book = document.getElementById('book');
-  if (book) book.scrollIntoView({ behavior: 'smooth' });
-});
 
 // scroll reveal
 const io = new IntersectionObserver((entries) => {
