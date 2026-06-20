@@ -116,11 +116,19 @@ em{font-style:italic}
 .intro__roles span{color:var(--line);padding:0 4px}
 .intro__text{font-family:"Playfair Display",serif;font-weight:500;font-size:clamp(1.3rem,2.7vw,2.05rem);line-height:1.35;color:var(--ink)}
 
-/* ---------- portfolio: full-look grid (3 across, square, no context) ---------- */
-.looks{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(10px,1.4vw,18px)}
+/* ---------- portfolio: full-look grid (3 across, square, near-full-width) ---------- */
+.looks-wrap{width:100%;padding:0 clamp(14px,2.5vw,38px)}
+.looks{display:grid;grid-template-columns:repeat(3,1fr);column-gap:clamp(12px,1.6vw,22px);row-gap:clamp(44px,5.5vw,88px)}
 .looks .look{position:relative;aspect-ratio:1/1;overflow:hidden;background:var(--cloud)}
-.looks .look img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+.looks .look img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease)}
 .looks .look:hover img{transform:scale(1.04)}
+
+/* ---------- hair bookings page ---------- */
+.booking-info{max-width:600px;margin:0 auto;display:grid;gap:clamp(30px,4.5vw,48px);text-align:center}
+.booking-step__num{font-family:"Albert Sans",sans-serif;font-weight:700;font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--sage-deep);margin-bottom:12px}
+.booking-step p{font-size:clamp(1.08rem,1.7vw,1.3rem);color:var(--ink-2);line-height:1.55}
+.booking-step a:not(.text-link){color:var(--ink);border-bottom:1px solid var(--sage-deep);transition:border-color .3s}
+.booking-step a:not(.text-link):hover{border-color:var(--ink)}
 
 /* ---------- sections / headings ---------- */
 .section{padding:var(--space) 0}

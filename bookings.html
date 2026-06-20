@@ -3,23 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Looks by Aliya | Hair · Beauty &amp; Style · Creative Director — Milwaukee</title>
-  <meta name="description" content="Looks by Aliya — Milwaukee hair stylist, beauty & style expert, and creative director. Editorial transformations, color, glam, and styling. Book at Sevva Salon." />
-  <meta property="og:title" content="Looks by Aliya | Hair · Beauty & Style · Creative Director" />
-  <meta property="og:description" content="Milwaukee hair stylist, beauty & style expert, and creative director." />
-  <meta property="og:type" content="website" />
+  <title>Hair Bookings | Looks by Aliya — Milwaukee</title>
+  <meta name="description" content="Book a hair appointment with Looks by Aliya in Milwaukee. New clients, reach out first; returning clients, book online." />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230c0c0c'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='19' fill='%23fff' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E" />
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700;800;900&family=Onest:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet" />
-
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body id="top">
 
-  <!-- ============ NAV ============ -->
-  <header class="nav" id="nav">
+  <header class="nav nav--solid" id="nav">
     <div class="container nav__inner">
       <a href="index.html" class="nav__logo">Looks <em>by</em> Aliya</a>
       <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
@@ -35,43 +29,30 @@
   </header>
 
   <main>
-    <!-- ============ HERO ============ -->
-    <!-- Swap the .hero background-image in styles.css for Aliya's hero editorial shot -->
-    <section class="hero">
-      <div class="hero__overlay"></div>
-      <div class="container hero__content">
-        <p class="hero__kicker">Milwaukee</p>
-        <h1 class="hero__title">Looks <em>by</em> Aliya</h1>
-        <p class="hero__tagline">Hair Stylist <span>·</span> Beauty &amp; Style Expert <span>·</span> Creative Director</p>
-        <a href="https://looksbyaliya.glossgenius.com/services" class="btn btn--light btn--lg" target="_blank" rel="noopener">Book an appointment</a>
-      </div>
-      <a href="#about-intro" class="hero__scroll" aria-label="Scroll down">Scroll</a>
-    </section>
-
-    <!-- ============ SMALL ABOUT ============ -->
-    <section class="intro" id="about-intro">
-      <div class="container intro__inner">
-        <p class="intro__roles">Hair Stylist <span>·</span> Fashion Enthusiast <span>·</span> Makeup Artist</p>
-        <p class="intro__text">Hair first, always. Aliya is a Milwaukee creative who builds complete looks — led by the hair, finished with a stylist's eye for fashion and a makeup artist's hand.</p>
-      </div>
-    </section>
-
-    <!-- ============ EMAIL SIGNUP ============ -->
-    <section class="signup" id="signup">
+    <section class="section section--first" id="bookings">
       <div class="container">
-        <p class="signup__eyebrow">Stay in the loop</p>
-        <h2>Sign up to receive news &amp; updates</h2>
-        <p>New looks, fresh openings, and the occasional offer — straight to your inbox.</p>
-        <form class="signup__form" id="signupForm" novalidate>
-          <input type="email" name="email" placeholder="Email address" required aria-label="Email address" />
-          <button type="submit" class="btn btn--solid">Sign Up</button>
-        </form>
-        <p class="signup__note" id="signupNote" role="status"></p>
+        <header class="section__head section__head--center">
+          <p class="eyebrow">Hair Appointments</p>
+          <h1 class="section__title">Hair Bookings</h1>
+          <p class="section__sub">A little about getting in the chair.</p>
+        </header>
+
+        <div class="booking-info">
+          <div class="booking-step">
+            <p class="booking-step__num">First appointment</p>
+            <p>New here? Let's connect first so I can plan your look. Email me at
+              <a href="mailto:hello@looksbyaliya.com">hello@looksbyaliya.com</a>.</p>
+          </div>
+          <div class="booking-step">
+            <p class="booking-step__num">Ready to book</p>
+            <p>See live availability and schedule online —
+              <a href="https://looksbyaliya.glossgenius.com/services" class="text-link" target="_blank" rel="noopener">click here</a>.</p>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
-  <!-- ============ FOOTER ============ -->
   <footer class="footer">
     <div class="container footer__inner">
       <div class="footer__brand">
