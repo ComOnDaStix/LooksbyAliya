@@ -109,6 +109,19 @@ em{font-style:italic}
 .signup__note{margin-top:18px;font-size:13px;color:var(--body-soft);min-height:1.2em}
 .signup__note.ok{color:var(--sage-deep);font-weight:600;font-family:"Albert Sans",sans-serif}
 
+/* ---------- home: small about ---------- */
+.intro{text-align:center;padding:clamp(64px,9vw,116px) 0}
+.intro__inner{max-width:680px;margin:0 auto}
+.intro__roles{font-family:"Albert Sans",sans-serif;font-weight:600;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--sage-deep);margin-bottom:22px}
+.intro__roles span{color:var(--line);padding:0 4px}
+.intro__text{font-family:"Playfair Display",serif;font-weight:500;font-size:clamp(1.3rem,2.7vw,2.05rem);line-height:1.35;color:var(--ink)}
+
+/* ---------- portfolio: full-look grid (3 across, square, no context) ---------- */
+.looks{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(10px,1.4vw,18px)}
+.looks .look{position:relative;aspect-ratio:1/1;overflow:hidden;background:var(--cloud)}
+.looks .look img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+.looks .look:hover img{transform:scale(1.04)}
+
 /* ---------- sections / headings ---------- */
 .section{padding:var(--space) 0}
 .section--first{padding-top:calc(74px + clamp(48px,7vw,90px))}
@@ -216,11 +229,17 @@ em{font-style:italic}
   .services__cols{grid-template-columns:1fr;gap:42px}
   .about__inner{grid-template-columns:1fr;gap:34px}
   .shots{columns:2}
+  .looks{grid-template-columns:repeat(2,1fr)}
   .footer__inner{grid-template-columns:1fr 1fr;gap:36px}
+}
+/* hide the hero "Book an appointment" button on mobile — Book lives in the nav */
+@media(max-width:768px){
+  .hero__content .btn{display:none}
 }
 @media(max-width:560px){
   .grid--4{grid-template-columns:1fr}
   .shots{columns:1}
+  .looks{grid-template-columns:1fr}
   .footer__inner{grid-template-columns:1fr}
   .signup__form input{min-width:0;width:100%}
   .signup__form .btn{width:100%}
