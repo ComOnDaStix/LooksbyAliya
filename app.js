@@ -58,6 +58,20 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  /* ---------- Contact form (front-end only; wire to Formspree/email later) ---------- */
+  const cform = document.getElementById("contactForm");
+  if (cform) {
+    const cnote = document.getElementById("contactNote");
+    cform.addEventListener("submit", (e) => {
+      e.preventDefault();
+      if (cnote) {
+        cnote.textContent = "Thank you — your message has been sent. ✨";
+        cnote.classList.add("ok");
+      }
+      cform.reset();
+    });
+  }
+
   /* ---------- Scroll reveal ---------- */
   const reveals = document.querySelectorAll(".reveal");
   if (reveals.length && "IntersectionObserver" in window) {

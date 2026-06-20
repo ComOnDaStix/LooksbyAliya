@@ -20,10 +20,10 @@
         <span></span><span></span><span></span>
       </button>
       <nav class="nav__links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="about.html">About &amp; Contact</a>
         <a href="portfolio.html">Portfolio</a>
-        <a href="services.html">Services</a>
-        <a href="about.html">About</a>
-        <a href="https://looksbyaliya.glossgenius.com/services" class="btn" target="_blank" rel="noopener">Book</a>
+        <a href="https://looksbyaliya.glossgenius.com/services" target="_blank" rel="noopener">Hair Bookings - Hair Appts</a>
       </nav>
     </div>
   </header>
@@ -70,6 +70,27 @@
             <footer>Rachel M. <span>Full Foil &amp; Gloss</span></footer>
           </blockquote>
         </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section contact" id="contact">
+      <div class="container">
+        <header class="section__head section__head--center">
+          <p class="eyebrow">Get in touch</p>
+          <h2 class="section__title">Contact</h2>
+          <p class="section__sub">For collaborations, productions, education, or anything beyond the chair. Booking a hair appointment? Use <strong>Hair Bookings</strong> in the menu above.</p>
+        </header>
+        <form class="contact-form" id="contactForm" novalidate>
+          <div class="cf-row">
+            <div class="field"><label for="cf-name">Name</label><input id="cf-name" name="name" type="text" autocomplete="name" required /></div>
+            <div class="field"><label for="cf-email">Email</label><input id="cf-email" name="email" type="email" autocomplete="email" required /></div>
+          </div>
+          <div class="field"><label for="cf-subject">Subject</label><input id="cf-subject" name="subject" type="text" /></div>
+          <div class="field"><label for="cf-message">Message</label><textarea id="cf-message" name="message" required></textarea></div>
+          <button type="submit" class="btn btn--solid">Submit</button>
+          <p class="contact-note" id="contactNote" role="status"></p>
+        </form>
       </div>
     </section>
   </main>

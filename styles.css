@@ -198,6 +198,19 @@ em{font-style:italic}
 .quote footer{font-family:"Albert Sans",sans-serif;font-weight:600;font-size:14px;color:var(--ink);margin-top:auto}
 .quote footer span{display:block;font-weight:400;font-size:13px;color:var(--body-soft);margin-top:3px}
 
+/* ---------- contact form ---------- */
+.contact-form{max-width:720px;margin:0 auto;display:grid;gap:20px}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.contact-form .field{display:flex;flex-direction:column;gap:9px;text-align:left}
+.contact-form label{font-family:"Albert Sans",sans-serif;font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--body-soft)}
+.contact-form input,.contact-form textarea{border:1px solid var(--line);background:#fff;padding:14px 16px;font-family:"Onest",sans-serif;font-size:15px;color:var(--ink);transition:border-color .3s var(--ease);border-radius:0}
+.contact-form input:focus,.contact-form textarea:focus{outline:none;border-color:var(--sage-deep)}
+.contact-form textarea{min-height:150px;resize:vertical}
+.contact-form .btn{justify-self:start}
+.contact-note{min-height:1.2em;font-size:14px;color:var(--body-soft)}
+.contact-note.ok{color:var(--sage-deep);font-weight:600;font-family:"Albert Sans",sans-serif}
+@media(max-width:560px){.cf-row{grid-template-columns:1fr}.contact-form .btn{width:100%}}
+
 /* ---------- footer ---------- */
 .footer{background:var(--night);color:#fff;padding:clamp(56px,7vw,90px) 0 36px}
 .footer__inner{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:40px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.12)}
