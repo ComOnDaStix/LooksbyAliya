@@ -52,6 +52,12 @@ em{font-style:italic}
 .btn--light:hover{background:var(--sage);border-color:var(--sage);color:var(--ink)}
 .btn--lg{padding:18px 42px;font-size:13.5px}
 
+/* quiet editorial link (portfolio — keeps booking subtle, not salesy) */
+.text-link{display:inline-flex;align-items:center;gap:9px;font-family:"Albert Sans",sans-serif;font-weight:600;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);border-bottom:1px solid var(--sage-deep);padding-bottom:5px;transition:gap .35s var(--ease),border-color .35s var(--ease)}
+.text-link::after{content:"→";font-size:13px}
+.text-link:hover{gap:14px;border-color:var(--ink)}
+.section--dark .text-link{color:#fff;border-color:var(--sage)}
+
 /* ---------- nav ---------- */
 .nav{position:fixed;top:0;left:0;right:0;z-index:60;transition:background .4s var(--ease),border-color .4s var(--ease),box-shadow .4s var(--ease)}
 .nav__inner{display:flex;align-items:center;justify-content:space-between;gap:24px;height:74px}
