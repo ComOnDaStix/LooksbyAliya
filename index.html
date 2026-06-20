@@ -1,558 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Looks by Aliya | Milwaukee Hair Stylist & Makeup Artist</title>
-<meta name="description" content="Looks by Aliya is a Milwaukee-based hair stylist and makeup artist specializing in balayage, color corrections, blonding, bridal hair, and glam. Book your appointment at Sevva Salon, 229 N Water Street.">
-<meta property="og:title" content="Looks by Aliya | Milwaukee Hair Stylist & Makeup Artist">
-<meta property="og:description" content="Balayage, color corrections, blonding, bridal hair & glam in downtown Milwaukee.">
-<meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230c0c0c'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='18' fill='%23fff' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Looks by Aliya | Hair · Beauty &amp; Style · Creative Director — Milwaukee</title>
+  <meta name="description" content="Looks by Aliya — Milwaukee hair stylist, beauty & style expert, and creative director. Editorial transformations, color, glam, and styling. Book at Sevva Salon." />
+  <meta property="og:title" content="Looks by Aliya | Hair · Beauty & Style · Creative Director" />
+  <meta property="og:description" content="Milwaukee hair stylist, beauty & style expert, and creative director." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230c0c0c'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='19' fill='%23fff' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E" />
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700;800;900&family=Onest:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700;800;900&family=Onest:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet" />
 
-<style>
-:root{
-  --bg:#ffffff;
-  --ink:#0e0e0e;
-  --ink-2:#1c1c1a;
-  --body:#5d605a;
-  --body-soft:#7c7f79;
-  --line:#e7e7e2;
-  --line-2:#ededea;
-  --sage:#c7d1c2;
-  --sage-deep:#b3c0ad;
-  --sage-tint:#eef1eb;
-  --night:#0b0b0b;
-  --night-2:#151513;
-  --cloud:#f6f5f0;
-  --space:clamp(72px,9vw,140px);
-  --maxw:1280px;
-  --ease:cubic-bezier(.2,.7,.2,1);
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;overflow-x:hidden;width:100%;max-width:100%}
-body{
-  font-family:"Onest",system-ui,sans-serif;
-  color:var(--ink);
-  background:var(--bg);
-  line-height:1.7;
-  -webkit-font-smoothing:antialiased;
-  width:100%;
-  max-width:100%;
-  overflow-x:clip;
-}
-img{display:block;max-width:100%}
-a{color:inherit;text-decoration:none}
-h1,h2,h3,h4,h5{font-family:"Albert Sans",sans-serif;font-weight:800;line-height:1.04;letter-spacing:-.02em;color:var(--ink)}
-p{color:var(--body)}
-::selection{background:var(--sage);color:var(--ink)}
-
-.container{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 clamp(24px,5vw,48px)}
-section[id]{scroll-margin-top:90px}
-
-/* ---------- buttons ---------- */
-.btn{
-  position:relative;display:inline-flex;align-items:center;gap:12px;
-  font-family:"Albert Sans",sans-serif;font-weight:600;font-size:15px;letter-spacing:-.01em;
-  padding:16px 30px;border:1px solid var(--ink);border-radius:2px;overflow:hidden;cursor:pointer;
-  background:transparent;color:var(--ink);
-  transition:color .45s var(--ease),border-color .45s var(--ease);
-}
-.btn span{position:relative;z-index:1}
-.btn::after{content:"";position:absolute;inset:0;background:var(--ink);transform:translateY(101%);transition:transform .5s var(--ease);z-index:0}
-.btn:hover{color:#fff}
-.btn:hover::after{transform:translateY(0)}
-.btn:focus-visible{outline:2px solid var(--sage-deep);outline-offset:3px}
-.btn:active{transform:translateY(1px)}
-.btn--solid{background:var(--ink);color:#fff;border-color:var(--ink)}
-.btn--solid::after{background:#2e2e2b}
-.btn--light{background:#fff;color:var(--ink);border-color:#fff}
-.btn--light::after{background:var(--sage)}
-.btn--light:hover{color:var(--ink)}
-.btn--block{width:100%;justify-content:center}
-.btn--xl{font-size:clamp(1.02rem,1.7vw,1.32rem);padding:clamp(19px,2.3vw,27px) clamp(38px,5vw,60px);font-weight:700;gap:14px}
-.btn--mobileonly{display:none}
-
-.arrow-ico{width:18px;height:18px;flex:none}
-.link-arrow{display:inline-flex;align-items:center;gap:10px;font-family:"Albert Sans",sans-serif;font-weight:600;font-size:15px;color:var(--ink)}
-.link-arrow .arrow-ico{transition:transform .4s var(--ease)}
-.link-arrow:hover .arrow-ico{transform:translateX(6px)}
-
-/* ---------- header ---------- */
-.header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:24px;height:78px}
-.logo{font-family:"Playfair Display",serif;font-weight:600;font-size:25px;letter-spacing:.01em;color:var(--ink);white-space:nowrap}
-.logo em{font-style:italic;font-weight:500;font-size:.82em;opacity:.78;padding:0 .12em}
-.nav-links{display:flex;align-items:center;gap:34px}
-.nav-link{position:relative;font-family:"Albert Sans",sans-serif;font-weight:500;font-size:15px;color:var(--ink);padding:6px 0}
-.nav-link::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--ink);transform:scaleX(0);transform-origin:right;transition:transform .4s var(--ease)}
-.nav-link:hover::after{transform:scaleX(1);transform-origin:left}
-.nav-right{display:flex;align-items:center;gap:18px}
-.menu-btn{display:none;flex-direction:column;gap:6px;width:30px;height:22px;background:none;border:none;cursor:pointer;padding:0}
-.menu-btn span{display:block;height:1.5px;background:var(--ink);transition:transform .4s var(--ease),opacity .3s}
-.menu-btn.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
-.menu-btn.open span:nth-child(2){opacity:0}
-.menu-btn.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
-
-/* ---------- section heading pattern ---------- */
-.sec{padding-top:var(--space);padding-bottom:var(--space)}
-.sec-head{margin-bottom:clamp(40px,5vw,64px)}
-.sec-title{font-size:clamp(2.1rem,5vw,3.9rem);font-weight:800}
-.sec-rule{height:1px;background:var(--line);margin:22px 0 14px}
-.sec-sub{display:flex;align-items:center;gap:12px;font-family:"Albert Sans",sans-serif;font-weight:500;font-size:15px;color:var(--ink-2)}
-.dot{width:9px;height:9px;border-radius:50%;background:var(--ink);flex:none}
-
-/* ---------- hero ---------- */
-.hero{padding-top:clamp(40px,5vw,70px)}
-.hero-title{font-size:clamp(3.1rem,13.5vw,12.5rem);font-weight:800;text-transform:uppercase;letter-spacing:-.04em;line-height:.9}
-.hero-data{display:flex;justify-content:space-between;gap:40px;margin-top:clamp(28px,3.5vw,52px);flex-wrap:wrap}
-.hero-text{max-width:46ch;font-size:clamp(1rem,1.25vw,1.18rem);color:var(--body)}
-.hero-right{display:flex;align-items:center;gap:28px;margin-top:auto}
-.hero-info{display:flex;align-items:center;gap:18px;font-family:"Albert Sans",sans-serif;font-weight:500;color:var(--ink-2)}
-.hero-line{width:74px;height:1px;background:var(--ink)}
-.circle-btn{width:64px;height:64px;border-radius:50%;background:var(--sage);display:flex;align-items:center;justify-content:center;flex:none;transition:background .4s var(--ease),transform .4s var(--ease)}
-.circle-btn .arrow-ico{transition:transform .4s var(--ease)}
-.circle-btn:hover{background:var(--sage-deep)}
-.circle-btn:hover .arrow-ico{transform:translateX(5px)}
-.circle-btn:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
-.hero-img{position:relative;margin-top:clamp(40px,5vw,66px);aspect-ratio:16/7.2;overflow:hidden}
-.hero-img img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
-.hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(11,11,11,.28),transparent 42%)}
-.grain{position:absolute;inset:0;opacity:.5;mix-blend-mode:multiply;pointer-events:none;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E")}
-
-/* ---------- story ---------- */
-.story-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(32px,4vw,72px);align-items:start}
-.story-left h3{font-size:clamp(1.5rem,2.4vw,2rem);font-weight:700;margin-bottom:20px}
-.story-left p{margin-bottom:18px}
-.story-fact{display:flex;align-items:baseline;gap:16px;margin-top:34px;padding-top:30px;border-top:1px solid var(--line)}
-.story-fact .num{font-family:"Albert Sans",sans-serif;font-weight:800;font-size:clamp(2.4rem,4vw,3.4rem);letter-spacing:-.03em;color:var(--ink)}
-.story-fact .lbl{font-family:"Albert Sans",sans-serif;font-weight:500;color:var(--body);max-width:18ch}
-.story-imgs{display:grid;gap:20px}
-.story-imgs .a{aspect-ratio:4/3;overflow:hidden}
-.story-imgs .b{aspect-ratio:5/3;overflow:hidden;margin-left:clamp(20px,5vw,64px)}
-.story-imgs img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease)}
-.story-imgs figure:hover img{transform:scale(1.05)}
-figure{overflow:hidden}
-
-/* ---------- services cards ---------- */
-.service-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
-.service-card{display:flex;flex-direction:column;gap:22px;padding:28px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);transition:background .5s var(--ease)}
-.service-card:hover{background:var(--cloud)}
-.service-card .cat{font-size:14px;color:var(--body-soft);margin-top:4px}
-.service-card h4{font-size:1.32rem;font-weight:700}
-.service-thumb{aspect-ratio:1/1;overflow:hidden;margin-top:auto}
-.service-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease)}
-.service-card:hover .service-thumb img{transform:scale(1.06)}
-.services-cta{display:flex;justify-content:center;margin-top:clamp(44px,5vw,68px)}
-
-/* ---------- facts (sage) ---------- */
-.facts{background:var(--sage);position:relative;overflow:hidden}
-.facts-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(40px,6vw,90px);align-items:center;position:relative;z-index:1}
-.facts h2{font-size:clamp(1.8rem,3.2vw,2.8rem);font-weight:800;margin-bottom:22px;max-width:18ch}
-.facts p{color:#3f463c;max-width:42ch;margin-bottom:32px}
-.facts-stats{display:flex;flex-direction:column;gap:0}
-.fact-block{padding:28px 0;border-top:1px solid rgba(14,14,14,.16)}
-.fact-block:last-child{border-bottom:1px solid rgba(14,14,14,.16)}
-.fact-block .num{font-family:"Albert Sans",sans-serif;font-weight:800;font-size:clamp(2.4rem,4.6vw,3.6rem);letter-spacing:-.03em;line-height:1;margin-bottom:10px}
-.fact-block .lbl{color:#3f463c}
-
-/* ---------- portfolio ---------- */
-.masonry{columns:4;column-gap:18px}
-.masonry figure{margin:0 0 18px;break-inside:avoid;position:relative}
-.masonry img{width:100%;height:auto;transition:transform .9s var(--ease)}
-.masonry figure::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(11,11,11,.34),transparent 55%);opacity:0;transition:opacity .5s var(--ease)}
-.masonry figure:hover img{transform:scale(1.05)}
-.masonry figure:hover::after{opacity:1}
-
-/* ---------- testimonials ---------- */
-.tst-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(28px,4vw,56px);align-items:stretch}
-.tst-img{position:relative;overflow:hidden;min-height:440px}
-.tst-img img{width:100%;height:100%;object-fit:cover;object-position:center 25%}
-.tst-label{position:absolute;top:26px;left:26px;right:26px;background:var(--sage);padding:16px 20px;font-family:"Albert Sans",sans-serif;font-weight:600;font-size:1.05rem;color:var(--ink);max-width:300px}
-.tst-count{position:absolute;bottom:24px;right:28px;font-family:"Albert Sans",sans-serif;font-weight:800;font-size:clamp(2.2rem,4vw,3rem);color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.4)}
-.tst-cards{display:flex;flex-direction:column;gap:18px}
-.tst-card{border:1px solid var(--line);padding:26px 28px;background:#fff;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
-.tst-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px -24px rgba(70,80,64,.5)}
-.tst-card .stars{color:var(--sage-deep);font-size:14px;letter-spacing:3px;margin-bottom:12px}
-.tst-card p{color:var(--ink-2);font-size:1.02rem;line-height:1.65;margin-bottom:20px}
-.tst-author{display:flex;align-items:center;gap:12px}
-.tst-author .av{width:42px;height:42px;border-radius:50%;background:var(--sage-tint);display:flex;align-items:center;justify-content:center;font-family:"Albert Sans",sans-serif;font-weight:700;color:var(--sage-deep);flex:none}
-.tst-author .nm{font-family:"Albert Sans",sans-serif;font-weight:600;font-size:15px}
-.tst-author .mt{font-size:13px;color:var(--body-soft)}
-
-/* ---------- booking (dark) ---------- */
-.book{background:var(--night);color:#fff;position:relative;overflow:hidden}
-.book .sec-title,.book h2,.book h3,.book h4{color:#fff}
-.book .sec-sub{color:#cfcfca}
-.book .dot{background:var(--sage)}
-.book .sec-rule{background:rgba(255,255,255,.16)}
-.book-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(36px,5vw,72px);align-items:center;position:relative;z-index:1}
-.book-info img{width:100%;aspect-ratio:4/3.4;object-fit:cover;margin-bottom:28px}
-.hours-row{display:flex;justify-content:space-between;gap:18px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.12);font-family:"Albert Sans",sans-serif;font-weight:500}
-.hours-row span:last-child{color:#bdbdb6}
-.book-addr{display:flex;gap:14px;margin-top:22px;font-size:15px;color:#cfcfca}
-.book-addr b{font-family:"Albert Sans",sans-serif;font-weight:600;color:#fff;white-space:nowrap}
-.book-lead{margin:0 0 30px;color:#cfcfca;max-width:46ch}
-
-/* ---------- booking CTA panel ---------- */
-.book-cta-title{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;margin-bottom:16px}
-.book-points{list-style:none;margin:26px 0 32px;display:flex;flex-direction:column;gap:14px}
-.book-points li{position:relative;padding-left:30px;color:#cfcfca;font-size:1rem}
-.book-points li::before{content:"✓";position:absolute;left:0;top:0;color:var(--sage);font-weight:700}
-.btn .arrow-ico{position:relative;z-index:1}
-.book-powered{margin-top:20px;font-size:13px;color:#85857f;letter-spacing:.02em}
-
-/* ---------- CTA ---------- */
-.cta{background:var(--night-2);color:#fff;padding:clamp(56px,7vw,96px) 0}
-.cta-grid{display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}
-.cta h2{font-size:clamp(1.7rem,3.2vw,2.7rem);font-weight:800;max-width:20ch;color:#fff}
-
-/* ---------- footer ---------- */
-.footer{background:var(--night);color:#fff;padding:clamp(56px,7vw,90px) 0 40px}
-.foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:40px;padding-bottom:54px;border-bottom:1px solid rgba(255,255,255,.12)}
-.foot-brand .logo{color:#fff;font-size:30px}
-.foot-brand p{color:#bdbdb6;margin:18px 0 24px;max-width:30ch}
-.foot-social{display:flex;gap:18px;font-family:"Albert Sans",sans-serif;font-weight:700;letter-spacing:.04em}
-.foot-social a{transition:color .3s}
-.foot-social a:hover{color:var(--sage)}
-.foot-col h5{font-family:"Albert Sans",sans-serif;font-weight:600;font-size:15px;color:#fff;margin-bottom:20px;letter-spacing:.02em}
-.foot-col a,.foot-col p{display:block;color:#a7a7a1;font-size:15px;margin-bottom:13px;transition:color .3s;max-width:26ch}
-.foot-col a:hover{color:#fff}
-.foot-bot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-top:28px;color:#85857f;font-size:14px}
-
-/* ---------- reveal ---------- */
-.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
-.reveal.in{opacity:1;transform:none}
-
-/* ---------- responsive ---------- */
-@media(max-width:991px){
-  .story-grid{grid-template-columns:1fr;gap:48px}
-  .story-imgs .b{margin-left:0}
-  .service-grid{grid-template-columns:repeat(2,1fr)}
-  .facts-grid,.tst-grid,.book-grid,.foot-top{grid-template-columns:1fr}
-  .foot-top{gap:44px}
-  .masonry{columns:3}
-  /* nav collapses to hamburger at tablet */
-  .nav-links{display:none}
-  .nav-links.open{display:flex;position:absolute;top:78px;left:0;right:0;flex-direction:column;align-items:flex-start;gap:4px;background:#fff;border-bottom:1px solid var(--line);padding:18px clamp(20px,4vw,48px) 26px;box-shadow:0 24px 40px -28px rgba(40,46,36,.45)}
-  .nav-links.open .nav-link{font-size:20px;font-weight:600;padding:10px 0;width:100%}
-  .nav-links.open .btn--mobileonly{display:inline-flex;margin-top:12px}
-  .menu-btn{display:flex}
-  .nav-right .btn--desktop{display:none}
-}
-@media(max-width:760px){
-  .hero-data{flex-direction:column;gap:24px}
-  .hero-right{margin-top:8px}
-  .hero-img{aspect-ratio:4/3.6}
-  .service-grid{grid-template-columns:1fr}
-  .service-card{padding:22px;gap:18px}
-  .masonry{columns:2;column-gap:14px}
-  .masonry figure{margin-bottom:14px}
-  .tst-img{min-height:340px}
-  .tst-label{font-size:.98rem;padding:14px 16px}
-  .cta-grid{flex-direction:column;align-items:flex-start}
-  .story-imgs .b{margin-left:0}
-  .book-info img{aspect-ratio:4/3}
-}
-@media(prefers-reduced-motion:reduce){
-  *{transition:none!important;animation:none!important;scroll-behavior:auto}
-  .reveal{opacity:1;transform:none}
-}
-</style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
+<body id="top">
 
-<!-- ============ HEADER ============ -->
-<header class="header">
-  <div class="container">
-    <nav class="nav">
-      <a href="#top" class="logo" aria-label="Looks by Aliya home">Looks <em>by</em> Aliya</a>
-      <div class="nav-links" id="navLinks">
-        <a href="#about" class="nav-link">About</a>
-        <a href="#services" class="nav-link">Services</a>
-        <a href="#portfolio" class="nav-link">Portfolio</a>
-        <a href="#reviews" class="nav-link">Reviews</a>
-        <a href="#book" class="nav-link">Contact</a>
-        <a href="https://looksbyaliya.glossgenius.com/services" target="_blank" rel="noopener" class="btn btn--mobileonly"><span>Book Now</span></a>
-      </div>
-      <div class="nav-right">
-        <a href="https://looksbyaliya.glossgenius.com/services" target="_blank" rel="noopener" class="btn btn--desktop"><span>Book Now</span></a>
-        <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
-      </div>
-    </nav>
-  </div>
-</header>
-
-<main id="top">
-
-<!-- ============ HERO ============ -->
-<section class="hero container">
-  <h1 class="hero-title reveal">Hello<br>Gorgeous</h1>
-  <div class="hero-data">
-    <p class="hero-text reveal">I'm Aliya, a Milwaukee-based hair stylist and makeup artist specializing in balayage, color corrections, blonding, bridal hair, and glam. You'll leave my chair not just looking incredible, but feeling like the most confident version of you.</p>
-    <div class="hero-right reveal">
-      <div class="hero-info"><div class="hero-line"></div><div>Color, cut &amp; glam</div></div>
-      <a href="#portfolio" class="circle-btn" aria-label="View portfolio">
-        <svg class="arrow-ico" viewBox="0 0 24 24" fill="none" stroke="#0e0e0e" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">Looks <em>by</em> Aliya</a>
+      <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav__links" id="navLinks">
+        <a href="portfolio.html">Portfolio</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+        <a href="https://looksbyaliya.glossgenius.com/services" class="btn" target="_blank" rel="noopener">Book</a>
+      </nav>
     </div>
-  </div>
-  <div class="hero-img reveal">
-    <img src="https://cdn.prod.website-files.com/664f2a79926f240d0136fe39/66d19557c551b6f4a8f8cc09_hero.jpg" alt="Stylist blow-drying a client's hair in a bright salon">
-    <div class="grain"></div>
-  </div>
-</section>
+  </header>
 
-<!-- ============ ABOUT / STORY ============ -->
-<section class="sec container" id="about">
-  <div class="sec-head reveal">
-    <h2 class="sec-title">About</h2>
-    <div class="sec-rule"></div>
-    <div class="sec-sub"><span class="dot"></span><span>The Stylist</span></div>
-  </div>
-  <div class="story-grid">
-    <div class="story-left reveal">
-      <h3>Hello gorgeous, here's the story behind the chair</h3>
-      <p>I believe every head of hair is a canvas, and every client deserves to walk out feeling like the best version of themselves. What started as a love for color and craft grew into a calling: creating looks that are personal, dimensional, and unmistakably <em>you</em>.</p>
-      <p>From lived-in balayage and seamless blonding to bridal hair and full glam, I tailor every formula and every cut to the person in my chair, never a cookie-cutter look. Find me in the heart of downtown Milwaukee at Sevva Salon.</p>
-      <div class="story-fact">
-        <div class="num">1:1</div>
-        <div class="lbl">Personalized, one-on-one attention every single visit</div>
+  <main>
+    <!-- ============ HERO ============ -->
+    <!-- Swap the .hero background-image in styles.css for Aliya's hero editorial shot -->
+    <section class="hero">
+      <div class="hero__overlay"></div>
+      <div class="container hero__content">
+        <p class="hero__kicker">Milwaukee</p>
+        <h1 class="hero__title">Looks <em>by</em> Aliya</h1>
+        <p class="hero__tagline">Hair Stylist <span>·</span> Beauty &amp; Style Expert <span>·</span> Creative Director</p>
+        <a href="https://looksbyaliya.glossgenius.com/services" class="btn btn--light btn--lg" target="_blank" rel="noopener">Book an appointment</a>
       </div>
-    </div>
-    <div class="story-imgs reveal">
-      <figure class="a"><img src="https://cdn.prod.website-files.com/664f2a79926f240d0136fe39/66d1920c446ad9e2a27071e7_story-1.jpg" alt="Detailed haircut in progress"></figure>
-      <figure class="b"><img src="https://cdn.prod.website-files.com/664f2a79926f240d0136fe39/66d1920c90fb4843a88300c7_story-2.jpg" alt="Barber chair and salon detail"></figure>
-    </div>
-  </div>
-</section>
+      <a href="#signup" class="hero__scroll" aria-label="Scroll down">Scroll</a>
+    </section>
 
-<!-- ============ SERVICES ============ -->
-<section class="sec container" id="services">
-  <div class="sec-head reveal">
-    <h2 class="sec-title">Services</h2>
-    <div class="sec-rule"></div>
-    <div class="sec-sub"><span class="dot"></span><span>A Few Things I Do</span></div>
-  </div>
-  <div class="service-grid">
-    <a href="https://looksbyaliya.glossgenius.com/services" target="_blank" rel="noopener" class="service-card reveal">
-      <div><h4>Balayage &amp; Foils</h4><div class="cat">Dimensional</div></div>
-      <div class="service-thumb"><img src="https://cdn.prod.website-files.com/66cea82adcf773d3dc652627/66d042713b39d23a72af1f8d_service-thumb-06.jpg" alt="Foil highlighting service"></div>
-      <span class="link-arrow">Book Now <svg class="arrow-ico" viewBox="0 0 24 24" fill="none" stroke="#0e0e0e" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-    </a>
-    <a href="https://looksbyaliya.glossgenius.com/services" target="_blank" rel="noopener" class="service-card reveal">
-      <div><h4>Color Corrections</h4><div class="cat">Transformative</div></div>
-      <div class="service-thumb"><img src="https://cdn.prod.website-files.com/66cea82adcf773d3dc652627/66d04a8d016483dc25f50d7c_service-thumb-08.jpg" alt="Color correction service"></div>
-      <span class="link-arrow">Book Now <svg class="arrow-ico" viewBox="0 0 24 24" fill="none" stroke="#0e0e0e" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-    </a>
-    <a href="https://looksbyaliya.glossgenius.com/services" target="_blank" rel="noopener" class="service-card reveal">
-      <div><h4>Cuts &amp; Styling</h4><div class="cat">Signature</div></div>
-      <div class="service-thumb"><img src="https://cdn.prod.website-files.com/66cea82adcf773d3dc652627/66d042aa34f3923722d19ead_service-thumb-07.jpg" alt="Precision haircut"></div>
-      <span class="link-arrow">Book Now <svg class="arrow-ico" viewBox="0 0 24 24" fill="none" stroke="#0e0e0e" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-    </a>
-    <a href="https://looksbyaliya.glossgenius.com/services" target="_blank" rel="noopener" class="service-card reveal">
-      <div><h4>Bridal &amp; Glam</h4><div class="cat">Special Occasion</div></div>
-      <div class="service-thumb"><img src="https://cdn.prod.website-files.com/66cea82adcf773d3dc652627/66d041277b137a6be8ef2f43_service-thumb-05.jpg" alt="Sleek styled hair"></div>
-      <span class="link-arrow">Book Now <svg class="arrow-ico" viewBox="0 0 24 24" fill="none" stroke="#0e0e0e" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-    </a>
-  </div>
-  <div class="services-cta reveal">
-    <a href="https://looksbyaliya.glossgenius.com/services" target="_blank" rel="noopener" class="btn btn--solid btn--xl"><span>Book Now</span><svg class="arrow-ico" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-  </div>
-</section>
-
-<!-- ============ FACTS (SAGE) ============ -->
-<section class="sec facts">
-  <div class="container">
-    <div class="facts-grid">
-      <div class="reveal">
-        <h2>There's an art to your color, and a science to keeping it gorgeous</h2>
-        <p>Every service starts with a real conversation and a custom formula built for your hair, your lifestyle, and your goals. No guesswork, just results you'll love between visits.</p>
-        <a href="https://looksbyaliya.glossgenius.com/services" target="_blank" rel="noopener" class="btn btn--solid"><span>Book Now</span></a>
+    <!-- ============ EMAIL SIGNUP ============ -->
+    <section class="signup" id="signup">
+      <div class="container">
+        <p class="signup__eyebrow">Stay in the loop</p>
+        <h2>Sign up to receive news &amp; updates</h2>
+        <p>New looks, fresh openings, and the occasional offer — straight to your inbox.</p>
+        <form class="signup__form" id="signupForm" novalidate>
+          <input type="email" name="email" placeholder="Email address" required aria-label="Email address" />
+          <button type="submit" class="btn btn--solid">Sign Up</button>
+        </form>
+        <p class="signup__note" id="signupNote" role="status"></p>
       </div>
-      <div class="facts-stats reveal">
-        <div class="fact-block">
-          <div class="num">1,900+</div>
-          <div class="lbl">A growing community of clients and followers who trust Aliya's work.</div>
-        </div>
-        <div class="fact-block">
-          <div class="num">35+</div>
-          <div class="lbl">Signature hair, color, bridal, and glam services offered.</div>
-        </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="index.html" class="nav__logo nav__logo--light">Looks <em>by</em> Aliya</a>
+        <p>Color, cuts, glam &amp; style in downtown Milwaukee.</p>
+        <a href="https://www.instagram.com/looksbyaliya/" target="_blank" rel="noopener" class="footer__ig">Instagram</a>
+      </div>
+      <div class="footer__col">
+        <h4>Visit</h4>
+        <p>Sevva Salon<br />229 North Water Street<br />Milwaukee, WI 53202</p>
+      </div>
+      <div class="footer__col">
+        <h4>Hours</h4>
+        <p>Tue–Fri&nbsp;&nbsp;10–8<br />Sat&nbsp;&nbsp;10–6<br />Sun &amp; Mon&nbsp;&nbsp;Closed</p>
+      </div>
+      <div class="footer__col">
+        <h4>Book</h4>
+        <p><a href="tel:+14142335431">(414) 233-5431</a></p>
+        <a href="https://looksbyaliya.glossgenius.com/services" class="btn" target="_blank" rel="noopener">Book now</a>
       </div>
     </div>
-    <div class="grain"></div>
-  </div>
-</section>
+    <p class="footer__legal">© 2026 Looks by Aliya. All rights reserved.</p>
+  </footer>
 
-<!-- ============ PORTFOLIO ============ -->
-<section class="sec container" id="portfolio">
-  <div class="sec-head reveal">
-    <h2 class="sec-title">Latest Work</h2>
-    <div class="sec-rule"></div>
-    <div class="sec-sub"><span class="dot"></span><span>The Lookbook</span></div>
-  </div>
-  <div class="masonry reveal">
-    <figure><img src="https://cdn.prod.website-files.com/664f2a79926f240d0136fe39/66d01acd7e50749c4bb5fc1d_work-thumb-01.jpg" alt="Client hair transformation"></figure>
-    <figure><img src="https://cdn.prod.website-files.com/664f2a79926f240d0136fe39/66d01ace538cd1ccbc7d7e8a_work-thumb-02.jpg" alt="Detail of a fresh cut"></figure>
-    <figure><img src="https://cdn.prod.website-files.com/664f2a79926f240d0136fe39/66d01ace8fc86ce4421dc71a_work-thumb-05.jpg" alt="Foil color application"></figure>
-    <figure><img src="https://cdn.prod.website-files.com/664f2a79926f240d0136fe39/66d01acf9d7e30b4e827c6a7_work-thumb-11.jpg" alt="Glossy finished blonde"></figure>
-    <figure><img src="https://cdn.prod.website-files.com/664f2a79926f240d0136fe39/66d01acd5406f5f0f8686fd1_work-thumb-03.jpg" alt="Salon styling moment"></figure>
-    <figure><img src="https://cdn.prod.website-files.com/664f2a79926f240d0136fe39/66d01acdb3a35e240ca16c41_work-thumb-04.jpg" alt="Color processing"></figure>
-    <figure><img src="https://cdn.prod.website-files.com/664f2a79926f240d0136fe39/66d01ad1cdbaabd0c1a185bb_work-thumb-06.jpg" alt="Finished sleek style"></figure>
-    <figure><img src="https://cdn.prod.website-files.com/664f2a79926f240d0136fe39/66d01ace2515a06c63cb7b72_work-thumb-07.jpg" alt="Styling detail"></figure>
-    <figure><img src="https://cdn.prod.website-files.com/664f2a79926f240d0136fe39/66d01ace8adfc193f148f63f_work-thumb-08.jpg" alt="Long layered cut"></figure>
-    <figure><img src="https://cdn.prod.website-files.com/664f2a79926f240d0136fe39/66d01acfb291614a322bab70_work-thumb-09.jpg" alt="Updo styling"></figure>
-    <figure><img src="https://cdn.prod.website-files.com/664f2a79926f240d0136fe39/66d01acf6a2b7aad6bc6b87f_work-thumb-10.jpg" alt="Smooth blowout finish"></figure>
-  </div>
-</section>
-
-<!-- ============ TESTIMONIALS ============ -->
-<section class="sec container" id="reviews">
-  <div class="sec-head reveal">
-    <h2 class="sec-title">Loved by Clients</h2>
-    <div class="sec-rule"></div>
-    <div class="sec-sub"><span class="dot"></span><span>Reviews</span></div>
-  </div>
-  <div class="tst-grid">
-    <div class="tst-img reveal">
-      <img src="https://cdn.prod.website-files.com/664f2a79926f240d0136fe39/66cffed0c1b920acd4bece4a_testimonial.jpg" alt="Happy client with a fresh style">
-      <div class="tst-label">Where every visit leaves you looking and feeling your best.</div>
-      <div class="tst-count">1,900+</div>
-    </div>
-    <div class="tst-cards">
-      <div class="tst-card reveal">
-        <div class="stars">★★★★★</div>
-        <p>"Aliya completely transformed my color. She took the time to understand exactly what I wanted and the balayage came out better than I imagined. I've never gotten so many compliments."</p>
-        <div class="tst-author"><div class="av">S</div><div><div class="nm">Savannah N.</div><div class="mt">Balayage &amp; Cut</div></div></div>
-      </div>
-      <div class="tst-card reveal">
-        <div class="stars">★★★★★</div>
-        <p>"Booked Aliya for my wedding hair and makeup and she was incredible. Calm, talented, and exactly on vision. My bridal trial sealed the deal. Highly recommend to every Milwaukee bride."</p>
-        <div class="tst-author"><div class="av">C</div><div><div class="nm">Courtney H.</div><div class="mt">Bridal Hair &amp; Makeup</div></div></div>
-      </div>
-      <div class="tst-card reveal">
-        <div class="stars">★★★★★</div>
-        <p>"Best blonde I've ever had. Aliya is a true color specialist. My foils are seamless and so easy to grow out. The studio at Sevva is gorgeous and the whole visit feels like a treat."</p>
-        <div class="tst-author"><div class="av">R</div><div><div class="nm">Rachel M.</div><div class="mt">Full Foil &amp; Gloss</div></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ BOOKING (DARK) ============ -->
-<section class="sec book" id="book">
-  <div class="container">
-    <div class="sec-head reveal">
-      <h2 class="sec-title">Book an Appointment</h2>
-      <div class="sec-rule"></div>
-      <div class="sec-sub"><span class="dot"></span><span>Schedule</span></div>
-    </div>
-    <div class="book-grid">
-      <div class="book-info reveal">
-        <img src="https://cdn.prod.website-files.com/664f2a79926f240d0136fe39/66d0068fddf1563101a69f42_appointment.jpg" alt="Inside the salon">
-        <div class="hours-row"><span>Tuesday – Friday</span><span>10 AM – 8 PM</span></div>
-        <div class="hours-row"><span>Saturday</span><span>10 AM – 6 PM</span></div>
-        <div class="hours-row"><span>Sunday &amp; Monday</span><span>Closed</span></div>
-        <div class="book-addr"><b>Address:</b><span>Sevva Salon, 229 North Water Street, Milwaukee, WI 53202</span></div>
-        <div class="book-addr"><b>Phone:</b><span>(414) 233-5431</span></div>
-      </div>
-      <div class="reveal book-cta">
-        <h3 class="book-cta-title">Ready when you are</h3>
-        <p class="book-lead">See live availability and lock in your appointment in seconds on Aliya's secure booking. New clients are always welcome.</p>
-        <ul class="book-points">
-          <li>Real-time availability with instant confirmation</li>
-          <li>Easy reschedule and automatic reminders</li>
-          <li>Please allow 48 hours' notice for any changes</li>
-        </ul>
-        <a href="https://looksbyaliya.glossgenius.com/services" target="_blank" rel="noopener" class="btn btn--light btn--xl btn--block"><span>Book Now</span><svg class="arrow-ico" viewBox="0 0 24 24" fill="none" stroke="#0e0e0e" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <p class="book-powered">Secure online booking · instant confirmation</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ CTA ============ -->
-<section class="cta">
-  <div class="container cta-grid">
-    <h2>Ready for your most gorgeous hair yet? Reserve your spot with Aliya.</h2>
-    <a href="https://looksbyaliya.glossgenius.com/services" target="_blank" rel="noopener" class="btn btn--light"><span>Book Now</span></a>
-  </div>
-</section>
-
-</main>
-
-<!-- ============ FOOTER ============ -->
-<footer class="footer">
-  <div class="container">
-    <div class="foot-top">
-      <div class="foot-brand">
-        <div class="logo">Looks <em>by</em> Aliya</div>
-        <p>Your destination for color, cuts, and glam in downtown Milwaukee.</p>
-        <div class="foot-social">
-          <a href="https://www.instagram.com/looksbyaliya/" target="_blank" rel="noopener">IG.</a>
-          <a href="https://www.facebook.com/looksbyaliya/" target="_blank" rel="noopener">FB.</a>
-          <a href="https://linktr.ee/looksbyaliya" target="_blank" rel="noopener">LINKTREE.</a>
-        </div>
-      </div>
-      <div class="foot-col">
-        <h5>Explore</h5>
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#reviews">Reviews</a>
-      </div>
-      <div class="foot-col">
-        <h5>Services</h5>
-        <a href="#services">Balayage &amp; Foils</a>
-        <a href="#services">Color Corrections</a>
-        <a href="#services">Blonding</a>
-        <a href="#services">Bridal Hair</a>
-        <a href="#services">Glam Makeup</a>
-        <a href="#services">Waxing &amp; Tint</a>
-      </div>
-      <div class="foot-col">
-        <h5>Visit</h5>
-        <p>Sevva Salon, 229 North Water Street, Milwaukee, WI 53202</p>
-        <p>Tue–Fri 10–8 · Sat 10–6 · Sun &amp; Mon closed</p>
-        <a href="tel:+14142335431">(414) 233-5431</a>
-        <a href="https://looksbyaliya.glossgenius.com/services" target="_blank" rel="noopener">Book Now</a>
-      </div>
-    </div>
-    <div class="foot-bot">
-      <div>© <span id="year">2026</span> Looks by Aliya. All rights reserved.</div>
-      <div>Mock concept design · Built from the Looks by Aliya brand</div>
-    </div>
-  </div>
-</footer>
-
-<script>
-// year
-document.getElementById('year').textContent = new Date().getFullYear();
-
-// mobile menu
-const menuBtn = document.getElementById('menuBtn');
-const navLinks = document.getElementById('navLinks');
-menuBtn.addEventListener('click', () => {
-  const open = navLinks.classList.toggle('open');
-  menuBtn.classList.toggle('open', open);
-  menuBtn.setAttribute('aria-expanded', open);
-});
-navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-  navLinks.classList.remove('open'); menuBtn.classList.remove('open');
-  menuBtn.setAttribute('aria-expanded', 'false');
-}));
-
-// scroll reveal
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
-}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-</script>
+  <script src="app.js"></script>
 </body>
 </html>
