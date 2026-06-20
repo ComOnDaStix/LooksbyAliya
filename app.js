@@ -3,6 +3,19 @@
    ================================================================= */
 document.addEventListener("DOMContentLoaded", function () {
 
+  /* ---------- Intro splash (home page, once per session) ---------- */
+  const splash = document.getElementById("splash");
+  if (splash) {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce || sessionStorage.getItem("lba_splash")) {
+      splash.remove();
+    } else {
+      sessionStorage.setItem("lba_splash", "1");
+      document.body.classList.add("splash-lock");
+      window.setTimeout(function () { document.body.classList.remove("splash-lock"); }, 2700);
+    }
+  }
+
   /* ---------- Sticky nav: solid background after scrolling ----------
      (sub-pages add .nav--solid in markup so it's solid from the top) */
   const nav = document.getElementById("nav");

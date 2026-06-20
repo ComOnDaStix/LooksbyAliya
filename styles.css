@@ -97,6 +97,20 @@ em{font-style:italic}
 .hero__scroll{position:absolute;left:50%;bottom:30px;transform:translateX(-50%);z-index:2;font-family:"Albert Sans",sans-serif;font-weight:500;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#fff;opacity:.85}
 .hero__scroll::after{content:"";display:block;width:1px;height:34px;background:#fff;margin:10px auto 0;opacity:.6}
 
+/* ---------- intro splash (home, first visit per session) ---------- */
+.splash{position:fixed;inset:0;z-index:200;background:var(--night);display:flex;align-items:center;justify-content:center;will-change:transform;
+  animation:splashOut 1s cubic-bezier(.76,0,.24,1) 1.5s forwards}
+.splash__inner{text-align:center;padding:0 24px}
+.splash__brand{display:block;font-family:"Playfair Display",serif;font-weight:600;font-size:clamp(2rem,6.5vw,4.6rem);color:#fff;opacity:0;transform:translateY(16px);
+  animation:splashBrand 1s var(--ease) .15s forwards}
+.splash__brand em{font-style:italic;font-weight:500;font-size:.78em;opacity:.85;padding:0 .08em}
+.splash__rule{display:block;width:0;height:1px;background:var(--sage);margin:20px auto 0;animation:splashRule .8s var(--ease) .65s forwards}
+@keyframes splashBrand{to{opacity:1;transform:none}}
+@keyframes splashRule{to{width:130px}}
+@keyframes splashOut{to{transform:translateY(-100%);visibility:hidden}}
+body.splash-lock{overflow:hidden}
+@media(prefers-reduced-motion:reduce){.splash{display:none}}
+
 /* ---------- email signup ---------- */
 .signup{background:var(--cloud);text-align:center;padding:clamp(64px,9vw,120px) 0}
 .signup__eyebrow{font-family:"Albert Sans",sans-serif;font-weight:600;font-size:13px;letter-spacing:.28em;text-transform:uppercase;color:var(--sage-deep);margin-bottom:18px}
@@ -252,10 +266,6 @@ em{font-style:italic}
   .shots{columns:2}
   .looks{grid-template-columns:repeat(2,1fr)}
   .footer__inner{grid-template-columns:1fr 1fr;gap:36px}
-}
-/* hide the hero "Book an appointment" button on mobile — Book lives in the nav */
-@media(max-width:768px){
-  .hero__content .btn{display:none}
 }
 @media(max-width:560px){
   .grid--4{grid-template-columns:1fr}
