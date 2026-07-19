@@ -37,24 +37,28 @@ document.addEventListener("DOMContentLoaded", function () {
     };
     const closeMenu = () => setMenu(false);
 
-    /* Act on pointerdown, not click. iOS consumes the tap that halts a
-       momentum scroll and never dispatches the follow-up click, so while the
-       page was still gliding the button appeared dead until it settled.
-       pointerdown arrives immediately, mid-scroll. */
-    const hasPointer = !!window.PointerEvent;
-    if (hasPointer) {
-      toggle.addEventListener("pointerdown", (e) => {
-        if (e.button > 0) return;                 // ignore right/middle button
-        setMenu(!isOpen());
-      });
-    }
+    /* TOUCH: fire on touchstart - the earliest signal iOS gives, dispatched
+       the instant a finger lands even while a momentum scroll is still
+       gliding. click is no good here: iOS discards the click that ends a
+       momentum scroll, and pointerdown can be withheld while Safari decides
+       whether the touch is a scroll gesture. Both left the button dead until
+       the page fully settled.
+       preventDefault stops the synthetic mouse/click iOS would emit after,
+       so the menu can't toggle a second time and snap shut. */
+    let lastTouchAt = -Infinity;
+    toggle.addEventListener("touchstart", (e) => {
+      lastTouchAt = e.timeStamp;
+      e.preventDefault();
+      setMenu(!isOpen());
+    }, { passive: false });
+
+    /* MOUSE + KEYBOARD: touch never reaches here thanks to preventDefault,
+       but guard anyway in case a browser emits the synthetic click regardless. */
     toggle.addEventListener("click", (e) => {
-      /* detail is 0 only for keyboard activation (Enter/Space), which never
-         has a pointerdown before it - so that still toggles here. A real
-         pointer click reports detail >= 1 and was already handled above;
-         re-handling it would toggle twice and snap the menu shut. Browsers
-         without PointerEvent get every click, since nothing else fires. */
-      if (hasPointer && e.detail !== 0) return;
+      /* detail === 0 means keyboard (Enter/Space) - always honour it, whatever
+         the timing. Only a pointer-driven click (detail >= 1) arriving right
+         after a touch is the synthetic twin worth dropping. */
+      if (e.detail !== 0 && e.timeStamp - lastTouchAt < 700) return;
       setMenu(!isOpen());
     });
 
