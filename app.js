@@ -92,7 +92,12 @@ document.addEventListener("DOMContentLoaded", function () {
       entries.forEach((en) => {
         if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
       });
-    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+      /* threshold is a fraction of the ELEMENT's box, not the viewport. A
+         percentage target is unreachable for anything taller than the screen
+         - the 1-column portfolio grid is ~7000px on a phone, so it topped out
+         at ~11% and never hit 0.12, leaving the whole grid at opacity 0.
+         Trigger on first contact instead and use rootMargin for the delay. */
+    }, { threshold: 0, rootMargin: "0px 0px -80px 0px" });
     reveals.forEach((el) => io.observe(el));
   } else {
     reveals.forEach((el) => el.classList.add("in"));
