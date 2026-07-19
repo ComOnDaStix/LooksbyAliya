@@ -29,12 +29,17 @@ body{
   font-family:"Onest",system-ui,sans-serif;
   color:var(--ink);background:#fff;line-height:1.7;
   -webkit-font-smoothing:antialiased;overflow-x:hidden;
-  /* Pages fade in on arrival so navigation doesn't hard-cut. Opacity only:
-     animating transform here would make body a containing block for the
-     fixed nav and throw it out of position mid-animation. */
-  animation:pageIn .45s var(--ease) both;
 }
-@keyframes pageIn{from{opacity:0}to{opacity:1}}
+/* Smooth page changes are handled by the browser's cross-document view
+   transition, NOT by fading body in on arrival. A body fade holds the page
+   at opacity 0 while it is already fully loaded - it pushed first paint from
+   ~200ms out to ~430ms and read as a lag before the page appeared. */
+@view-transition{navigation:auto}
+::view-transition-old(root),::view-transition-new(root){animation-duration:.28s;
+  animation-timing-function:var(--ease)}
+@media(prefers-reduced-motion:reduce){
+  ::view-transition-old(root),::view-transition-new(root){animation:none}
+}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 h1,h2,h3,h4{font-family:"Playfair Display",Georgia,serif;font-weight:600;line-height:1.05;letter-spacing:-.01em;color:var(--ink)}
