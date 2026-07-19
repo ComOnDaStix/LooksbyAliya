@@ -303,7 +303,11 @@ body.splash-lock{overflow:hidden}
   .grid--4{grid-template-columns:1fr}
   .shots{columns:1}
   .looks{grid-template-columns:1fr}
-  .footer__inner{grid-template-columns:1fr}
+  /* Once the footer stacks to one column, centre every block. The brand
+     paragraph keeps its 30ch measure, so it needs auto margins to sit
+     centred rather than hugging the left edge. */
+  .footer__inner{grid-template-columns:1fr;text-align:center}
+  .footer__brand p{margin-left:auto;margin-right:auto}
   .signup__form input{min-width:0;width:100%}
   .signup__form .btn{width:100%}
 }
