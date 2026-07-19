@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
       e.preventDefault();
       const email = form.querySelector('input[type="email"]');
       if (note) {
-        note.textContent = "Thank you — you're on the list. ✨";
+        note.textContent = "Thank you! You're on the list. ✨";
         note.classList.add("ok");
       }
       form.reset();
@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
     cform.addEventListener("submit", (e) => {
       e.preventDefault();
       if (cnote) {
-        cnote.textContent = "Thank you — your message has been sent. ✨";
+        cnote.textContent = "Thank you! Your message has been sent. ✨";
         cnote.classList.add("ok");
       }
       cform.reset();
