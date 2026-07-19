@@ -3,6 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Set before paint: CSS only hides .reveal content while .js is on.
+       The watchdog drops it again if app.js never reports ready, so a
+       blocked/failed/throwing app.js can never leave content hidden. -->
+  <script>(function(d){d.classList.add("js");setTimeout(function(){
+    if(!d.hasAttribute("data-reveal-ready"))d.classList.remove("js");},2000);
+  })(document.documentElement)</script>
   <title>Looks by Aliya | Hair · Beauty &amp; Style · Creative Director — Milwaukee</title>
   <meta name="description" content="Looks by Aliya — Milwaukee hair stylist, beauty & style expert, and creative director. Editorial transformations, color, glam, and styling. Book at Sevva Salon." />
   <meta property="og:title" content="Looks by Aliya | Hair · Beauty & Style · Creative Director" />

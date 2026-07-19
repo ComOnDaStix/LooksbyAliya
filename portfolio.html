@@ -3,6 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Set before paint: CSS only hides .reveal content while .js is on.
+       The watchdog drops it again if app.js never reports ready, so a
+       blocked/failed/throwing app.js can never leave content hidden. -->
+  <script>(function(d){d.classList.add("js");setTimeout(function(){
+    if(!d.hasAttribute("data-reveal-ready"))d.classList.remove("js");},2000);
+  })(document.documentElement)</script>
   <title>Portfolio | Looks by Aliya — Milwaukee</title>
   <meta name="description" content="The work of Looks by Aliya — hair, full looks, and makeup. Weddings, photoshoots, and every project as photo proof." />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230c0c0c'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='19' fill='%23fff' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E" />

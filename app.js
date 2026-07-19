@@ -102,5 +102,8 @@ document.addEventListener("DOMContentLoaded", function () {
   } else {
     reveals.forEach((el) => el.classList.add("in"));
   }
+  /* Tells the inline head watchdog the reveal is wired up, so it leaves the
+     .js class alone. If we never get here, it un-hides everything at 2s. */
+  document.documentElement.setAttribute("data-reveal-ready", "1");
 
 });
