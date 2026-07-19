@@ -29,16 +29,35 @@ document.addEventListener("DOMContentLoaded", function () {
   const toggle = document.getElementById("navToggle");
   const links = document.getElementById("navLinks");
   if (toggle && links) {
-    const closeMenu = () => {
-      toggle.classList.remove("is-open");
-      links.classList.remove("is-open");
-      toggle.setAttribute("aria-expanded", "false");
-    };
-    toggle.addEventListener("click", () => {
-      const open = links.classList.toggle("is-open");
+    const isOpen = () => links.classList.contains("is-open");
+    const setMenu = (open) => {
+      links.classList.toggle("is-open", open);
       toggle.classList.toggle("is-open", open);
       toggle.setAttribute("aria-expanded", String(open));
+    };
+    const closeMenu = () => setMenu(false);
+
+    /* Act on pointerdown, not click. iOS consumes the tap that halts a
+       momentum scroll and never dispatches the follow-up click, so while the
+       page was still gliding the button appeared dead until it settled.
+       pointerdown arrives immediately, mid-scroll. */
+    const hasPointer = !!window.PointerEvent;
+    if (hasPointer) {
+      toggle.addEventListener("pointerdown", (e) => {
+        if (e.button > 0) return;                 // ignore right/middle button
+        setMenu(!isOpen());
+      });
+    }
+    toggle.addEventListener("click", (e) => {
+      /* detail is 0 only for keyboard activation (Enter/Space), which never
+         has a pointerdown before it - so that still toggles here. A real
+         pointer click reports detail >= 1 and was already handled above;
+         re-handling it would toggle twice and snap the menu shut. Browsers
+         without PointerEvent get every click, since nothing else fires. */
+      if (hasPointer && e.detail !== 0) return;
+      setMenu(!isOpen());
     });
+
     links.querySelectorAll("a").forEach((a) => a.addEventListener("click", closeMenu));
   }
 
