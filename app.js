@@ -121,7 +121,18 @@ document.addEventListener("DOMContentLoaded", function () {
          at ~11% and never hit 0.12, leaving the whole grid at opacity 0.
          Trigger on first contact instead and use rootMargin for the delay. */
     }, { threshold: 0, rootMargin: "0px 0px -80px 0px" });
-    reveals.forEach((el) => io.observe(el));
+    reveals.forEach((el) => {
+      /* Already on screen when the page opens? Show it outright, no fade.
+         Animating it in left the page looking blank for a beat on arrival,
+         which read as a flicker. Only below-fold content gets the reveal.
+         This runs before first paint (app.js is a blocking script at the end
+         of body), so nothing is ever painted in the hidden state. */
+      if (el.getBoundingClientRect().top < window.innerHeight) {
+        el.classList.add("reveal--now");
+      } else {
+        io.observe(el);
+      }
+    });
   } else {
     reveals.forEach((el) => el.classList.add("in"));
   }
