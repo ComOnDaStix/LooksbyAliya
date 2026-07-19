@@ -133,8 +133,10 @@ body.splash-lock{overflow:hidden}
 /* ---------- portfolio: full-look grid (3 across, square, near-full-width) ---------- */
 .looks-wrap{width:100%;padding:0 clamp(14px,2.5vw,38px)}
 .looks{display:grid;grid-template-columns:repeat(3,1fr);column-gap:clamp(12px,1.6vw,22px);row-gap:clamp(44px,5.5vw,88px)}
-.looks .look{position:relative;aspect-ratio:1/1;overflow:hidden;background:var(--cloud)}
-.looks .look img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease)}
+/* 2/3 tiles + contain: every look is shown whole and centred, never cropped.
+   Shoots run 0.667-0.751, so the wider ones sit with a slim band top/bottom. */
+.looks .look{position:relative;aspect-ratio:2/3;overflow:hidden;background:var(--cloud)}
+.looks .look img{width:100%;height:100%;object-fit:contain;object-position:center;transition:transform 1.1s var(--ease)}
 .looks .look:hover img{transform:scale(1.04)}
 
 /* ---------- hair bookings page ---------- */
