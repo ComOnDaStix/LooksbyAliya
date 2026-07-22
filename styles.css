@@ -97,7 +97,11 @@ em{font-style:italic}
 .hero{position:relative;min-height:100svh;display:flex;align-items:center;
   background:#c9c6c0 center center/cover no-repeat;
   background-image:url("IMAGES%20GO%20HERE/website-centered.jpg");}
-.hero__overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,11,.45),rgba(11,11,11,.25) 40%,rgba(11,11,11,.6))}
+/* Hidden by default so desktop never downloads the video at all; the mobile
+   media query below turns it on. Sits under .hero__overlay and .hero__content,
+   both of which paint later / carry a z-index. */
+.hero__video{display:none}
+.hero__overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(11,11,11,.45),rgba(11,11,11,.25) 40%,rgba(11,11,11,.6))}
 .hero__content{position:relative;z-index:2;text-align:center;width:100%;padding-top:74px}
 .hero__kicker{font-family:"Albert Sans",sans-serif;font-weight:600;font-size:13px;letter-spacing:.34em;text-transform:uppercase;color:var(--sage);margin-bottom:22px}
 .hero__title{font-size:clamp(3rem,9vw,7.5rem);font-weight:600;color:#fff;line-height:1}
@@ -273,6 +277,10 @@ body.splash-lock{overflow:hidden}
 
 /* ---------- responsive ---------- */
 @media(max-width:900px){
+  /* Looping hero film, mobile only. The source is cut so its last frame is
+     the same moment as its first, so `loop` repeats with no visible jump. */
+  .hero__video{display:block;position:absolute;inset:0;width:100%;height:100%;
+    object-fit:cover;object-position:center;z-index:0;pointer-events:none}
   .nav__toggle{display:flex}
   .nav__links{position:fixed;inset:0 0 0 auto;width:min(82vw,360px);flex-direction:column;align-items:stretch;justify-content:center;gap:4px;
     background:#0b0b0b;padding:0 40px;transform:translateX(100%);transition:transform .45s var(--ease)}
@@ -315,6 +323,9 @@ body.splash-lock{overflow:hidden}
 }
 @media(prefers-reduced-motion:reduce){
   *{transition:none!important;animation:none!important;scroll-behavior:auto}
+  /* Looping footage is exactly what this setting is meant to suppress; the
+     still behind it shows instead. */
+  .hero__video{display:none!important}
   /* must match .js .reveal specificity to still win here */
   .js .reveal{opacity:1;transform:none}
 }

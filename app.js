@@ -3,6 +3,29 @@
    ================================================================= */
 document.addEventListener("DOMContentLoaded", function () {
 
+  /* ---------- Hero film (mobile) ----------
+     The markup already autoplays. iOS still refuses in Low Power Mode, and
+     some browsers reject the promise silently, so nudge it once and retry on
+     the first touch. If it never plays, the poster and the CSS background
+     image still show the still, so there is nothing to clean up on failure. */
+  const heroVideo = document.querySelector(".hero__video");
+  if (heroVideo) {
+    const wantsVideo =
+      window.matchMedia("(max-width: 900px)").matches &&
+      !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (wantsVideo && heroVideo.dataset.src) {
+      heroVideo.src = heroVideo.dataset.src;
+      const tryPlay = () => {
+        const p = heroVideo.play();
+        if (p && p.catch) p.catch(() => {});
+      };
+      tryPlay();
+      document.addEventListener("touchstart", tryPlay, { once: true, passive: true });
+    } else {
+      heroVideo.remove();
+    }
+  }
+
   /* ---------- Intro splash (home page, once per session) ---------- */
   const splash = document.getElementById("splash");
   if (splash) {

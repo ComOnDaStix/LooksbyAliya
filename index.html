@@ -52,6 +52,14 @@
     <!-- ============ HERO ============ -->
     <!-- Swap the .hero background-image in styles.css for Aliya's hero editorial shot -->
     <section class="hero">
+      <!-- Mobile only. The file is in data-src, not src, because display:none
+           does NOT stop a browser preloading media - app.js attaches it only
+           when the mobile query matches, so desktop never downloads it.
+           muted + playsinline are both required for iOS to autoplay; the
+           still behind stays as the fallback if playback is ever blocked. -->
+      <video class="hero__video" data-src="VIDEOS%20GO%20HERE/hero.mp4"
+             autoplay muted loop playsinline preload="none"
+             poster="IMAGES%20GO%20HERE/hero-poster.jpg" aria-hidden="true" tabindex="-1"></video>
       <div class="hero__overlay"></div>
       <div class="container hero__content">
         <p class="hero__kicker">Milwaukee</p>
