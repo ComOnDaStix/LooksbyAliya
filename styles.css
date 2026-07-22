@@ -281,6 +281,12 @@ body.splash-lock{overflow:hidden}
      the same moment as its first, so `loop` repeats with no visible jump. */
   .hero__video{display:block;position:absolute;inset:0;width:100%;height:100%;
     object-fit:cover;object-position:center;z-index:0;pointer-events:none}
+  /* Behind the film, show the film's OWN first frame rather than the desktop
+     still. The still used to paint at ~300ms and sit there until playback
+     began near 1s, which read as a flash of the old image on every visit.
+     Same source frame and same cover framing, so the handover is invisible.
+     It is also the fallback when the video is removed (reduced motion, no JS). */
+  .hero{background-image:url("IMAGES%20GO%20HERE/hero-poster.jpg")}
   .nav__toggle{display:flex}
   .nav__links{position:fixed;inset:0 0 0 auto;width:min(82vw,360px);flex-direction:column;align-items:stretch;justify-content:center;gap:4px;
     background:#0b0b0b;padding:0 40px;transform:translateX(100%);transition:transform .45s var(--ease)}

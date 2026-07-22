@@ -21,6 +21,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700;800;900&family=Onest:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="styles.css" />
+  <!-- Mobile hero backdrop. Fetched up front so it is on screen at first
+       paint instead of arriving after the stylesheet resolves; media= keeps
+       desktop from downloading it at all. -->
+  <link rel="preload" as="image" href="IMAGES%20GO%20HERE/hero-poster.jpg" media="(max-width: 900px)" />
 </head>
 <body id="top">
 
@@ -58,8 +62,9 @@
            muted + playsinline are both required for iOS to autoplay; the
            still behind stays as the fallback if playback is ever blocked. -->
       <video class="hero__video" data-src="VIDEOS%20GO%20HERE/hero.mp4"
+             data-poster="IMAGES%20GO%20HERE/hero-poster.jpg"
              autoplay muted loop playsinline preload="none"
-             poster="IMAGES%20GO%20HERE/hero-poster.jpg" aria-hidden="true" tabindex="-1"></video>
+             aria-hidden="true" tabindex="-1"></video>
       <div class="hero__overlay"></div>
       <div class="container hero__content">
         <p class="hero__kicker">Milwaukee</p>

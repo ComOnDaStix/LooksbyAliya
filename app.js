@@ -14,6 +14,10 @@ document.addEventListener("DOMContentLoaded", function () {
       window.matchMedia("(max-width: 900px)").matches &&
       !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (wantsVideo && heroVideo.dataset.src) {
+      /* poster is deferred too: as a plain attribute it is fetched while the
+         page parses, before this runs, so desktop paid for it despite never
+         showing the video. */
+      if (heroVideo.dataset.poster) heroVideo.poster = heroVideo.dataset.poster;
       heroVideo.src = heroVideo.dataset.src;
       const tryPlay = () => {
         const p = heroVideo.play();
