@@ -244,6 +244,11 @@ body.splash-lock{overflow:hidden}
 .quote p{color:var(--ink-2);font-size:1.04rem;line-height:1.6}
 .quote footer{font-family:"Albert Sans",sans-serif;font-weight:600;font-size:14px;color:var(--ink);margin-top:auto}
 .quote footer span{display:block;font-weight:400;font-size:13px;color:var(--body-soft);margin-top:3px}
+/* reviews wall (masonry) with show-all toggle */
+.reviews-wall{columns:3;column-gap:clamp(16px,1.8vw,24px)}
+.reviews-wall .quote{break-inside:avoid;margin-bottom:clamp(16px,1.8vw,24px)}
+.reviews-wall.is-collapsed .rev-extra{display:none}
+.reviews-toggle{text-align:center;margin-top:36px}
 
 /* ---------- contact form ---------- */
 .contact-form{max-width:720px;margin:0 auto;display:grid;gap:20px}
@@ -318,12 +323,14 @@ body.splash-lock{overflow:hidden}
   .grid--3{grid-template-columns:1fr}
   .services__cols{grid-template-columns:1fr;gap:42px}
   .about__inner{grid-template-columns:1fr;gap:34px}
+  .reviews-wall{columns:2}
   .shots{columns:2}
   .looks{grid-template-columns:repeat(2,1fr)}
   .footer__inner{grid-template-columns:1fr 1fr;gap:36px}
 }
 @media(max-width:560px){
   .grid--4{grid-template-columns:1fr}
+  .reviews-wall{columns:1}
   .shots{columns:1}
   .looks{grid-template-columns:1fr}
   /* Once the footer stacks to one column, centre every block. The brand

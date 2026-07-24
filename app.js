@@ -105,6 +105,18 @@ document.addEventListener("DOMContentLoaded", function () {
     setSplit(range.value);
   }
 
+  /* ---------- Reviews: show all / show less ---------- */
+  const revToggle = document.getElementById("reviewsToggle");
+  const revWall = document.getElementById("reviewsWall");
+  if (revToggle && revWall) {
+    revToggle.addEventListener("click", () => {
+      const collapsed = revWall.classList.toggle("is-collapsed");
+      revToggle.setAttribute("aria-expanded", String(!collapsed));
+      revToggle.textContent = collapsed ? revToggle.dataset.more : revToggle.dataset.less;
+      if (collapsed) revWall.scrollIntoView({ block: "start" });
+    });
+  }
+
   /* ---------- Email signup (front-end only; wire to Mailchimp later) ---------- */
   const form = document.getElementById("signupForm");
   if (form) {
