@@ -249,9 +249,12 @@ body.splash-lock{overflow:hidden}
 .reviews-wall .quote{break-inside:avoid;margin-bottom:clamp(16px,1.8vw,24px)}
 .reviews-toggle{text-align:center;margin-top:36px}
 /* rating badge (replaces the numeric average) */
-/* Become Her signature: small trio of looks under the CTA */
-.bh-gallery{display:flex;gap:clamp(10px,1.4vw,16px);justify-content:center;max-width:470px;margin:clamp(36px,4.5vw,52px) auto 0}
-.bh-gallery img{flex:1 1 0;min-width:0;aspect-ratio:4/5;object-fit:cover;object-position:center 22%;display:block}
+/* Become Her signature: one large image beside the copy (editorial split) */
+.bh-split{display:flex;align-items:center;gap:clamp(32px,5vw,72px);max-width:1040px;margin:0 auto;text-align:left}
+.bh-split__media{flex:0 0 40%;max-width:400px}
+.bh-split__media img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 20%;display:block}
+.bh-split__text{flex:1;min-width:0}
+.bh-split__text .section__sub{max-width:46ch}
 .rating-badge{display:inline-flex;align-items:center;gap:12px;margin-top:16px}
 .rating-badge__stars{color:var(--sage-deep);letter-spacing:4px;font-size:17px;white-space:nowrap}
 .rating-badge__count{font-family:"Albert Sans",sans-serif;font-weight:600;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
@@ -342,6 +345,10 @@ body.modal-open{overflow:hidden}
   .grid--3{grid-template-columns:1fr}
   .services__cols{grid-template-columns:1fr;gap:42px}
   .about__inner{grid-template-columns:1fr;gap:34px}
+  /* Become Her stacks: image on top, centred text below */
+  .bh-split{flex-direction:column;text-align:center;gap:30px}
+  .bh-split__media{flex:none;width:100%;max-width:330px;margin:0 auto}
+  .bh-split__text .section__sub{max-width:none;margin-left:auto;margin-right:auto}
   .reviews-wall{columns:2}
   .shots{columns:2}
   .looks{grid-template-columns:repeat(2,1fr)}
