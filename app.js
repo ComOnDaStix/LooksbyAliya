@@ -116,6 +116,9 @@ document.addEventListener("DOMContentLoaded", function () {
       revModal.classList.add("is-open");
       revModal.setAttribute("aria-hidden", "false");
       document.body.classList.add("modal-open");
+      /* always start at the first review, not where a previous open left off */
+      const body = revModal.querySelector(".reviews-modal__body");
+      if (body) body.scrollTop = 0;
       if (revClose) revClose.focus();
     };
     const close = () => {

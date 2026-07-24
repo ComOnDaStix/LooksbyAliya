@@ -249,6 +249,9 @@ body.splash-lock{overflow:hidden}
 .reviews-wall .quote{break-inside:avoid;margin-bottom:clamp(16px,1.8vw,24px)}
 .reviews-toggle{text-align:center;margin-top:36px}
 /* rating badge (replaces the numeric average) */
+/* Become Her signature: small trio of looks under the CTA */
+.bh-gallery{display:flex;gap:clamp(10px,1.4vw,16px);justify-content:center;max-width:470px;margin:clamp(36px,4.5vw,52px) auto 0}
+.bh-gallery img{flex:1 1 0;min-width:0;aspect-ratio:4/5;object-fit:cover;object-position:center 22%;display:block}
 .rating-badge{display:inline-flex;align-items:center;gap:12px;margin-top:16px}
 .rating-badge__stars{color:var(--sage-deep);letter-spacing:4px;font-size:17px;white-space:nowrap}
 .rating-badge__count{font-family:"Albert Sans",sans-serif;font-weight:600;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
@@ -282,7 +285,9 @@ body.modal-open{overflow:hidden}
 .footer__inner{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:40px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.12)}
 .footer__brand .nav__logo--light{color:#fff;font-size:27px;display:inline-block;margin-bottom:14px}
 .footer__brand p{color:#bdbdb6;max-width:30ch;margin-bottom:16px}
-.footer__ig{font-family:"Albert Sans",sans-serif;font-weight:600;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--sage);transition:color .3s}
+/* inline-block + padding so the tap area is ~33px tall, not 15px - the old
+   target was too small to hit reliably on a phone. */
+.footer__ig{display:inline-block;padding:10px 2px;font-family:"Albert Sans",sans-serif;font-weight:600;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--sage);transition:color .3s}
 .footer__ig:hover{color:#fff}
 .footer__col h4{font-family:"Albert Sans",sans-serif;font-weight:600;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#fff;margin-bottom:16px}
 .footer__col p,.footer__col a{color:#a7a7a1;font-size:15px;line-height:1.7}
