@@ -200,7 +200,10 @@ body.splash-lock{overflow:hidden}
 
 /* ---------- services menu ---------- */
 .services__cols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,5vw,80px)}
-.menu__group{font-family:"Albert Sans",sans-serif;font-weight:700;font-size:.95rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);padding-bottom:16px;border-bottom:1px solid var(--line);margin-bottom:6px}
+/* Category label as a chip that hugs its text, so it reads as a heading for
+   the group below rather than another service row. The old full-width
+   underline mimicked the row separators and blended in. */
+.menu__group{display:inline-block;font-family:"Albert Sans",sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-2);background:var(--sage-tint);padding:9px 16px;border-radius:2px;margin-bottom:18px}
 /* editorial cards for the service pillars / coming-soon list */
 .pillar{border-top:1px solid var(--line);padding-top:22px}
 .pillar h3{font-family:"Playfair Display",serif;font-weight:600;font-size:1.4rem;color:var(--ink);margin-bottom:10px}
