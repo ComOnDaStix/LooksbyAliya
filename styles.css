@@ -201,6 +201,10 @@ body.splash-lock{overflow:hidden}
 /* ---------- services menu ---------- */
 .services__cols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,5vw,80px)}
 .menu__group{font-family:"Albert Sans",sans-serif;font-weight:700;font-size:.95rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);padding-bottom:16px;border-bottom:1px solid var(--line);margin-bottom:6px}
+/* editorial cards for the service pillars / coming-soon list */
+.pillar{border-top:1px solid var(--line);padding-top:22px}
+.pillar h3{font-family:"Playfair Display",serif;font-weight:600;font-size:1.4rem;color:var(--ink);margin-bottom:10px}
+.pillar p{color:var(--body);font-size:1rem}
 .menu__list{list-style:none}
 .menu__list li{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:20px 0;border-bottom:1px solid var(--line-2)}
 .menu__list li>span{font-family:"Playfair Display",serif;font-size:clamp(1.15rem,2vw,1.5rem);font-weight:600;color:var(--ink)}
