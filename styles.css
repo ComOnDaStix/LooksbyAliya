@@ -244,11 +244,25 @@ body.splash-lock{overflow:hidden}
 .quote p{color:var(--ink-2);font-size:1.04rem;line-height:1.6}
 .quote footer{font-family:"Albert Sans",sans-serif;font-weight:600;font-size:14px;color:var(--ink);margin-top:auto}
 .quote footer span{display:block;font-weight:400;font-size:13px;color:var(--body-soft);margin-top:3px}
-/* reviews wall (masonry) with show-all toggle */
+/* reviews wall (masonry) */
 .reviews-wall{columns:3;column-gap:clamp(16px,1.8vw,24px)}
 .reviews-wall .quote{break-inside:avoid;margin-bottom:clamp(16px,1.8vw,24px)}
-.reviews-wall.is-collapsed .rev-extra{display:none}
 .reviews-toggle{text-align:center;margin-top:36px}
+/* rating badge (replaces the numeric average) */
+.rating-badge{display:inline-flex;align-items:center;gap:12px;margin-top:16px}
+.rating-badge__stars{color:var(--sage-deep);letter-spacing:4px;font-size:17px;white-space:nowrap}
+.rating-badge__count{font-family:"Albert Sans",sans-serif;font-weight:600;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
+/* all-reviews pop-up: scrolls inside itself, so closing returns you in place */
+.reviews-modal{position:fixed;inset:0;z-index:200;display:none}
+.reviews-modal.is-open{display:block}
+.reviews-modal__scrim{position:absolute;inset:0;background:rgba(11,11,11,.62)}
+.reviews-modal__panel{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;width:min(94vw,960px);max-height:88vh;background:#fff;box-shadow:0 40px 90px -24px rgba(0,0,0,.55)}
+.reviews-modal__head{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px clamp(18px,3vw,32px);border-bottom:1px solid var(--line);flex:none}
+.reviews-modal__head .rating-badge{margin:0}
+.reviews-modal__close{width:44px;height:44px;flex:none;border:0;background:none;font-size:28px;line-height:1;color:var(--ink);cursor:pointer}
+.reviews-modal__body{overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;padding:clamp(20px,3vw,34px)}
+.reviews-wall--modal{columns:2}
+body.modal-open{overflow:hidden}
 
 /* ---------- contact form ---------- */
 .contact-form{max-width:720px;margin:0 auto;display:grid;gap:20px}

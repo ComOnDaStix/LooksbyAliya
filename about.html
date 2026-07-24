@@ -59,9 +59,56 @@
         <header class="section__head section__head--center">
           <p class="eyebrow">Loved by Clients</p>
           <h2 class="section__title">Reviews</h2>
-          <p class="section__sub">Real words from real clients. 145 reviews, a 4.99 average rating.</p>
+          <p class="rating-badge"><span class="rating-badge__stars">★★★★★</span><span class="rating-badge__count">185 Reviews</span></p>
         </header>
-        <div class="reviews-wall is-collapsed" id="reviewsWall">
+        <div class="reviews-wall">
+          <blockquote class="quote">
+            <p class="quote__stars">★★★★★</p>
+            <p>"Amazing experience! Love how she gives her own opinion and explains everything so well. I loved the results my hair turned out exactly how I wanted!"</p>
+            <footer>Selina <span>Jul 2026</span></footer>
+          </blockquote>
+          <blockquote class="quote">
+            <p class="quote__stars">★★★★★</p>
+            <p>"Absolutely in love with my hair! She did an amazing job seeing my vision and bringing it to life. Made me feel very welcome and brought amazing energy:)"</p>
+            <footer>Jennifer Lopez <span>Jul 2026</span></footer>
+          </blockquote>
+          <blockquote class="quote">
+            <p class="quote__stars">★★★★★</p>
+            <p>"Aliya makes every appointment so personal! She always nails it with the layers and usually knows what I want before I do. I love Aliya!"</p>
+            <footer>Margaret Weiner <span>Jul 2026</span></footer>
+          </blockquote>
+          <blockquote class="quote">
+            <p class="quote__stars">★★★★★</p>
+            <p>"Aliya gave me the most beautiful haircut! She has the sweetest personality and listened to exactly what I wanted. I literally enjoyed my appointment so much and my hair looks/feels so good! I’m so glad I found someone I can trust with my hair and keep coming back to."</p>
+            <footer>Haley Deja <span>Jun 2026</span></footer>
+          </blockquote>
+          <blockquote class="quote">
+            <p class="quote__stars">★★★★★</p>
+            <p>"Best experience ever! I had an amazing time, she was so sweet and welcoming. My hair looks so good better than before. Definitely coming back!"</p>
+            <footer>Plae <span>Jun 2026</span></footer>
+          </blockquote>
+          <blockquote class="quote">
+            <p class="quote__stars">★★★★★</p>
+            <p>"She is very friendly and professional! Loved my haircut, highly recommend going to her!"</p>
+            <footer>Dani <span>Jun 2026</span></footer>
+          </blockquote>
+        </div>
+        <div class="reviews-toggle">
+          <button type="button" class="btn" id="reviewsOpen">See all reviews</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ REVIEWS MODAL ============ -->
+    <div class="reviews-modal" id="reviewsModal" aria-hidden="true">
+      <div class="reviews-modal__scrim" data-close></div>
+      <div class="reviews-modal__panel" role="dialog" aria-modal="true" aria-label="All client reviews">
+        <div class="reviews-modal__head">
+          <p class="rating-badge"><span class="rating-badge__stars">★★★★★</span><span class="rating-badge__count">185 Reviews</span></p>
+          <button type="button" class="reviews-modal__close" id="reviewsClose" aria-label="Close reviews">&times;</button>
+        </div>
+        <div class="reviews-modal__body">
+          <div class="reviews-wall reviews-wall--modal">
           <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Amazing experience! Love how she gives her own opinion and explains everything so well. I loved the results my hair turned out exactly how I wanted!"</p>
@@ -107,697 +154,694 @@
             <p>"Aliya is fantastic! Very accommodating, and did an amazing job on hair and makeup! So talented!"</p>
             <footer>Julie Fussner <span>Jun 2026</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"I had a great experience with Aliya today , got the best hair color and hair cut , she is very thorough and gives wonderful suggestions, absolutely love her! She was also so kind to offer me last minute appointment!"</p>
             <footer>Parneet <span>Jun 2026</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Absolutely loved my haircut! Aliya is such a sweet kind girl she was very informative during our consultation listen to exactly what I wanted, I have trust issues with some stylists and never am satisfied with the results but with Aliya she made me so happy and gave me the haircut I been wanting for so long (90s styled layers) she even styled it so beautiful just obsessed thank you Aliya for listening to me rant away :) definitely book with this girl, she’s the best!"</p>
             <footer>Victoria <span>Jun 2026</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"haircut was perfect and exactly what I asked for"</p>
             <footer>Sydney Heitman <span>Jun 2026</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"I’m a new client of Aliya’s, and my experience was absolutely amazing! 🤍 From the moment I sat in her chair, she took the time to truly understand exactly what I wanted. I especially appreciated how she educated me on what would work best for my hair and explained everything so thoroughly. Her knowledge, attention to detail, and passion for what she does really shine through. I felt so well taken care of throughout the entire appointment, and I’m beyond happy with my results. Thank you, Aliya, for making me feel so comfortable and cared for! I can’t wait to come back! :)"</p>
             <footer>Lena T <span>Jun 2026</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"This is my first time here and I absolutely loved the vibe Aliya gave us. She made sure to listen to what we wanted and gave me advise on what I should do ◡̈ I found my new stylist! 
 See you soon ◡̈"</p>
             <footer>Jacky <span>Jun 2026</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya is amazing! She won’t let you leave until you love your hair😊"</p>
             <footer>Anna <span>May 2026</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Amazing service, and makes you feel comfortable as possible in the chair!"</p>
             <footer>Hira <span>May 2026</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Booked with Aliya for a haircut, she took the time to listen to what I wanted and made sure to understand both the length and style I was going for. She checked in throughout the process to make sure everything looked right, which I really appreciated. The final result was exactly what I had in mind—clean, well-shaped, and easy to manage. You can tell she genuinely cares about getting it right for her clients. I’ll definitely be coming back!"</p>
             <footer>Eman Assad <span>May 2026</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"She truly listens to your needs, and wants.  And want to make sure you are 100% satisfied!!"</p>
             <footer>Jada <span>Apr 2026</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya was amazing! I’ve been in Milwaukee for almost 3 years and have been trying to find a stylist and luckily I found her. So detailed and knowledgeable I knew I was in good hands, will definitely be back!"</p>
             <footer>Kaycee <span>Apr 2026</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"The hair consult was amazing—we went through everything I liked and didn’t like using lots of inspo pics, which made me feel really heard. I especially appreciated how she shared her honest opinion on what colors would work best with my skin tone. My hair turned out exactly how I imagined, and I couldn’t be happier! You can tell she really knows her stuff and truly cares about giving you the best outcome."</p>
             <footer>Rachel Phelps <span>Apr 2026</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Trusted my hair with Aliya and she overachieved on my expectations! She listened to what I wanted, walked me through each step and I can&#x27;t be more happy with the results. Will definitely be returning!"</p>
             <footer>Sandra L. <span>Apr 2026</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya did an amazing job at delivering the perfect haircut/style! Will absolutely be returning to her!"</p>
             <footer>Dina <span>Apr 2026</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya was so patient with my daughter while she helped set up this surprise appointment for my birthday. I have very coarse textured hair, and she got it silky smooth in just an hour! That’s unheard of and very impressive! She’s also young, cute, and super easy to talk to. I left feeling very bonita!
 10/10, would definitely recommend and I’ll be returning"</p>
             <footer>Carmen Gely <span>Apr 2026</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"I had a last minute booking with Aliya and she was more than accommodating. Not only was she extremely thorough in my consultation but she did exactly what I asked for and explained every step to me throughout the process! She instilled trust with me right away and she was also very kind and warm and professional. I’ll come back to her chair again!"</p>
             <footer>Alysia <span>Mar 2026</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"consultation was so thorough and she really took time helping me articulate what i was looking for, then did an amazing cut like to a t what i wanted!! recommend!!!!!!! &lt;3"</p>
             <footer>emma s <span>Oct 2025</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya has so much talent! She transformed by blonde balayage into a brunette dream! Great service, cut, style and color.  Would definitely recommend her to anyone looking to go darker!"</p>
             <footer>Laura <span>Oct 2025</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"I had an amazing experience with Aliya, she was very detailed and gave me the results I was looking for! I absolutely love my hair!"</p>
             <footer>Ana <span>Sep 2025</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"She is very nice and wants to make your hair the healthiest it can be!"</p>
             <footer>Brooklyn <span>Sep 2025</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya was amazing! She listened to what I wanted and made sure to check in with me to see if I was comfortable with everything she was doing."</p>
             <footer>Jade <span>Sep 2025</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Best haircut I’ve ever had! Aliya is great. I will definitely be coming back in the future!"</p>
             <footer>Reanna <span>Sep 2025</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya is my go to hairstylist- she knows how to give the perfect 90s supermodel blowout &amp; gives me what I ask for instead of just doing what she wants! The appointment always feels more like hanging out with a friend than a chore. Highly recommend if you&#x27;re looking for that glam."</p>
             <footer>Elizabeth <span>Sep 2025</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya is fabulous. She makes your experience enjoyable from the start and leaves you with beautiful hair!"</p>
             <footer>Blair <span>Aug 2025</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya gave me the exact cut that I envisioned. She was quick, but thorough, and styled my hair perfectly. 10/10!"</p>
             <footer>Laura <span>Aug 2025</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya has been doing my hair for years and I always leave the salon feeling happy and refreshed! From a cut to color, she will accomplish your hair goals while making sure to protect your hair and keep it healthy. 5 stars!"</p>
             <footer>Frankie <span>Aug 2025</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"I was sooo nervous to go from blonde to brunette... Aliya brought the life and the glow back into my hair!! She is a wizard at what she does. 10/10 recommend!"</p>
             <footer>Mary Murray <span>Aug 2025</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Thank you so much Aliya I love how you left my hair and the advice on how to style my hair . This was my first time and first impression of you and  I will definitely book again thank you !!!!"</p>
             <footer>Brittany <span>Jul 2025</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"This was my first time doing a cut and color with Aliya and she did exactly what I wanted. Highly recommend!! She did a wonderful job."</p>
             <footer>Gemila <span>Jul 2025</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"I have never had a stylist that actually gave me the exact hair cut I would ask for until I started getting my hair cut by Aliya! Truly the best stylist I know :)"</p>
             <footer>Perla <span>Jul 2025</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya is awesome ✨ she got my trust when I saw the final result. She took good care of my hair and had an amazing result for the look I was looking for it."</p>
             <footer>Yessica <span>Jul 2025</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Huge shoutout to the talented stylist, Aliya! for bringing my blonde moment back to life! She brightened up my hair perfectly! It feels fresh, vibrant, and exactly what I needed. I’m so in love with the results. If you&#x27;re thinking of going blonde, Aliya is the one to trust! 💛✨"</p>
             <footer>Mia <span>Jul 2025</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Absolutely phenomenal stylist. Not only is she fun to gab with, but she takes her job seriously and has fun doing it. So fast and hassle free. 10/10 would recommend and will be going back!"</p>
             <footer>Rachel Marks <span>Jul 2025</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya was amazing! Glad I went to her instead of the usual barber shop, Length was amazing and got what I asked for!! Which is very hard to get nowadays !! Thank you so much!! She’s very friendly and made sure I felt comfortable"</p>
             <footer>Miguel <span>Jun 2025</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya was very warm and welcoming. She listened to my requests and executed, she did all her work in a very timely manner. I walked out confident!"</p>
             <footer>Emma <span>Jun 2025</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"First time getting my hair done got the half foiling with her and a hair cut. I was really nervous but I absolutely loved it. She was a vibe for sure and even informed me a lot about the maintenance of my hair and which products I should use. 10/10 experience, she’s definitely going to be my go to stylist from now on!!"</p>
             <footer>Ria <span>Jun 2025</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"I went to Aliya this past weekend for the first time and I couldn&#x27;t be happier! She was incredibly sweet and helpful, making the whole experience a joy. She listened to exactly what I wanted and offered great suggestions. The end result was fantastic I’m so excited to see how many hair journey will go."</p>
             <footer>Miranda Castillo <span>Jun 2025</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya is so sweet and truly an expert at what she does! Very thorough with her consultations!"</p>
             <footer>Angela Tibbals <span>Jun 2025</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"So glad I found Aliya! I&#x27;ve been to several stylists in the past year and half from Tosa to Mequon and given stylists several chances to create the look I desired, ALL of them fell short. I found Aliya on her social media account and couldn&#x27;t be happier. She wasn&#x27;t afraid to cut my hair with the layers and dimension I wanted. She is so incredibly talented, and makes her work look effortless. Unlike many stylists, I can tell she can achieve so many styles and methods and is naturally great at what she does. I felt not only felt welcome, I left with the confidence I finally found my perfect match in a stylists. Thank you!"</p>
             <footer>Kylie <span>Jun 2025</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliah’s work is beautiful and she is so friendly and nice to talk to. I highly recommend her. ✨✨"</p>
             <footer>Aya <span>May 2025</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya did such an amazing job on my hair. I came in as a new client and I felt so comfortable with her. She really listened to when I explained what I wanted. She took her time with my cut and style. Beyondddd obsessed"</p>
             <footer>Kyla <span>May 2025</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Her work is beautiful and she is so friendly. I highly recommend her. ✨"</p>
             <footer>Anisa <span>May 2025</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Always does a fabulous job!"</p>
             <footer>Kayla Z <span>May 2025</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Great service, loved the highlights she did on me. Always in a talkative and friendly mood!"</p>
             <footer>Nevaeh P. <span>May 2025</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya is amazing, I love my haircut appointments with her!"</p>
             <footer>Kathryn <span>May 2025</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"She did an amazing job, everything I wanted. 10/10."</p>
             <footer>Miranda <span>Apr 2025</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"I had a fantastic experience getting my hair cut, colored, and styled by Aliya. What stood out was how great  she is with coloring- absolutely nailed the shade I was going for. She really takes the time to listen and to make sure you are getting exactly what you want, which I really appreciated. Her attention to detail shows in the final result. Highly recommend if you are looking for someone who truly cares about their skill and your vision!"</p>
             <footer>Cindy Ball <span>Apr 2025</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"amazing!!!!"</p>
             <footer>ashlyn krogulski <span>Apr 2025</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Only person I have trusted with my hair for over 3 years and it always comes out perfect no matter what my vision is!"</p>
             <footer>Taylor  Plantz <span>Apr 2025</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"My experience with Aliya was all around, absolutely incredible! She was very thorough throughout the consultation and took extra steps to ensure we were on the same page. I really appreciated how she took the time to educate me on the process and how to take care of my hair moving forward. She is also just so sweet! I am obsessed with the final result and I will be returning:))"</p>
             <footer>Angela Tibbals <span>Apr 2025</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"I absolutely love getting my hair done by Aliya! She is kind, great to talk to, and I have never left the salon unhappy with my hair! I recommend her to everyone."</p>
             <footer>Melanie <span>Apr 2025</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya is a really down to earth person, great service. And matched my inspo pic for highlights exactly to a T."</p>
             <footer>Anthony Olea <span>Mar 2025</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya was so amazing to work with. She really understood the vision of the haircut you wanted and talked through it before actually doing anything. She was great to talk to through the whole process. So happy with the end result. :)"</p>
             <footer>Sinead <span>Mar 2025</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya does such an incredible job, she listens to your wants and each time she does a great job with hair!   She is fabulous with color and knows her stuff!   Sweetest girl, easy to talk with, makes anyone feel comfortable in her chair:)"</p>
             <footer>Jody <span>Mar 2025</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Such a wonderful human! Even better stylist. Love my 90s cut and layers each time I  get a refresh. Perfect little vibe."</p>
             <footer>Andjela Stojanovic <span>Mar 2025</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"My haircut and style with Aliya was great! I loved that she walked through every step and explained how I could style my hair on my own."</p>
             <footer>Zoe <span>Mar 2025</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya is so kind and really wants to help bring her clients’ visions to life. She did a perfect job with my haircut!"</p>
             <footer>Hannah <span>Jan 2025</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya did such an amazing job! She is very welcoming and she walked me through each step of the process of what I wanted my hair to be and how we can get my hair to my future goals. Amazing service!!"</p>
             <footer>Katie <span>Jan 2025</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya is so sweet and made sure i’m comfortable, she also makes sure i love everything about my hair. i would definitely recommend her!"</p>
             <footer>natylie <span>Jan 2025</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"I found Aliya on tik tok and came from out of state to see her. She is so friendly and welcoming. Aliya did a thorough consultation where I showed pictures and she showed pictures and we agreed on what I was looking for, and she broke down the cost and maintenance. I love my balayage and root coverage. I found my new colorist :)"</p>
             <footer>Meagan <span>Jan 2025</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya is amazing!!! I’ve been trying to find someone for the longest time that can get my hair right and she did just that 💅 highly recommend getting your hair done by Aliya 😊"</p>
             <footer>Xitlalli Hernandez <span>Jan 2025</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★</p>
             <p>"I felt instantly comfortable and able to express what my desire for my haircut was. It was executed to perfection and I couldn’t have asked for a better hairstylist than Aliya! Thank you💕"</p>
             <footer>Kathy Tejeda <span>Dec 2024</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"This was my first professional color and it turned out amazing — exactly what I wanted! Aliya made it such a great experience!!"</p>
             <footer>Mollie <span>Dec 2024</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"love aliya! she does so amazing everytime !"</p>
             <footer>Taylor <span>Dec 2024</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya was amazing! I had a great experience and appreciated the hair education/recommendations she gave!"</p>
             <footer>Amy <span>Nov 2024</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"As a first time client, Aliya made an amazing impression on me! Her energy is so welcoming and it’s very easy to talk with her. She gave me the cut that I wanted and she works fast (which is great in my opinion!!). I’ll definitely be going back! :)"</p>
             <footer>Morgan H. <span>Nov 2024</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya does a great job with my hair. She is friendly and outgoing. It’s a pleasure getting my hair done by Aliya."</p>
             <footer>Rebecca Schultz <span>Nov 2024</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya understood my vision perfectly and knew exactly what I was looking for. With her five years of experience, her talent is truly unmatched compared to what I’ve experienced elsewhere. I received so many compliments on my hair (the cut and PERFECT blowout)! Aliya’s eye for perfection made for an amazing experience."</p>
             <footer>Lali <span>Nov 2024</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Absolute 10/10 experience — can’t wait to come back!!"</p>
             <footer>Mollie <span>Nov 2024</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya is the only person i’ve let touch my hair in 6+ years! I always leave her feeling so happy and fresh with my hair . She is truly a delight to be around. Thank you &lt;3"</p>
             <footer>Caitlynn Martini <span>Oct 2024</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"I LOVE Aliya she cut my hair perfectly and she’s so sweet and fun to chat with. Will be coming back and 100% recommend for layered cuts and curtain bangs!"</p>
             <footer>Angelie <span>Oct 2024</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Came to Aliya for the first time yesterday and I will say, I will be back! I&#x27;ve had a hard time trusting stylists with my hair due to poor experiences in the past. Aliya was extremely thorough, knowledgable, and walked me through every step. Getting your hair done by Aliya is more than just a hair appointment, it&#x27;s an experience! I love how my hair turned out! Thanks Aliya &lt;3"</p>
             <footer>Nikita Mahay <span>Oct 2024</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★</p>
             <p>"It was great meeting Aliya. She did a nice job and I appreciate the time she spent making my hair look and feel great."</p>
             <footer>Rebecca Schultz <span>Oct 2024</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya was excellent. She listened to what I wanted and made suggestions and gave options on things she thought would look good with my haircut/gloss. I highly recommend her!! She was great!!"</p>
             <footer>Jackie <span>Oct 2024</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"I am SO glad that I stumbled upon Aliya’s business Instagram account (@looksbyaliya) and decided to book my cut and color with her after seeing how fantastic of a job she does with her other clients! I came in with some reference photos for a layered cut and a dark, chocolate brown color, and the result she gave me far exceeded my expectations! I couldn’t be happier with my new hair and I will absolutely be returning to Aliya in the future!"</p>
             <footer>Emma <span>Oct 2024</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya effortlessly creates my dream hair every appointment! Definitely recommend for hair cuts and coloring."</p>
             <footer>Grace <span>Sep 2024</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"I had the best experience, I love this girl sm!"</p>
             <footer>Estrella <span>Sep 2024</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"The most voluminous haircut I have Gotten. Excellent work!!!"</p>
             <footer>Andjela stojanovic <span>Sep 2024</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya is the best!!! There is no one else I trust with my hair! She gets it perfect every time. I drive from Chicago to Milwaukee just to get my hair done!"</p>
             <footer>Jaclyn <span>Sep 2024</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Words can’t even describe how well Aliya is with not only hair but understanding what a client wants. Kind, informative, and skilled beyond measure!"</p>
             <footer>Elizabeth <span>Sep 2024</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Honestly, I just had the best haircut experience! Aliya is super friendly and made me feel totally comfortable. She listened to what I wanted and gave me some great advice on how to take care of my hair. I&#x27;ve been to a lot of stylists, but she&#x27;s definitely one of the best. If you&#x27;re looking for a fun and professional hairstylist who really knows her stuff, I highly recommend giving her a try 🤎"</p>
             <footer>Ruth <span>Sep 2024</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya did such an amazing job!  She was super friendly and also gave me lots of helpful tips on products specific to my hair type.  Will definitely be coming back again!!"</p>
             <footer>Mollie <span>Aug 2024</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya is the best! She has taken such good care of my hair over the past 4 years and I trust her with my life!"</p>
             <footer>Frankie <span>Aug 2024</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya does a fantastic job every time. No matter the service I come in for she somehow makes it even better than I imagined! Aliya is very knowledgeable and has an incredible eye for detail and a natural talent for cutting, coloring, and styling hair. The salon is also a welcoming space, making the whole experience perfect from start to finish. Highly recommend Aliya to anyone looking for their hair person!"</p>
             <footer>Gina <span>Aug 2024</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Love love love and highly recommend!"</p>
             <footer>Taylor <span>Aug 2024</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya takes great care in aligning my hair goals with the cut and style that she delivers. She is always on point and does an excellent job!"</p>
             <footer>Kayla <span>Jul 2024</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya is the best.  She&#x27;s very talented and a sweetie."</p>
             <footer>Nada Djordjevic <span>Jun 2024</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"I have been going to Aliya for over 3 years and won’t go to anyone else despite moving out of state for work. I often let her choose my cut and am never disappointed. She is detail oriented and does a fantastic job every time. I highly recommend if you are looking for a cut, color, or stylist."</p>
             <footer>Sabrina C <span>Jun 2024</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Amazing haircut, style and company!"</p>
             <footer>Bari <span>Jun 2024</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"She did a fabulous job! Always very personable and efficient!"</p>
             <footer>Kayla <span>Jun 2024</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya is amazing! Best haircut I&#x27;ve EVER had,  I highly recommend her! :)"</p>
             <footer>Natalija <span>Jun 2024</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya was amazing! I went in with a vague idea of what I wanted and she went with it and was so creative! She did an awesome job and was a joy to talk with. She’s also very knowledgeable about hair and makeup. Highly recommend!"</p>
             <footer>Brianna Creedon <span>May 2024</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"You are always so fun to catch up with! Not only are you a great person you are a great artist. You know how to style, cut, color and do anything hair! you are amazing"</p>
             <footer>Sophia <span>May 2024</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya is so knowledgable, kind, and professional. Simply, the best!"</p>
             <footer>Sarah White Shaw <span>May 2024</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Of course Aliya did an amazing job with my hair! After 3 years of phenomenal results what else could I expect?? She’s such a good listener and conversationalist, I love just spending time talking and chatting during the appointment."</p>
             <footer>Novalee <span>Feb 2024</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya was great! Super patient and kind. I loved my cut and will definitely be back!"</p>
             <footer>Hope <span>Feb 2024</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"ALIYA ATE DOWN!!! Literally looks so good 10/10 would recommend and she’s so nice too! Such a talented person and you can tell she enjoys her work 🫂"</p>
             <footer>Soraya Graciano <span>Feb 2024</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"I lovedddd Aliyas vibe and professionalism! She rlly hears her clients considerations and made me so comfortable in her chair. She took her time and I absolutely love my hair !"</p>
             <footer>Lily Zablocki <span>Feb 2024</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Looove my haircut and amazing  service thank you so much! Definitely recommending Aliya to everyone I know."</p>
             <footer>Lala Jaber <span>Jan 2024</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"super knowledgeable &amp; does a GREAT job!!"</p>
             <footer>Dajana Radjenovic <span>Dec 2023</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya gave me an awesome hair cut! Just what I was looking for!"</p>
             <footer>maria <span>Nov 2023</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"If you’re looking to switch up your cut I’d highly recommend Aliya. I showed her a picture of a new style I was looking for and she customized it to my hair and head shape perfectly!"</p>
             <footer>Aaron <span>Nov 2023</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"My experiences with Aliya have never been a disappointment! I’ve always been happy with my trims and haircuts with her, she nails the hair color I desire 100%, and if we both don’t get the results we want, she is so accommodating to book me in for another appointment quickly! She even did my updo for my wedding day and it turned out so beautiful! I highly recommend Aliya, she is definitely my go to hair stylist now, so happy I met her! 😊"</p>
             <footer>Paskah Ramirez <span>Nov 2023</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Best hair stylist ever! Only person I’ve trusted doing my hair for years."</p>
             <footer>Sammy Blower <span>Nov 2023</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya is SUCH a great stylist! She’s always super thorough and makes sure you leave with exactly what you want but better."</p>
             <footer>Parus <span>Oct 2023</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya absolutely slayed my hair! It was my first time getting my hair done by her and I can’t wait to come back. Such an enjoyable experience!"</p>
             <footer>Laura K <span>Oct 2023</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya respected my requests about length and then gave me AMAZING curtain bangs. Obsessed!!!"</p>
             <footer>Anna <span>Oct 2023</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya has lovely energy and I always feel so beautiful after every appointment!"</p>
             <footer>McKenna <span>Oct 2023</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"AMAZING hair stylist! She is so sweet, caring, and makes sure you get the hair you want! She is very precise with her cuts and it shows with the final results. I got my whole family to go to her!  10/10 recommended :)"</p>
             <footer>Mark Davis <span>Sep 2023</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Sweetest soul and always makes me feel refreshed and happy with my hair 🩷"</p>
             <footer>Jadynn <span>Sep 2023</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya knocks it out of the park every time I see her. She’s cut and colored my hair on numerous occasions, and each time I’m left more than pleased with the results. She has a natural ability to cut my hair to flatter the shape of my face and leaves my hair looking so pretty each time. I highly recommend Aliya for cuts, color, and blowouts. She’s amazing!"</p>
             <footer>Irene <span>Sep 2023</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"She slays"</p>
             <footer>Patrick Leahy <span>Sep 2023</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"My color is perfect! 
 We have been working on repairing a poor cut from a previous stylist and we’re almost there. Love Aliya!"</p>
             <footer>Christine <span>Sep 2023</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya is the best! I always love how she does my color:)"</p>
             <footer>Gabriella <span>Sep 2023</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Very polite, friendly, talented hairstylist. Love how she transforms my hair into looking beautiful and healthy. She also suggests me hair products to maintain my hair healthier. She never disappoints!"</p>
             <footer>Abby <span>Sep 2023</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya is great! She has been cutting my hair for years. She is so fun to talk to and does an amazing job with my hair."</p>
             <footer>Jessi <span>Aug 2023</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"the best hairstylist ever!!! always look forward to being in her chair❤️"</p>
             <footer>Taylor Decker <span>Aug 2023</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya always delivers when it comes to my hair! Absolutely loves how it turns out every time and she is such a fun person to talk to during the appointment! Truly love having her as the person I trust with my hair ❤️"</p>
             <footer>Taylor <span>Aug 2023</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Gives good opinions on hair and is always honest. I love my hair!"</p>
             <footer>Ruby <span>Jul 2023</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya does great with men’s hair and eyebrow waxing. She really knows what she’s doing and couldn’t ask for better service."</p>
             <footer>Charles <span>Jul 2023</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya is an expert at achieving the most flattering look for her clients. She walked me through the process of how to achieve the perfect 90s layered look of my dreams!! Best haircut and style ever. &lt;3"</p>
             <footer>Kaitlyn Manske <span>Jun 2023</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya always makes me feel so welcomed in her chair and always slays my hair!"</p>
             <footer>Izzy <span>May 2023</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"I had a big task for Aliya. I asked her to help me get from my dark brown (almost black hair) to my natural silver grey color. She did an amazing job. She talked me through the process and explained what I needed to do to take care of my hair between appointments. I love my more natural color. Looks great with my skin tone. I can’t wait to for my next visit in a month."</p>
             <footer>Chandra <span>May 2023</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya is ALWAYS amazing! She really takes the time to see the vision of your goal and get you there the best way she can! I adore her and her work!"</p>
             <footer>Krystal <span>Apr 2023</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"This was second visit and I LOVED it! I have textured/kinky curly hair, and while I flatiron it prior to getting my hair trimmed, Aliya has offered to shampoo my hair for me on both visits. Definitely doesn’t usually happen to me in these types of salons, lol. She’s professional, extremely talented, and actually does exactly what I want her to do with my hair and make up. I felt like top model walking out of there both times and looking forward to my next appointment☺️"</p>
             <footer>TG <span>Apr 2023</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"We just love how Aliya treats our son while getting him ready. She is the best!"</p>
             <footer>Vilmarie/Luca <span>Apr 2023</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"I could not be happier with my experience with Aliya!!! She is quick, professional, funny, and so so talented. I am in LOVE with my new hair. I’m telling all of my friends to go to her from now on!!"</p>
             <footer>sarah critchfield <span>Apr 2023</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya has been doing my hair for the past few months. Working with her has easily been the best hair experience I’ve had. Her consultations are thorough - she’s open to ideas and honest about getting your hair to your goal. She does an amazing job and I always look forward to being in the chair. My hair has never been better.
 And she’s just a good time 💙"</p>
             <footer>Hailey <span>Apr 2023</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"I can’t recommend Aliya enough. From friends to family I let them know who to go to in Milwaukee. Every time I’ve gone in she knows exactly what look trying to achieve."</p>
             <footer>Axel <span>Apr 2023</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya worked her professional magic to transform me from a post winter &quot;blah&quot; to Jennifer Aniston-ish chic just in time for my trip to NYC. Love love and thank you!!"</p>
             <footer>Jana Gerken <span>Apr 2023</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya has been my go-to girl for over a year now! I always look forward to our appointments not only to leave with an amazing cut &amp; style, but to also experience her kind &amp; friendly demeanor. She truly cares for her clients, and makes an honest effort to get to know them &amp; catch up on how things have been since our last appointment which is something I really appreciate. She also takes the extra step to remind me to schedule appointments if it’s been a while since I’m quite the forgetful person, which is just another point proven to show how much she cares for her clients (&amp; their hair health)! 10/10 service in all aspects (bonus points for how lovely your hair smells &amp; looks for the rest of the day). I highly highly recommend booking with Aliya, and now with her online booking it couldn’t be easier. Can’t wait for my next visit!"</p>
             <footer>Amy <span>Apr 2023</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya was able to help me achieve my dream hair by adding 22 inch volume west extensions. She was able to match the color exactly and blend them out seamlessly. She really took the time to focus on the health and integrity of my natural hair and really went into depth on how to care for my new extensions. I’m so happy and excited to show off my new hair!!!"</p>
             <footer>McKena <span>Apr 2023</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya was so sweet and welcoming! I was super nervous to try a new stylist but she explained EVERYTHING she was doing &amp; made my hair so pretty! She brings such good energy &amp; my hair looks so good 🥰"</p>
             <footer>Hailey Grisham-Kerch <span>Apr 2023</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"Aliya did my volume weft 22inch, dark brown hair extensions and they are so gorgeous. Aliya is so patient and genuinely cares for the health of your hair. She’s the sweetest, most talented girl! 5/5 stars :)"</p>
             <footer>Kaila <span>Apr 2023</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"I had an amazing experience getting my hair cut by Aliya. I showed her a picture of a cut/style I wanted and she gave me a full consultation and discussed what she planned to do to make my hair look like the photo, as well as small changes to tailor the look to my face shape and hair type. She even taught me how to style my hair like the photo. I look forward to going back!"</p>
             <footer>Kayla <span>Apr 2023</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"I’ve been getting my hair colored and cut by Aliya for about a year now and I haven’t gone to anybody else since! She does a great job and has the best energy/personality!"</p>
             <footer>Selena <span>Apr 2023</span></footer>
           </blockquote>
-          <blockquote class="quote rev-extra">
+          <blockquote class="quote">
             <p class="quote__stars">★★★★★</p>
             <p>"I feel like a new and improved woman after my cut and color with Aliya! She was so helpful and kind while bringing my hair vision to life. I booked my next appointment with her immediately."</p>
             <footer>Jill <span>Mar 2023</span></footer>
           </blockquote>
-        </div>
-        <div class="reviews-toggle">
-          <button type="button" class="btn" id="reviewsToggle" aria-expanded="false"
-            data-more="Show all 145 reviews" data-less="Show fewer reviews">Show all 145 reviews</button>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
 
     <!-- ============ CONTACT ============ -->
     <section class="section contact" id="contact">

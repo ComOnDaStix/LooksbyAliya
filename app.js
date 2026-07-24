@@ -105,15 +105,39 @@ document.addEventListener("DOMContentLoaded", function () {
     setSplit(range.value);
   }
 
-  /* ---------- Reviews: show all / show less ---------- */
-  const revToggle = document.getElementById("reviewsToggle");
-  const revWall = document.getElementById("reviewsWall");
-  if (revToggle && revWall) {
-    revToggle.addEventListener("click", () => {
-      const collapsed = revWall.classList.toggle("is-collapsed");
-      revToggle.setAttribute("aria-expanded", String(!collapsed));
-      revToggle.textContent = collapsed ? revToggle.dataset.more : revToggle.dataset.less;
-      if (collapsed) revWall.scrollIntoView({ block: "start" });
+  /* ---------- Reviews: open all in a pop-up ----------
+     The modal scrolls inside itself, so closing it returns the visitor to
+     the exact spot on the page instead of stranding them 145 cards down. */
+  const revOpen = document.getElementById("reviewsOpen");
+  const revModal = document.getElementById("reviewsModal");
+  const revClose = document.getElementById("reviewsClose");
+  if (revOpen && revModal) {
+    const open = () => {
+      revModal.classList.add("is-open");
+      revModal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("modal-open");
+      if (revClose) revClose.focus();
+    };
+    const close = () => {
+      revModal.classList.remove("is-open");
+      revModal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("modal-open");
+      revOpen.focus();
+    };
+    /* Fire on touchstart, not just click: iOS can swallow the click that
+       ends a scroll (same fix as the burger menu), which left the button
+       feeling dead on a phone. detail === 0 keeps keyboard activation working. */
+    const onActivate = (el, handler) => {
+      if (!el) return;
+      let lastTouch = -Infinity;
+      el.addEventListener("touchstart", (e) => { lastTouch = e.timeStamp; e.preventDefault(); handler(e); }, { passive: false });
+      el.addEventListener("click", (e) => { if (e.detail !== 0 && e.timeStamp - lastTouch < 700) return; handler(e); });
+    };
+    onActivate(revOpen, open);
+    onActivate(revClose, close);
+    revModal.querySelectorAll("[data-close]").forEach((el) => onActivate(el, close));
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && revModal.classList.contains("is-open")) close();
     });
   }
 
