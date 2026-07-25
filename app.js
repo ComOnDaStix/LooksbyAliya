@@ -4,27 +4,58 @@
 document.addEventListener("DOMContentLoaded", function () {
 
   /* ---------- Hero film (mobile) ----------
-     The markup already autoplays. iOS still refuses in Low Power Mode, and
-     some browsers reject the promise silently, so nudge it once and retry on
-     the first touch. If it never plays, the poster and the CSS background
-     image still show the still, so there is nothing to clean up on failure. */
+     Autoplays via markup, but iOS pauses muted video on lots of occasions
+     (app/tab switch, scrolling it off-screen, Low Power Mode, the odd stall
+     at the loop point) and leaves it frozen on a frame. So instead of a
+     one-shot play(), keep nudging it back whenever it should be running. If
+     it truly can't play, the poster/background still shows the still. */
   const heroVideo = document.querySelector(".hero__video");
   if (heroVideo) {
     const wantsVideo =
       window.matchMedia("(max-width: 900px)").matches &&
       !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (wantsVideo && heroVideo.dataset.src) {
+      const v = heroVideo;
       /* poster is deferred too: as a plain attribute it is fetched while the
          page parses, before this runs, so desktop paid for it despite never
          showing the video. */
-      if (heroVideo.dataset.poster) heroVideo.poster = heroVideo.dataset.poster;
-      heroVideo.src = heroVideo.dataset.src;
-      const tryPlay = () => {
-        const p = heroVideo.play();
-        if (p && p.catch) p.catch(() => {});
+      if (v.dataset.poster) v.poster = v.dataset.poster;
+      v.src = v.dataset.src;
+
+      const inView = () => {
+        const r = v.getBoundingClientRect();
+        return r.bottom > 0 && r.top < (window.innerHeight || 0);
       };
-      tryPlay();
-      document.addEventListener("touchstart", tryPlay, { once: true, passive: true });
+      const ensurePlaying = () => {
+        if (document.hidden || !inView()) return;
+        if (v.ended) { try { v.currentTime = 0; } catch (e) {} }
+        if (v.paused) { const p = v.play(); if (p && p.catch) p.catch(() => {}); }
+      };
+
+      ensurePlaying();
+      // resume on the events that commonly pause/stall it on iOS
+      v.addEventListener("pause", () => setTimeout(ensurePlaying, 60));
+      v.addEventListener("ended", ensurePlaying); // manual-loop backup
+      ["stalled", "suspend", "waiting"].forEach((ev) =>
+        v.addEventListener(ev, () => setTimeout(ensurePlaying, 120)));
+      document.addEventListener("visibilitychange", ensurePlaying);
+      document.addEventListener("touchstart", ensurePlaying, { passive: true });
+      window.addEventListener("pageshow", ensurePlaying);
+      window.addEventListener("focus", ensurePlaying);
+      // resume when it scrolls back into view
+      if ("IntersectionObserver" in window) {
+        new IntersectionObserver((es) => es.forEach((e) => e.isIntersecting && ensurePlaying()),
+          { threshold: 0.1 }).observe(v);
+      }
+      // backstop: if currentTime stops advancing while on-screen, kick it
+      let prev = 0, stuck = 0;
+      setInterval(() => {
+        if (document.hidden || !inView()) { stuck = 0; return; }
+        if (v.paused || Math.abs(v.currentTime - prev) < 0.01) {
+          if (++stuck >= 2) { ensurePlaying(); stuck = 0; }
+        } else { stuck = 0; }
+        prev = v.currentTime;
+      }, 1200);
     } else {
       heroVideo.remove();
     }
