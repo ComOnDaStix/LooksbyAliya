@@ -347,6 +347,9 @@ body.modal-open{overflow:hidden}
 @media(max-width:560px){
   .grid--4{grid-template-columns:1fr}
   .reviews-wall{columns:1}
+  /* phones: show 4 featured reviews before "See all"; the pop-up (--modal)
+     still lists every review. */
+  .reviews-wall:not(.reviews-wall--modal) .quote:nth-child(n+5){display:none}
   .shots{columns:1}
   .looks{grid-template-columns:1fr}
   /* Once the footer stacks to one column, centre every block. The brand
