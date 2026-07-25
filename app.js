@@ -26,36 +26,49 @@ document.addEventListener("DOMContentLoaded", function () {
         const r = v.getBoundingClientRect();
         return r.bottom > 0 && r.top < (window.innerHeight || 0);
       };
-      const ensurePlaying = () => {
+      /* force=false: only act if it's actually paused (cheap, for events).
+         force=true: recover a decode STALL too - the frame is frozen while
+         the element still reports playing (paused===false), which the plain
+         paused check would miss. Jog the decoder with a tiny re-seek, then
+         play. hard=true is the last resort: reload the pipeline. */
+      const kick = (force, hard) => {
         if (document.hidden || !inView()) return;
-        if (v.ended) { try { v.currentTime = 0; } catch (e) {} }
-        if (v.paused) { const p = v.play(); if (p && p.catch) p.catch(() => {}); }
+        try {
+          if (hard) { v.load(); v.play().catch(() => {}); return; }
+          if (v.ended) v.currentTime = 0;
+          if (v.paused) { v.play().catch(() => {}); return; }
+          if (force) { v.currentTime = Math.max(0, v.currentTime - 0.04); v.play().catch(() => {}); }
+        } catch (e) {}
       };
 
-      ensurePlaying();
+      kick(false);
       // resume on the events that commonly pause/stall it on iOS
-      v.addEventListener("pause", () => setTimeout(ensurePlaying, 60));
-      v.addEventListener("ended", ensurePlaying); // manual-loop backup
+      v.addEventListener("pause", () => setTimeout(() => kick(false), 60));
+      v.addEventListener("ended", () => kick(false)); // manual-loop backup
       ["stalled", "suspend", "waiting"].forEach((ev) =>
-        v.addEventListener(ev, () => setTimeout(ensurePlaying, 120)));
-      document.addEventListener("visibilitychange", ensurePlaying);
-      document.addEventListener("touchstart", ensurePlaying, { passive: true });
-      window.addEventListener("pageshow", ensurePlaying);
-      window.addEventListener("focus", ensurePlaying);
+        v.addEventListener(ev, () => setTimeout(() => kick(true), 120)));
+      document.addEventListener("visibilitychange", () => kick(false));
+      document.addEventListener("touchstart", () => kick(false), { passive: true });
+      window.addEventListener("pageshow", () => kick(false));
+      window.addEventListener("focus", () => kick(false));
       // resume when it scrolls back into view
       if ("IntersectionObserver" in window) {
-        new IntersectionObserver((es) => es.forEach((e) => e.isIntersecting && ensurePlaying()),
+        new IntersectionObserver((es) => es.forEach((e) => e.isIntersecting && kick(false)),
           { threshold: 0.1 }).observe(v);
       }
-      // backstop: if currentTime stops advancing while on-screen, kick it
-      let prev = 0, stuck = 0;
+      /* backstop watchdog: if currentTime stops advancing while on-screen
+         (paused OR a silent stall), escalate - nudge at ~1.6s, hard reload
+         at ~3.2s. Catches anything the events above miss. */
+      let prev = 0, stuck = 0, reloaded = false;
       setInterval(() => {
         if (document.hidden || !inView()) { stuck = 0; return; }
         if (v.paused || Math.abs(v.currentTime - prev) < 0.01) {
-          if (++stuck >= 2) { ensurePlaying(); stuck = 0; }
-        } else { stuck = 0; }
+          stuck++;
+          if (stuck === 2) kick(true);
+          else if (stuck >= 4 && !reloaded) { reloaded = true; kick(false, true); }
+        } else { stuck = 0; reloaded = false; }
         prev = v.currentTime;
-      }, 1200);
+      }, 800);
     } else {
       heroVideo.remove();
     }
