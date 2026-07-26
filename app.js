@@ -4,12 +4,12 @@
 document.addEventListener("DOMContentLoaded", function () {
 
   /* ---------- Hero film (mobile) ----------
-     The <video autoplay muted loop playsinline> is written declaratively on
-     phones, so it plays and loops on its own like any normal site. Keep the JS
-     minimal: nudge play() for browsers that reject the first attempt, and
-     resume when the tab/app regains focus (iOS pauses it there). No watchdog
-     or seeking - those can hitch playback on iOS. */
-  const v = document.querySelector(".hero__video");
+     The mobile hero is now an animated WEBP <img>, which plays and loops on its
+     own with zero JS (and works in iOS Low Power Mode, unlike <video>). This
+     block only does anything if the hero is ever a real <video> again - the
+     `video.` selector makes sure an <img> is never handed a .play() it lacks,
+     which would throw and kill the rest of this script. */
+  const v = document.querySelector("video.hero__video");
   if (v) {
     v.muted = true; v.playsInline = true;
     const play = () => { const p = v.play(); if (p && p.catch) p.catch(() => {}); };

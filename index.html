@@ -58,14 +58,16 @@
     <!-- ============ HERO ============ -->
     <!-- Swap the .hero background-image in styles.css for Aliya's hero editorial shot -->
     <section class="hero">
-      <!-- Mobile hero film. Written during parse (document.write) ONLY on
-           phones, so the parser sees a normal declarative <video> - which is
-           the reliable way to get iOS to autoplay a muted inline video on
-           first load. On desktop / reduced-motion the element is never created,
-           so the 2.5MB file is never downloaded. -->
+      <!-- Mobile hero film as an ANIMATED WEBP (not a <video>). The whole
+           point: an animated image is rendered by the image pipeline, so it
+           autoplays and loops on EVERY phone - including iOS Low Power Mode,
+           which blocks <video autoplay> and was the reason it played on some
+           iPhones but not others. No sound, no poster juggling, no JS nudging;
+           it just plays like a GIF. Written during parse (document.write) ONLY
+           on phones so desktop / reduced-motion never downloads the file. -->
       <script>
         if (matchMedia("(max-width:900px)").matches && !matchMedia("(prefers-reduced-motion:reduce)").matches) {
-          document.write('<video class="hero__video" autoplay muted loop playsinline preload="auto" poster="IMAGES%20GO%20HERE/hero-poster.jpg?v=4" aria-hidden="true" tabindex="-1"><source src="VIDEOS%20GO%20HERE/hero.mp4?v=4" type="video/mp4"></video>');
+          document.write('<img class="hero__video" src="IMAGES%20GO%20HERE/hero.webp?v=5" alt="" aria-hidden="true" decoding="async">');
         }
       </script>
       <div class="hero__overlay"></div>
