@@ -4,71 +4,47 @@
 document.addEventListener("DOMContentLoaded", function () {
 
   /* ---------- Hero film (mobile) ----------
-     Reliable iOS muted-inline autoplay: muted/playsinline must be real
-     PROPERTIES (not just attributes) before play(), and playback is retried
-     as data becomes ready and on the events that pause it. Deliberately does
-     NOT force-reload or fight buffering - an earlier version's aggressive
-     watchdog could mistake initial buffering for a freeze and reload in a
-     loop, so the video never played. If it genuinely can't autoplay (iOS Low
-     Power Mode), the poster/background still shows the first frame. */
-  const heroVideo = document.querySelector(".hero__video");
-  if (heroVideo) {
-    const wantsVideo =
-      window.matchMedia("(max-width: 900px)").matches &&
-      !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (wantsVideo && heroVideo.dataset.src) {
-      const v = heroVideo;
-      if (v.dataset.poster) v.poster = v.dataset.poster;
-      // iOS requires these as live properties, set before play()
-      v.muted = true; v.defaultMuted = true;
-      v.playsInline = true;
-      v.setAttribute("playsinline", ""); v.setAttribute("webkit-playsinline", "");
-      v.preload = "auto";
-      v.src = v.dataset.src;
-      try { v.load(); } catch (e) {}
+     The video autoplays declaratively (src is in the HTML); on desktop /
+     reduced-motion an inline script already removed it, so this only runs on
+     phones. Job here is just to keep it playing: retry as it buffers and
+     resume whenever iOS pauses it (app/tab switch, scroll away/back, a stall).
+     Never reloads and never fights buffering, so it can't loop and block. */
+  const v = document.querySelector(".hero__video");
+  if (v) {
+    v.muted = true; v.playsInline = true; // reinforce as live properties for iOS
+    const play = () => { const p = v.play(); if (p && p.catch) p.catch(() => {}); };
+    const inView = () => {
+      const r = v.getBoundingClientRect();
+      return r.bottom > 0 && r.top < (window.innerHeight || 0);
+    };
+    const resume = () => {
+      if (document.hidden || !inView()) return;
+      if (v.ended) { try { v.currentTime = 0; } catch (e) {} }
+      if (v.paused && v.readyState >= 2) play();
+    };
 
-      const play = () => { const p = v.play(); if (p && p.catch) p.catch(() => {}); };
-      const inView = () => {
-        const r = v.getBoundingClientRect();
-        return r.bottom > 0 && r.top < (window.innerHeight || 0);
-      };
-      // gentle resume: only when on-screen, visible, paused, and data is ready
-      const resume = () => {
-        if (document.hidden || !inView()) return;
-        if (v.ended) { try { v.currentTime = 0; } catch (e) {} }
-        if (v.paused && v.readyState >= 2) play();
-      };
-
-      play();
-      // keep trying as the file becomes playable (covers slow mobile buffering)
-      ["loadeddata", "canplay", "canplaythrough", "playing"].forEach((ev) =>
-        v.addEventListener(ev, play));
-      // resume on the things that pause it on iOS
-      v.addEventListener("pause", () => setTimeout(resume, 80));
-      v.addEventListener("ended", resume);
-      document.addEventListener("visibilitychange", resume);
-      document.addEventListener("touchstart", resume, { passive: true });
-      window.addEventListener("pageshow", resume);
-      window.addEventListener("focus", resume);
-      if ("IntersectionObserver" in window) {
-        new IntersectionObserver((es) => es.forEach((e) => e.isIntersecting && resume()),
-          { threshold: 0.1 }).observe(v);
-      }
-      /* light stall watchdog: only once the file has enough data (readyState
-         >= 3) so it never fights buffering, and it never reloads. If a frame
-         is truly stuck ~3s, a tiny re-seek jogs the decoder. */
-      let prev = 0, stuck = 0;
-      setInterval(() => {
-        if (document.hidden || !inView() || v.readyState < 3) { stuck = 0; prev = v.currentTime; return; }
-        if (v.paused) { play(); stuck = 0; }
-        else if (Math.abs(v.currentTime - prev) < 0.01) {
-          if (++stuck >= 3) { try { v.currentTime = Math.max(0, v.currentTime - 0.03); } catch (e) {} play(); stuck = 0; }
-        } else stuck = 0;
-        prev = v.currentTime;
-      }, 1000);
-    } else {
-      heroVideo.remove();
+    play();
+    ["loadeddata", "canplay", "canplaythrough", "playing"].forEach((ev) => v.addEventListener(ev, play));
+    v.addEventListener("pause", () => setTimeout(resume, 80));
+    v.addEventListener("ended", resume);
+    document.addEventListener("visibilitychange", resume);
+    document.addEventListener("touchstart", resume, { passive: true });
+    window.addEventListener("pageshow", resume);
+    window.addEventListener("focus", resume);
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver((es) => es.forEach((e) => e.isIntersecting && resume()),
+        { threshold: 0.1 }).observe(v);
     }
+    // light stall watchdog: only once there is playable data; never reloads
+    let prev = 0, stuck = 0;
+    setInterval(() => {
+      if (document.hidden || !inView() || v.readyState < 3) { stuck = 0; prev = v.currentTime; return; }
+      if (v.paused) { play(); stuck = 0; }
+      else if (Math.abs(v.currentTime - prev) < 0.01) {
+        if (++stuck >= 3) { try { v.currentTime = Math.max(0, v.currentTime - 0.03); } catch (e) {} play(); stuck = 0; }
+      } else stuck = 0;
+      prev = v.currentTime;
+    }, 1000);
   }
 
   /* ---------- Intro splash (home page, once per session) ---------- */

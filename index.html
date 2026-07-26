@@ -58,15 +58,16 @@
     <!-- ============ HERO ============ -->
     <!-- Swap the .hero background-image in styles.css for Aliya's hero editorial shot -->
     <section class="hero">
-      <!-- Mobile only. The file is in data-src, not src, because display:none
-           does NOT stop a browser preloading media - app.js attaches it only
-           when the mobile query matches, so desktop never downloads it.
-           muted + playsinline are both required for iOS to autoplay; the
-           still behind stays as the fallback if playback is ever blocked. -->
-      <video class="hero__video" data-src="VIDEOS%20GO%20HERE/hero.mp4"
-             data-poster="IMAGES%20GO%20HERE/hero-poster.jpg"
-             autoplay muted loop playsinline preload="none"
-             aria-hidden="true" tabindex="-1"></video>
+      <!-- Mobile hero film. Written during parse (document.write) ONLY on
+           phones, so the parser sees a normal declarative <video> - which is
+           the reliable way to get iOS to autoplay a muted inline video on
+           first load. On desktop / reduced-motion the element is never created,
+           so the 2.5MB file is never downloaded. -->
+      <script>
+        if (matchMedia("(max-width:900px)").matches && !matchMedia("(prefers-reduced-motion:reduce)").matches) {
+          document.write('<video class="hero__video" autoplay muted loop playsinline preload="auto" poster="IMAGES%20GO%20HERE/hero-poster.jpg" aria-hidden="true" tabindex="-1"><source src="VIDEOS%20GO%20HERE/hero.mp4" type="video/mp4"></video>');
+        }
+      </script>
       <div class="hero__overlay"></div>
       <div class="container hero__content">
         <p class="hero__kicker">Milwaukee</p>
