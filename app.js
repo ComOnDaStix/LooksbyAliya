@@ -24,16 +24,22 @@ document.addEventListener("DOMContentLoaded", function () {
        the `loop` attribute and just stop at the end - restart by hand. When
        `loop` works this event never fires, so it costs nothing. */
     v.addEventListener("ended", () => { try { v.currentTime = 0; } catch (e) {} play(); });
-    /* First user gesture unlocks playback in Low Power Mode, then unbind. */
-    const kick = () => {
-      play();
-      ["touchstart", "pointerdown", "click", "keydown", "scroll"].forEach(
-        (ev) => window.removeEventListener(ev, kick)
-      );
-    };
-    ["touchstart", "pointerdown", "click", "keydown", "scroll"].forEach(
-      (ev) => window.addEventListener(ev, kick, { passive: true })
-    );
+    /* A user gesture unlocks playback where autoplay is blocked (iOS Low
+       Power Mode, Android power-saving/webview configs). The listeners stay
+       armed until the film is actually PLAYING - the old one-shot unbind was
+       the freeze: iOS fires a gesture-less scroll on reload (scroll
+       restoration) and on #fragment arrival, which spent the single attempt
+       before the first real touch, so play() was rejected and never asked
+       again inside a gesture. scroll is gone from the list (it never carries
+       activation; a finger-scroll always fires touchstart first anyway).
+       touchend + pointerup matter on Android, where touchstart and
+       pointerdown(touch) do NOT grant activation - only the gesture's end
+       does. Once playing, everything unbinds. */
+    const KICK_EVS = ["touchstart", "touchend", "pointerdown", "pointerup", "click", "keydown"];
+    const kick = () => play();
+    const unbind = () => KICK_EVS.forEach((ev) => window.removeEventListener(ev, kick));
+    KICK_EVS.forEach((ev) => window.addEventListener(ev, kick, { passive: true }));
+    v.addEventListener("playing", unbind, { once: true });
     document.addEventListener("visibilitychange", () => { if (!document.hidden) play(); });
     window.addEventListener("pageshow", play);
     /* Gentle watchdog. The old aggressive one (load()/reseek) mistook initial
