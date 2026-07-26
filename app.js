@@ -4,47 +4,20 @@
 document.addEventListener("DOMContentLoaded", function () {
 
   /* ---------- Hero film (mobile) ----------
-     The video autoplays declaratively (src is in the HTML); on desktop /
-     reduced-motion an inline script already removed it, so this only runs on
-     phones. Job here is just to keep it playing: retry as it buffers and
-     resume whenever iOS pauses it (app/tab switch, scroll away/back, a stall).
-     Never reloads and never fights buffering, so it can't loop and block. */
+     The <video autoplay muted loop playsinline> is written declaratively on
+     phones, so it plays and loops on its own like any normal site. Keep the JS
+     minimal: nudge play() for browsers that reject the first attempt, and
+     resume when the tab/app regains focus (iOS pauses it there). No watchdog
+     or seeking - those can hitch playback on iOS. */
   const v = document.querySelector(".hero__video");
   if (v) {
-    v.muted = true; v.playsInline = true; // reinforce as live properties for iOS
+    v.muted = true; v.playsInline = true;
     const play = () => { const p = v.play(); if (p && p.catch) p.catch(() => {}); };
-    const inView = () => {
-      const r = v.getBoundingClientRect();
-      return r.bottom > 0 && r.top < (window.innerHeight || 0);
-    };
-    const resume = () => {
-      if (document.hidden || !inView()) return;
-      if (v.ended) { try { v.currentTime = 0; } catch (e) {} }
-      if (v.paused && v.readyState >= 2) play();
-    };
-
     play();
-    ["loadeddata", "canplay", "canplaythrough", "playing"].forEach((ev) => v.addEventListener(ev, play));
-    v.addEventListener("pause", () => setTimeout(resume, 80));
-    v.addEventListener("ended", resume);
-    document.addEventListener("visibilitychange", resume);
-    document.addEventListener("touchstart", resume, { passive: true });
-    window.addEventListener("pageshow", resume);
-    window.addEventListener("focus", resume);
-    if ("IntersectionObserver" in window) {
-      new IntersectionObserver((es) => es.forEach((e) => e.isIntersecting && resume()),
-        { threshold: 0.1 }).observe(v);
-    }
-    // light stall watchdog: only once there is playable data; never reloads
-    let prev = 0, stuck = 0;
-    setInterval(() => {
-      if (document.hidden || !inView() || v.readyState < 3) { stuck = 0; prev = v.currentTime; return; }
-      if (v.paused) { play(); stuck = 0; }
-      else if (Math.abs(v.currentTime - prev) < 0.01) {
-        if (++stuck >= 3) { try { v.currentTime = Math.max(0, v.currentTime - 0.03); } catch (e) {} play(); stuck = 0; }
-      } else stuck = 0;
-      prev = v.currentTime;
-    }, 1000);
+    v.addEventListener("loadeddata", play, { once: true });
+    v.addEventListener("canplay", play, { once: true });
+    document.addEventListener("visibilitychange", () => { if (!document.hidden) play(); });
+    window.addEventListener("pageshow", play);
   }
 
   /* ---------- Intro splash (home page, once per session) ---------- */
