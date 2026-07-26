@@ -25,7 +25,7 @@
   <!-- Mobile hero backdrop. Fetched up front so it is on screen at first
        paint instead of arriving after the stylesheet resolves; media= keeps
        desktop from downloading it at all. -->
-  <link rel="preload" as="image" href="IMAGES%20GO%20HERE/hero-poster.jpg?v=3" media="(max-width: 900px)" />
+  <link rel="preload" as="image" href="IMAGES%20GO%20HERE/hero-poster.jpg?v=4" media="(max-width: 900px)" />
 </head>
 <body id="top">
 
@@ -65,7 +65,7 @@
            so the 2.5MB file is never downloaded. -->
       <script>
         if (matchMedia("(max-width:900px)").matches && !matchMedia("(prefers-reduced-motion:reduce)").matches) {
-          document.write('<video class="hero__video" autoplay muted loop playsinline preload="auto" poster="IMAGES%20GO%20HERE/hero-poster.jpg?v=3" aria-hidden="true" tabindex="-1"><source src="VIDEOS%20GO%20HERE/hero.mp4?v=3" type="video/mp4"></video>');
+          document.write('<video class="hero__video" autoplay muted loop playsinline preload="auto" poster="IMAGES%20GO%20HERE/hero-poster.jpg?v=4" aria-hidden="true" tabindex="-1"><source src="VIDEOS%20GO%20HERE/hero.mp4?v=4" type="video/mp4"></video>');
         }
       </script>
       <div class="hero__overlay"></div>
