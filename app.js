@@ -13,11 +13,17 @@ document.addEventListener("DOMContentLoaded", function () {
      reload, no seeking - those caused freezes before. */
   const v = document.querySelector("video.hero__video");
   if (v) {
-    v.muted = true; v.playsInline = true;
+    /* defaultMuted too: some Android browsers drop the muted attribute on a
+       bfcache restore, and an unmuted video is not allowed to autoplay. */
+    v.muted = true; v.defaultMuted = true; v.playsInline = true;
     const play = () => { const p = v.play(); if (p && p.catch) p.catch(() => {}); };
     play();
     v.addEventListener("loadeddata", play, { once: true });
     v.addEventListener("canplay", play, { once: true });
+    /* Loop backup: some webviews (Instagram/Facebook in-app browsers) drop
+       the `loop` attribute and just stop at the end - restart by hand. When
+       `loop` works this event never fires, so it costs nothing. */
+    v.addEventListener("ended", () => { try { v.currentTime = 0; } catch (e) {} play(); });
     /* First user gesture unlocks playback in Low Power Mode, then unbind. */
     const kick = () => {
       play();
@@ -30,6 +36,26 @@ document.addEventListener("DOMContentLoaded", function () {
     );
     document.addEventListener("visibilitychange", () => { if (!document.hidden) play(); });
     window.addEventListener("pageshow", play);
+    /* Gentle watchdog. The old aggressive one (load()/reseek) mistook initial
+       buffering for a freeze and reload-looped, so this one is play()-only:
+       - paused but not ended (browser paused it under memory pressure, a
+         system dialog, tab juggling): just ask it to play again. play() on an
+         already-playing or still-buffering video is a no-op, and in Low Power
+         Mode it rejects quietly until the first touch - all safe.
+       - the one seek allowed: currentTime pinned AT THE VERY END for two
+         ticks. That is the known iOS "wedged at the loop point" stall (tail
+         not buffered yet). It cannot fire during initial buffering, where
+         currentTime sits near 0. */
+    let lastT = -1, endStuck = 0;
+    setInterval(() => {
+      if (document.hidden) return;
+      if (v.ended) { try { v.currentTime = 0; } catch (e) {} play(); return; }
+      if (v.paused) { play(); return; }
+      if (v.currentTime === lastT && v.duration && v.currentTime > v.duration - 0.5) {
+        if (++endStuck >= 2) { try { v.currentTime = 0; } catch (e) {} play(); endStuck = 0; }
+      } else { endStuck = 0; }
+      lastT = v.currentTime;
+    }, 2000);
   }
 
   /* ---------- Intro splash (home page, once per session) ---------- */

@@ -24,8 +24,10 @@
   <link rel="stylesheet" href="styles.css" />
   <!-- Mobile hero backdrop. Fetched up front so it is on screen at first
        paint instead of arriving after the stylesheet resolves; media= keeps
-       desktop from downloading it at all. -->
-  <link rel="preload" as="image" href="IMAGES%20GO%20HERE/hero-poster.jpg?v=4" media="(max-width: 900px)" />
+       desktop from downloading it at all. The query matches every touch-first
+       device (phones AND tablets, portrait AND landscape) plus any narrow
+       window — same list as the CSS and the video-writing script below. -->
+  <link rel="preload" as="image" href="IMAGES%20GO%20HERE/hero-poster.jpg?v=7" media="(max-width: 900px), (hover: none) and (pointer: coarse)" />
 </head>
 <body id="top">
 
@@ -59,14 +61,17 @@
     <!-- Swap the .hero background-image in styles.css for Aliya's hero editorial shot -->
     <section class="hero">
       <!-- Mobile hero film. A real <video> (smooth, hardware-decoded) written
-           declaratively during parse on phones only, so iOS autoplays the muted
-           inline clip and desktop never downloads it. Autoplay covers every
+           declaratively during parse on mobile devices only, so iOS autoplays
+           the muted inline clip and desktop never downloads it. The gate is
+           the DEVICE (touch-first: hover none + coarse pointer), not viewport
+           width, so landscape phones and tablets get the film too; max-width
+           keeps narrow windows covered as a fallback. Autoplay covers every
            phone except iOS Low Power Mode, which blocks AUTO start - app.js
            handles that by starting playback on the first touch (a play() inside
            a user gesture is allowed even in Low Power Mode). -->
       <script>
-        if (matchMedia("(max-width:900px)").matches && !matchMedia("(prefers-reduced-motion:reduce)").matches) {
-          document.write('<video class="hero__video" autoplay muted loop playsinline preload="auto" poster="IMAGES%20GO%20HERE/hero-poster.jpg?v=6" aria-hidden="true" tabindex="-1"><source src="VIDEOS%20GO%20HERE/hero.mp4?v=6" type="video/mp4"></video>');
+        if (matchMedia("(max-width:900px), (hover:none) and (pointer:coarse)").matches) {
+          document.write('<video class="hero__video" autoplay muted loop playsinline webkit-playsinline disableremoteplayback preload="auto" poster="IMAGES%20GO%20HERE/hero-poster.jpg?v=7" aria-hidden="true" tabindex="-1"><source src="VIDEOS%20GO%20HERE/hero.mp4?v=7" type="video/mp4"></video>');
         }
       </script>
       <div class="hero__overlay"></div>

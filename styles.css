@@ -304,17 +304,25 @@ body.modal-open{overflow:hidden}
 .js .reveal--now{opacity:1;transform:none;transition:none}
 
 /* ---------- responsive ---------- */
-@media(max-width:900px){
-  /* Looping hero film, mobile only. The source is cut so its last frame is
-     the same moment as its first, so `loop` repeats with no visible jump. */
+/* Looping hero film on every mobile device — the gate is the DEVICE (touch-
+   first: no hover + coarse pointer), not viewport width, so landscape phones
+   and tablets keep the film; max-width covers narrow windows as a fallback.
+   Must match the media list on the preload link and the video-writing script
+   in index.html. The source is cut so its last frame is the same moment as
+   its first, so `loop` repeats with no visible jump. */
+@media (max-width:900px), (hover:none) and (pointer:coarse){
   .hero__video{display:block;position:absolute;inset:0;width:100%;height:100%;
     object-fit:cover;object-position:center;z-index:0;pointer-events:none}
   /* Behind the film, show the film's OWN first frame rather than the desktop
      still. The still used to paint at ~300ms and sit there until playback
      began near 1s, which read as a flash of the old image on every visit.
      Same source frame and same cover framing, so the handover is invisible.
-     It is also the fallback when the video is removed (reduced motion, no JS). */
-  .hero{background-image:url("IMAGES%20GO%20HERE/hero-poster.jpg")}
+     It is also the fallback when the video can't start (no JS, data saver). */
+  /* ?v must stay in lockstep with the preload link and poster attribute in
+     index.html - same URL means the browser fetches the file exactly once. */
+  .hero{background-image:url("IMAGES%20GO%20HERE/hero-poster.jpg?v=7")}
+}
+@media(max-width:900px){
   .nav__toggle{display:flex}
   .nav__links{position:fixed;inset:0 0 0 auto;width:min(82vw,360px);flex-direction:column;align-items:stretch;justify-content:center;gap:4px;
     background:#0b0b0b;padding:0 40px;transform:translateX(100%);transition:transform .45s var(--ease)}
@@ -362,9 +370,10 @@ body.modal-open{overflow:hidden}
 }
 @media(prefers-reduced-motion:reduce){
   *{transition:none!important;animation:none!important;scroll-behavior:auto}
-  /* Looping footage is exactly what this setting is meant to suppress; the
-     still behind it shows instead. */
-  .hero__video{display:none!important}
+  /* The hero film intentionally stays on here: the owner wants the backdrop
+     playing on every mobile device, and it is muted, decorative, and sits
+     behind a darkening overlay. Hiding it for Reduce Motion users was being
+     reported as "the video is frozen". */
   /* must match .js .reveal specificity to still win here */
   .js .reveal{opacity:1;transform:none}
 }
