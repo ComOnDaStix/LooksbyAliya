@@ -4,11 +4,13 @@
 document.addEventListener("DOMContentLoaded", function () {
 
   /* ---------- Hero film (mobile) ----------
-     The mobile hero is now an animated WEBP <img>, which plays and loops on its
-     own with zero JS (and works in iOS Low Power Mode, unlike <video>). This
-     block only does anything if the hero is ever a real <video> again - the
-     `video.` selector makes sure an <img> is never handed a .play() it lacks,
-     which would throw and kill the rest of this script. */
+     A muted inline <video> autoplays and loops on its own on most phones. The
+     one case autoplay can't win is iOS Low Power Mode, which blocks AUTOMATIC
+     playback - but a play() called inside a user gesture is still allowed. So
+     we also start it on the very first touch/tap/scroll, which happens within a
+     second of landing. That is why the girl's phone (Low Power on) now plays it
+     the moment she touches the screen. Minimal by design: no watchdog, no
+     reload, no seeking - those caused freezes before. */
   const v = document.querySelector("video.hero__video");
   if (v) {
     v.muted = true; v.playsInline = true;
@@ -16,6 +18,16 @@ document.addEventListener("DOMContentLoaded", function () {
     play();
     v.addEventListener("loadeddata", play, { once: true });
     v.addEventListener("canplay", play, { once: true });
+    /* First user gesture unlocks playback in Low Power Mode, then unbind. */
+    const kick = () => {
+      play();
+      ["touchstart", "pointerdown", "click", "keydown", "scroll"].forEach(
+        (ev) => window.removeEventListener(ev, kick)
+      );
+    };
+    ["touchstart", "pointerdown", "click", "keydown", "scroll"].forEach(
+      (ev) => window.addEventListener(ev, kick, { passive: true })
+    );
     document.addEventListener("visibilitychange", () => { if (!document.hidden) play(); });
     window.addEventListener("pageshow", play);
   }
